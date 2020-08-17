@@ -1,0 +1,249 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Cassette Wireless On-Ear Headphones  ",
+      "price": 39.99,
+      "category": "Headphones",
+      "wireless": "true"
+    },
+    {
+      "id": 2,
+      "name": "Chops Flex Sport Earbuds ",
+      "price": 25.99,
+      "category": "Earbuds",
+      "wireless": "false"
+    },
+    {
+      "id": 3,
+      "name": "Crusher 360 Ultra-Realistic Audio ",
+      "price": 299.99,
+      "category": "Headphones",
+      "wireless": "true"
+    },
+    {
+      "id": 4,
+      "name": "Crusher ANC Personalized Noise Canceling Wireless ",
+      "price": 299.99,
+      "category": "Headphones ",
+      "wireless": "true"
+    },
+    {
+      "id": 5,
+      "name": "Crusher Wireless Immersive Bass Headphone",
+      "price": 250.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 6,
+      "name": "Energized Stash™ Mini 5,000 mAh Portable Battery Pack ",
+      "price": 29,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 7,
+      "name": "Fuelbase™ Max Wireless Charging Pad",
+      "price": 59.99,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 8,
+      "name": "Fuelbase™ Wireless Charging Pad ",
+      "price": 39.99,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 9,
+      "name": "",
+      "price": 0,
+      "category": "",
+      "wireless": ""
+    },
+    {
+      "id": 10,
+      "name": "Hesh 2 Over-Ear Wireless Headphone ",
+      "price": 99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 11,
+      "name": "Hesh 3 Wireless Over-Ear Headphone  ",
+      "price": 69.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 12,
+      "name": "Icon Wireless On-Ear Headphone   ",
+      "price": 29.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 13,
+      "name": "indy fuel true wireless earbuds ",
+      "price": 119.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 14,
+      "name": "Indy True Wireless ",
+      "price": 111.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 15,
+      "name": "Indy™ Evo True Wireless Earbuds",
+      "price": 119.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 16,
+      "name": "Ink’d+ Earbuds with Microphone ",
+      "price": 14,
+      "category": "Earbuds",
+      "wireless": "false"
+    },
+    {
+      "id": 17,
+      "name": "Ink’d+ Wireless Earbuds  ",
+      "price": 40,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 18.99,
+      "name": " Jib Earbuds with Microphone ",
+      "price": 19,
+      "category": "Earbuds",
+      "wireless": "false"
+    },
+    {
+      "id": 19.99,
+      "name": " Method® Active Wireless Sport Earbuds",
+      "price": 69.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 20.99,
+      "name": "Jib+ Wireless Earbuds  ",
+      "price": 59,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 21,
+      "name": "Original Sesh® True Wireless Earbuds with Print  ",
+      "price": 59.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 22,
+      "name": "Push True Wireless Earbuds ",
+      "price": 69.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 23,
+      "name": " Push Ultra True wireless earbuds ",
+      "price": 129.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 24,
+      "name": " Riff Wireless On-Ear Headphone ",
+      "price": 29.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 25,
+      "name": "Sesh Evo True Wireless Eabuds   ",
+      "price": 79.99,
+      "category": "Eabuds",
+      "wireless": "true"
+    },
+    {
+      "id": 26,
+      "name": "Sesh® True Wireless Earbuds  ",
+      "price": 59.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 27,
+      "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack   ",
+      "price": 44.99,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 28,
+      "name": " Set In-Ear Sport Earbuds  ",
+      "price": 29.99,
+      "category": "Earbuds",
+      "wireless": "false"
+    },
+    {
+      "id": 29,
+      "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack    ",
+      "price": 79.99,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 30,
+      "name": "Stash™ Mini 5,000 mAh Portable Battery Pack",
+      "price": 29.99,
+      "category": "Battery",
+      "wireless": ""
+    },
+    {
+      "id": 31,
+      "name": "Strong Push™ Ultra True Wireless Earbuds with Print",
+      "price": 129.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 32,
+      "name": "Uproar Wireless Headphone",
+      "price": 49.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 33,
+      "name": "Wild Indy™ Evo True Wireless Earbuds with Print",
+      "price": 89.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    },
+    {
+      "id": 34,
+      "name": "Venue Noise Canceling Wireless Headphone ",
+      "price": 119.99,
+      "category": "Headphone",
+      "wireless": "true"
+    },
+    {
+      "id": 35,
+      "name": "Vert Clip-Anywhere Wireless Earbuds 69.99",
+      "price": 69.99,
+      "category": "Earbuds",
+      "wireless": "true"
+    }
+  ]
+}
