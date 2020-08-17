@@ -1,0 +1,40 @@
+@import '../../default';
+
+.links {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .link {
+    background-color: #585150;
+    padding: 1rem;
+    width: 15rem;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    @include transition;
+
+    &:hover {
+      background-color: lighten(#585150, 15%);
+    }
+  }
+  .price-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    select {
+      padding: 1rem;
+      font-size: 1.5rem;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid black;
+      cursor: pointer;
+    }
+    h3 {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}

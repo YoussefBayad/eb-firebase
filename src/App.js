@@ -5,8 +5,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Subheader from './components/Subheader';
-import Shop from './pages/Shop';
 import Footer from './components/Footer/index.js';
+
+/* pages*/
+
+import Shop from './pages/Shop';
+import Earbuds from './pages/Earbuds';
+import Headphones from './pages/Headphones';
+import Battery from './pages/Battery';
 
 /* style*/
 
@@ -21,6 +27,9 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/" component={Shop} />
+            <Route exact path="/headphones" component={Headphones} />
+            <Route exact path="/earbuds" component={Earbuds} />
+            <Route exact path="/batteries" component={Battery} />
           </Switch>
         </div>
       </Router>
