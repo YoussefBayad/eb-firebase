@@ -1,0 +1,29 @@
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+nav {
+  background-color: black;
+  padding: 1rem;
+
+  .logo {
+    color: white;
+    font-size: 2.5rem;
+  }
+  .right-nav img {
+    height: 2.5rem;
+    margin-right: 2rem;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

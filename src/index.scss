@@ -1,0 +1,31 @@
+//variables
+
+$accent: #cc5c43;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+  color: darkblue;
+}
+ul {
+  list-style: none;
+}
+
+//container
+.container {
+  width: 80%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+//btns
