@@ -1,3 +1,5 @@
+@import '../../default';
+
 .nav-container {
   width: 80%;
   max-width: 1300px;
@@ -16,11 +18,16 @@ nav {
   .logo {
     color: white;
     font-size: 3rem;
+    @include transition;
+    &:hover {
+      color: $accent;
+    }
   }
   .right-nav img {
     height: 3rem;
     margin-right: 2rem;
-    transition: transform 0.4s ease;
+
+    @include transition;
     cursor: pointer;
 
     &:hover {

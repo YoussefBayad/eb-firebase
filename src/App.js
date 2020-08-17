@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header';
 import Subheader from './components/Subheader';
 import Shop from './pages/Shop';
+import Footer from './components/Footer/index.js';
 
 /* style*/
 
-import './index.scss';
-import Footer from './components/Footer/index.js';
+import './default.scss';
 
 function App() {
   return (

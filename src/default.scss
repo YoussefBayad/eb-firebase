@@ -1,4 +1,11 @@
 //variables
+$accent: #cc5c43;
+
+//mixins
+
+@mixin transition {
+  transition: all 0.4s ease;
+}
 
 * {
   margin: 0;

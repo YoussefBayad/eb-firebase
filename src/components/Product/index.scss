@@ -1,17 +1,20 @@
-/* variables*/
-
-$accent: #cc5c43;
+@import '../../default';
 
 .product {
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
   img {
-    width: 100%;
+    width: 90%;
   }
   p {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
-    height: 5.5rem;
+    height: 5rem;
   }
   .price {
     margin-top: 0.5rem;
