@@ -1,7 +1,5 @@
 //variables
 
-$accent: #cc5c43;
-
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +8,6 @@ $accent: #cc5c43;
 html {
   font-size: 10px;
   font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
   scroll-behavior: smooth;
 }
 a {
@@ -27,5 +24,3 @@ ul {
   max-width: 1100px;
   margin: auto;
 }
-
-//btns

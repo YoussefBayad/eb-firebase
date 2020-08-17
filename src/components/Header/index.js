@@ -8,7 +8,7 @@ import './index.scss';
 const Header = () => {
   return (
     <nav>
-      <div className="container">
+      <div className="nav-container">
         <Router>
           <Link to="/" className="logo">
             EB

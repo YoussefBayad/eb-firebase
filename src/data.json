@@ -23,7 +23,7 @@
     },
     {
       "id": 4,
-      "name": "Crusher ANC Personalized Noise Canceling Wireless ",
+      "name": "Crusher ANC Personalized Noise Canceling Wireless Headphones",
       "price": 299.99,
       "category": "Headphones ",
       "wireless": "true"
@@ -56,13 +56,7 @@
       "category": "Battery",
       "wireless": ""
     },
-    {
-      "id": 9,
-      "name": "",
-      "price": 0,
-      "category": "",
-      "wireless": ""
-    },
+
     {
       "id": 10,
       "name": "Hesh 2 Over-Ear Wireless Headphone ",
@@ -93,7 +87,7 @@
     },
     {
       "id": 14,
-      "name": "Indy True Wireless ",
+      "name": "Indy True Wireless Earbuds",
       "price": 111.99,
       "category": "Earbuds",
       "wireless": "true"
@@ -120,21 +114,21 @@
       "wireless": "true"
     },
     {
-      "id": 18.99,
+      "id": 18,
       "name": " Jib Earbuds with Microphone ",
       "price": 19,
       "category": "Earbuds",
       "wireless": "false"
     },
     {
-      "id": 19.99,
+      "id": 19,
       "name": " Method® Active Wireless Sport Earbuds",
       "price": 69.99,
       "category": "Earbuds",
       "wireless": "true"
     },
     {
-      "id": 20.99,
+      "id": 20,
       "name": "Jib+ Wireless Earbuds  ",
       "price": 59,
       "category": "Earbuds",
@@ -198,7 +192,7 @@
     },
     {
       "id": 29,
-      "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack    ",
+      "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack",
       "price": 79.99,
       "category": "Battery",
       "wireless": ""
@@ -233,14 +227,14 @@
     },
     {
       "id": 34,
-      "name": "Venue Noise Canceling Wireless Headphone ",
+      "name": "Venue Noise Canceling Wireless Headphone",
       "price": 119.99,
       "category": "Headphone",
       "wireless": "true"
     },
     {
       "id": 35,
-      "name": "Vert Clip-Anywhere Wireless Earbuds 69.99",
+      "name": "Vert Clip-Anywhere Wireless Earbuds",
       "price": 69.99,
       "category": "Earbuds",
       "wireless": "true"
