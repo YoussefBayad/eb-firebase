@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-/* DATA* */
-
-import data from '../../data.json';
+import { store } from '../../index';
 
 /* components*/
 
@@ -13,7 +11,8 @@ import Product from '../../components/Product';
 import './index.scss';
 
 const Shop = () => {
-  const { products } = data;
+  const products = store.getState();
+  console.log(products);
   return (
     <div className="shop">
       <h1>Shop</h1>
@@ -29,7 +28,7 @@ const Shop = () => {
         </Link>
         <div className="price-filter">
           <h3>Filter :</h3>
-          <select>
+          <select onChange={(e) => store.dispatch({ type: e.target.value })}>
             <option value="all">All</option>
             <option value="highest">Highest</option>
             <option value="lowest">Lowest</option>

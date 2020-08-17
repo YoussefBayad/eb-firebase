@@ -18,7 +18,6 @@ function App() {
       <Router>
         <Header />
         <Subheader />
-
         <div className="container">
           <Switch>
             <Route exact path="/" component={Shop} />
