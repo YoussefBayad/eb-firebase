@@ -23,24 +23,24 @@
     },
     {
       "id": 4,
-      "name": "Crusher ANC Personalized Noise Canceling Wireless Headphones",
-      "price": 299.99,
-      "category": "Headphones ",
+      "name": "Indy™ Evo True Wireless Earbuds",
+      "price": 199.99,
+      "category": "Earbuds ",
       "wireless": "true"
     },
     {
       "id": 5,
-      "name": "Crusher Wireless Immersive Bass Headphone",
-      "price": 250.99,
-      "category": "Headphone",
+      "name": "Original Sesh® True Wireless Earbuds with Print ",
+      "price": 59.99,
+      "category": "Earbuds",
       "wireless": "true"
     },
     {
       "id": 6,
-      "name": "Energized Stash™ Mini 5,000 mAh Portable Battery Pack ",
-      "price": 29,
-      "category": "Battery",
-      "wireless": ""
+      "name": " Strong Push™ Ultra True Wireless Earbuds with Print  ",
+      "price": 129.99,
+      "category": "Earbuds",
+      "wireless": "true"
     },
     {
       "id": 7,
@@ -94,9 +94,9 @@
     },
     {
       "id": 15,
-      "name": "Indy™ Evo True Wireless Earbuds",
-      "price": 119.99,
-      "category": "Earbuds",
+      "name": " Crusher ANC Personalized Noise Canceling Wireless Headphones",
+      "price": 229.99,
+      "category": "Headphones",
       "wireless": "true"
     },
     {
@@ -136,8 +136,8 @@
     },
     {
       "id": 21,
-      "name": "Original Sesh® True Wireless Earbuds with Print  ",
-      "price": 59.99,
+      "name": " Crusher Wireless Immersive Bass Headphone ",
+      "price": 259.99,
       "category": "Earbuds",
       "wireless": "true"
     },
@@ -206,10 +206,10 @@
     },
     {
       "id": 31,
-      "name": "Strong Push™ Ultra True Wireless Earbuds with Print",
-      "price": 129.99,
-      "category": "Earbuds",
-      "wireless": "true"
+      "name": "Energized Stash™ Mini 5,000 mAh Portable Battery Pack",
+      "price": 29.99,
+      "category": "Battery",
+      "wireless": ""
     },
     {
       "id": 32,
