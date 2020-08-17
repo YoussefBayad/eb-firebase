@@ -10,6 +10,7 @@ import Shop from './pages/Shop';
 /* style*/
 
 import './index.scss';
+import Footer from './components/Footer/index.js';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </Switch>
         </div>
       </Router>
+      <Footer />
     </div>
   );
 }

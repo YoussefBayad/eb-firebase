@@ -3,7 +3,7 @@
 $accent: #cc5c43;
 
 .product {
-  margin: 2rem;
+  margin-bottom: 3rem;
   img {
     width: 100%;
   }
@@ -11,6 +11,7 @@ $accent: #cc5c43;
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
+    height: 5.5rem;
   }
   .price {
     margin-top: 0.5rem;
@@ -28,8 +29,6 @@ $accent: #cc5c43;
     color: white;
     cursor: pointer;
     transition: all 0.4s ease;
-    margin-top: 3rem;
-
     &:hover {
       background-color: darken($accent, 15%);
     }
