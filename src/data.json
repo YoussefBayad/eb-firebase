@@ -2,22 +2,22 @@
   "products": [
     {
       "id": 1,
-      "name": "Cassette Wireless On-Ear Headphones  ",
-      "price": 39.99,
+      "name": "indy fuel true wireless earbuds",
+      "price": 29.99,
       "category": "Headphones",
       "wireless": "true"
     },
     {
       "id": 2,
-      "name": "Chops Flex Sport Earbuds ",
-      "price": 25.99,
+      "name": "Push Ultra True wireless earbuds ",
+      "price": 129.99,
       "category": "Earbuds",
       "wireless": "false"
     },
     {
       "id": 3,
-      "name": "Crusher 360 Ultra-Realistic Audio ",
-      "price": 299.99,
+      "name": " Sesh Evo True Wireless Eabuds ",
+      "price": 79.99,
       "category": "Headphones",
       "wireless": "true"
     },
@@ -73,8 +73,8 @@
     },
     {
       "id": 12,
-      "name": "Icon Wireless On-Ear Headphone   ",
-      "price": 29.99,
+      "name": "Cassette Wireless On-Ear Headphones  ",
+      "price": 39.99,
       "category": "Headphone",
       "wireless": "true"
     },
@@ -150,8 +150,8 @@
     },
     {
       "id": 23,
-      "name": " Push Ultra True wireless earbuds ",
-      "price": 129.99,
+      "name": "Chops Flex Sport Earbuds  ",
+      "price": 29.99,
       "category": "Earbuds",
       "wireless": "true"
     },
@@ -164,8 +164,8 @@
     },
     {
       "id": 25,
-      "name": "Sesh Evo True Wireless Eabuds   ",
-      "price": 79.99,
+      "name": "Crusher 360 Ultra-Realistic Audio   ",
+      "price": 299.99,
       "category": "Eabuds",
       "wireless": "true"
     },

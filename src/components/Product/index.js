@@ -4,8 +4,9 @@ const Product = ({ product }) => {
   return (
     <div className="product">
       <img src={`/img/${product.name.trim()}.webp`} alt={product.name} />
-      <h3>{product.name}</h3>
-      <h3>{product.price}</h3>
+      <p>{product.name}</p>
+      <p className="price">${product.price}</p>
+      <button className="buy">Add To Cart</button>
     </div>
   );
 };
