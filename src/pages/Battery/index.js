@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 import Links from '../../components/Links';
-import Product from '../../components/Product';
+import Products from '../../components/Products';
 
 /* data */
 import { store } from '../../index';
@@ -14,13 +14,7 @@ const Battery = () => {
     <div className="shop">
       <h1>Batteries</h1>
       <Links />
-      <div className="products">
-        {products
-          .filter((product) => product.category === 'Battery')
-          .map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-      </div>
+      <Products products={products} />
     </div>
   );
 };

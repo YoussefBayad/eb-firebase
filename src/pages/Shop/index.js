@@ -3,8 +3,7 @@ import { store } from '../../index';
 
 /* components*/
 import Links from '../../components/Links';
-
-import Product from '../../components/Product';
+import Products from '../../components/Products';
 
 /* style */
 
@@ -16,11 +15,7 @@ const Shop = () => {
     <div className="shop">
       <h1>Shop</h1>
       <Links />
-      <div className="products">
-        {products.map((product) => (
-          <Product product={product} key={product.id} />
-        ))}
-      </div>
+      <Products products={products} />
     </div>
   );
 };
