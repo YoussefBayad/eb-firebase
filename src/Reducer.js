@@ -6,19 +6,20 @@ const { products } = data;
 
 const Reducer = (state = products, action) => {
   switch (action.type) {
-    case 'all':
-      return state;
+    case 'latest':
+      const latest = state.slice().sort((a, b) => (a.id > b.id ? 1 : -1));
+      return latest;
+
     case 'lowest':
       const lowest = state.slice().sort((a, b) => (a.price > b.price ? 1 : -1));
-      console.log(lowest);
-      return { lowest };
+      return lowest;
 
     case 'highest':
       const highest = state
         .slice()
         .sort((a, b) => (a.price < b.price ? 1 : -1));
-      console.log(highest);
-      return { highest };
+
+      return highest;
     default:
       return state;
   }

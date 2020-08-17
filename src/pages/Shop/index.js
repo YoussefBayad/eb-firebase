@@ -12,7 +12,6 @@ import './index.scss';
 
 const Shop = () => {
   const products = store.getState();
-  console.log(products);
   return (
     <div className="shop">
       <h1>Shop</h1>
@@ -29,7 +28,7 @@ const Shop = () => {
         <div className="price-filter">
           <h3>Filter :</h3>
           <select onChange={(e) => store.dispatch({ type: e.target.value })}>
-            <option value="all">All</option>
+            <option value="latest">Latest</option>
             <option value="highest">Highest</option>
             <option value="lowest">Lowest</option>
           </select>
