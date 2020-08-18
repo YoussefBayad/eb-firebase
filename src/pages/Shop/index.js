@@ -14,7 +14,7 @@ const Shop = () => {
   return (
     <div className="shop">
       <h1>Shop</h1>
-      <Links />
+      <Links filter="Shop" />
       <Products products={products} />
     </div>
   );

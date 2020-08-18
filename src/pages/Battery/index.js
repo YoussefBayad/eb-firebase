@@ -3,7 +3,7 @@ import './index.scss';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
 
-/* data */
+/* Store */
 import { store } from '../../index';
 
 const Battery = () => {
@@ -12,7 +12,7 @@ const Battery = () => {
   return (
     <div className="shop">
       <h1>Batteries</h1>
-      <Links />
+      <Links filter="Battery" />
       <Products
         products={products.filter((product) => product.category === 'Battery')}
       />

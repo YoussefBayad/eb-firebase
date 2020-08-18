@@ -11,6 +11,9 @@ import Footer from './components/Footer/index.js';
 
 import Shop from './pages/Shop';
 import Earbuds from './pages/Earbuds';
+import Wireless from './pages/Earbuds/Wireless';
+import Wired from './pages/Earbuds/Wired';
+
 import Headphones from './pages/Headphones';
 import Battery from './pages/Battery';
 
@@ -29,6 +32,8 @@ function App() {
             <Route exact path="/" component={Shop} />
             <Route exact path="/headphones" component={Headphones} />
             <Route exact path="/earbuds" component={Earbuds} />
+            <Route exact path="/earbuds/wireless" component={Wireless} />
+            <Route exact path="/earbuds/wired" component={Wired} />
             <Route exact path="/batteries" component={Battery} />
           </Switch>
         </div>

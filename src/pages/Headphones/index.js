@@ -2,7 +2,7 @@ import React from 'react';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
 
-/* data */
+/* Store */
 import { store } from '../../index';
 
 const Headphones = () => {
@@ -11,7 +11,7 @@ const Headphones = () => {
   return (
     <div className="shop">
       <h1>Headphones</h1>
-      <Links />
+      <Links filter="Headphones" />
       <Products
         products={products.filter(
           (product) => product.category === 'Headphone'

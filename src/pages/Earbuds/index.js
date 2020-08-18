@@ -11,7 +11,7 @@ const Earbuds = () => {
   return (
     <div className="shop">
       <h1>Earbuds</h1>
-      <Links />
+      <Links filter="Earbuds" />
       <Products
         products={products.filter((product) => product.category === 'Earbuds')}
       />

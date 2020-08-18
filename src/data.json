@@ -12,7 +12,7 @@
       "name": "Push Ultra True wireless earbuds ",
       "price": 129.99,
       "category": "Earbuds",
-      "wireless": "false"
+      "wireless": "true"
     },
     {
       "id": 3,
@@ -153,7 +153,7 @@
       "name": "Chops Flex Sport Earbuds  ",
       "price": 29.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "false"
     },
     {
       "id": 24,
