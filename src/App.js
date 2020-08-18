@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+//stores
+import { store } from './index';
+
 /* components */
 
 import Header from './components/Header';
 import Subheader from './components/Subheader';
+import Cart from './components/Cart';
 
 import Footer from './components/Footer/index.js';
 
@@ -23,23 +27,27 @@ import Battery from './pages/Battery';
 import './default.scss';
 
 function App() {
+  const { openCart } = store.getState();
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Subheader />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={Shop} />
-            <Route exact path="/headphones" component={Headphones} />
-            <Route exact path="/earbuds" component={Earbuds} />
-            <Route exact path="/earbuds/wireless" component={Wireless} />
-            <Route exact path="/earbuds/wired" component={Wired} />
-            <Route exact path="/batteries" component={Battery} />
-          </Switch>
-        </div>
-      </Router>
-      <Footer />
+    <div className=" app">
+      {openCart && <Cart />}
+      <div className={`${openCart ? 'overlay' : ''}`}>
+        <Router>
+          <Header />
+          <Subheader />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Shop} />
+              <Route exact path="/headphones" component={Headphones} />
+              <Route exact path="/earbuds" component={Earbuds} />
+              <Route exact path="/earbuds/wireless" component={Wireless} />
+              <Route exact path="/earbuds/wired" component={Wired} />
+              <Route exact path="/batteries" component={Battery} />
+            </Switch>
+          </div>
+        </Router>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ const Cart = () => {
   const { cart } = store.getState();
 
   return (
-    <Fade left>
+    <Fade right>
       <div className="cart">
         <div className="cart-header">
           <h1>CART</h1>

@@ -13,7 +13,6 @@ import cartIcon from '../../assets/icon/cart.svg';
 
 //style
 import './index.scss';
-import Cart from '../Cart';
 
 const Header = () => {
   const { cart, openCart } = store.getState();
@@ -42,7 +41,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {openCart && <Cart />}
     </>
   );
 };
