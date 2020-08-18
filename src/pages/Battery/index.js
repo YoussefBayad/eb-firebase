@@ -7,7 +7,7 @@ import Products from '../../components/Products';
 import { store } from '../../index';
 
 const Battery = () => {
-  const products = store.getState();
+  const { products } = store.getState();
 
   return (
     <div className="shop">

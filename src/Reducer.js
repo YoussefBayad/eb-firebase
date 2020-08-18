@@ -3,7 +3,7 @@ import data from './data.json';
 
 /* Reducer */
 
-const Reducer = (state = { ...data, cart: [] }, action) => {
+const Reducer = (state = { ...data, cart: [], openCart: true }, action) => {
   switch (action.type) {
     case 'latest':
       const latest = state.products
@@ -26,8 +26,9 @@ const Reducer = (state = { ...data, cart: [] }, action) => {
       const clickedProduct = state.products.filter(
         (product) => product.id === action.id
       );
-
-      return { ...state, cart: [...state.cart, clickedProduct] };
+      return { ...state, cart: [...state.cart, ...clickedProduct] };
+    case 'openCart':
+      return { ...state, openCart: !state.openCart };
     default:
       return state;
   }

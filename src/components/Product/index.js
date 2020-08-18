@@ -17,6 +17,7 @@ const Product = ({ product }) => {
         className="buy"
         onClick={() => {
           store.dispatch({ type: 'addToCart', id: product.id });
+          store.dispatch({ type: 'openCart' });
         }}
       >
         Add To Cart

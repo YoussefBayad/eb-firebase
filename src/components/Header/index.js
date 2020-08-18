@@ -13,29 +13,37 @@ import cartIcon from '../../assets/icon/cart.svg';
 
 //style
 import './index.scss';
+import Cart from '../Cart';
 
 const Header = () => {
-  const { cart } = store.getState();
+  const { cart, openCart } = store.getState();
   const cartLength = cart.length;
   return (
-    <nav>
-      <div className="nav-container">
-        <Link to="/" className="logo">
-          EB
-        </Link>
+    <>
+      <nav>
+        <div className="nav-container">
+          <Link to="/" className="logo">
+            EB
+          </Link>
 
-        <div className="right-nav">
-          <img src={search} alt="search icon" />
-          <img src={person} alt="person icon" />
-          <div className="cart">
-            <img src={cartIcon} alt="cart icon" />
-            {cartLength > 0 && (
+          <div className="right-nav">
+            <img src={search} alt="search icon" />
+            <img src={person} alt="person icon" />
+            <div
+              className="cart-icon"
+              onClick={() => {
+                store.dispatch({ type: 'openCart' });
+              }}
+            >
+              <img src={cartIcon} alt="cart icon" />
+
               <p className="cart-items-number">{cartLength}</p>
-            )}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      {openCart && <Cart />}
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import Products from '../../components/Products';
 import { store } from '../../index';
 
 const Earbuds = () => {
-  const products = store.getState();
+  const { products } = store.getState();
 
   return (
     <div className="shop">
