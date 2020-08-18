@@ -5,8 +5,8 @@ const CartProduct = ({ product }) => {
     <div className="cart-product">
       <img
         className="cart-product-img"
-        src={`img/${product.name.trim()}.webp`}
-        alt=""
+        src={`/img/${product.name.trim()}.webp`}
+        alt={product.name}
       />
       <div className="cart-product-description">
         <p className="cart-product-name">{product.name}</p>

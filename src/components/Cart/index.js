@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CartProduct from '../CartProduct';
 
 // animation
@@ -12,18 +12,39 @@ import { store } from '../../index.js';
 import './index.scss';
 
 const Cart = () => {
+  // cart
   const { cart } = store.getState();
+
+  // Ref
+
+  // useEffect(() => {
+  //   const handler = (e) => {
+  //     if (!cartRef.current.contains(e.target)) {
+  //       console.log(e);
+  //     }
+  //   };
+
+  //   document.addEventListener('mousedown', handler);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handler);
+  //   };
+  // }, []);
 
   return (
     <Fade right>
       <div className="cart">
         <div className="cart-header">
           <h1>CART</h1>
-          <h1 className="close-cart">X</h1>
+          <h1
+            className="close-cart"
+            onClick={() => store.dispatch({ type: 'openCart' })}
+          >
+            X
+          </h1>
         </div>
         <div className="cart-main">
           {cart.map((product) => (
-            <CartProduct product={product} />
+            <CartProduct key={product.id} product={product} />
           ))}
         </div>
 

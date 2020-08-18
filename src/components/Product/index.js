@@ -8,6 +8,11 @@ import { store } from '../../index';
 import './index.scss';
 
 const Product = ({ product }) => {
+  const { cart } = store.getState();
+  let checkIfProductExist;
+  if (cart.length > -1) {
+    checkIfProductExist = cart.some((item) => item.id === product.id);
+  }
   return (
     <div className="product">
       <img src={`/img/${product.name.trim()}.webp`} alt={product.name} />
@@ -16,8 +21,12 @@ const Product = ({ product }) => {
       <button
         className="buy"
         onClick={() => {
-          store.dispatch({ type: 'addToCart', id: product.id });
-          store.dispatch({ type: 'openCart' });
+          if (checkIfProductExist) {
+            store.dispatch({ type: 'incrementCount', id: product.id });
+          } else {
+            store.dispatch({ type: 'addToCart', id: product.id });
+            store.dispatch({ type: 'openCart' });
+          }
         }}
       >
         Add To Cart

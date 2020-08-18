@@ -26,9 +26,22 @@ const Reducer = (state = { ...data, cart: [], openCart: false }, action) => {
       const clickedProduct = state.products.filter(
         (product) => product.id === action.id
       );
-      return { ...state, cart: [...state.cart, ...clickedProduct] };
+      const product = clickedProduct[0];
+      return {
+        ...state,
+        cart: [...state.cart, { ...product, count: 1 }],
+      };
     case 'openCart':
       return { ...state, openCart: !state.openCart };
+    case 'incrementCount':
+      //   const clickedProduct = state.products.filter(
+      //     (product) => product.id === action.id
+      //   ).[0];
+      // const  products= state.products.filter(product => product.id !== action.id);
+      //   // console.log(products)
+      //   console.log(state)
+      console.log('increment');
+      return state;
     default:
       return state;
   }
