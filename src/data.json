@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "indy fuel true wireless earbuds",
-      "price": 29.99,
+      "price": 119.99,
       "category": "Earbuds",
       "wireless": "true"
     },
@@ -78,13 +78,7 @@
       "category": "Headphone",
       "wireless": "true"
     },
-    {
-      "id": 13,
-      "name": "indy fuel true wireless earbuds ",
-      "price": 119.99,
-      "category": "Earbuds",
-      "wireless": "true"
-    },
+
     {
       "id": 14,
       "name": "Indy True Wireless Earbuds",

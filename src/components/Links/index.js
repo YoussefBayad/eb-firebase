@@ -11,7 +11,6 @@ import { store } from '../../index';
 import './index.scss';
 
 const Links = ({ filter }) => {
-  console.log(filter);
   return (
     <div className="links">
       {filter === 'Shop' && (

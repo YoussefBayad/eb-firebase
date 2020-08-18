@@ -1,25 +1,27 @@
 /* data */
 import data from './data.json';
 
-const { products } = data;
 /* Reducer */
 
-const Reducer = (state = products, action) => {
+const Reducer = (state = { ...data, cart: [] }, action) => {
   switch (action.type) {
     case 'latest':
-      const latest = state.slice().sort((a, b) => (a.id > b.id ? 1 : -1));
-      return latest;
-
+      const latest = state.products
+        .slice()
+        .sort((a, b) => (a.id > b.id ? 1 : -1));
+      return { ...state, products: latest };
     case 'lowest':
-      const lowest = state.slice().sort((a, b) => (a.price > b.price ? 1 : -1));
-      return lowest;
+      const lowest = state.products
+        .slice()
+        .sort((a, b) => (a.price > b.price ? 1 : -1));
+      return { ...state, products: lowest };
 
     case 'highest':
-      const highest = state
+      const highest = state.products
         .slice()
         .sort((a, b) => (a.price < b.price ? 1 : -1));
 
-      return highest;
+      return { ...state, products: highest };
     default:
       return state;
   }
