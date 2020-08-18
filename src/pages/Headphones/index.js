@@ -1,8 +1,24 @@
 import React from 'react';
-import './index.scss';
+import Links from '../../components/Links';
+import Products from '../../components/Products';
+
+/* data */
+import { store } from '../../index';
 
 const Headphones = () => {
-  return <div>headphones</div>;
+  const products = store.getState();
+
+  return (
+    <div className="shop">
+      <h1>Headphones</h1>
+      <Links />
+      <Products
+        products={products.filter(
+          (product) => product.category === 'Headphone'
+        )}
+      />
+    </div>
+  );
 };
 
 export default Headphones;

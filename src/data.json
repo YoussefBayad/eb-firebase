@@ -4,7 +4,7 @@
       "id": 1,
       "name": "indy fuel true wireless earbuds",
       "price": 29.99,
-      "category": "Headphones",
+      "category": "Earbuds",
       "wireless": "true"
     },
     {
@@ -18,14 +18,14 @@
       "id": 3,
       "name": " Sesh Evo True Wireless Eabuds ",
       "price": 79.99,
-      "category": "Headphones",
+      "category": "Earbuds",
       "wireless": "true"
     },
     {
       "id": 4,
       "name": "Indy™ Evo True Wireless Earbuds",
       "price": 199.99,
-      "category": "Earbuds ",
+      "category": "Earbuds",
       "wireless": "true"
     },
     {
@@ -96,7 +96,7 @@
       "id": 15,
       "name": " Crusher ANC Personalized Noise Canceling Wireless Headphones",
       "price": 229.99,
-      "category": "Headphones",
+      "category": "Headphone",
       "wireless": "true"
     },
     {
@@ -138,7 +138,7 @@
       "id": 21,
       "name": " Crusher Wireless Immersive Bass Headphone ",
       "price": 259.99,
-      "category": "Earbuds",
+      "category": "Headphone",
       "wireless": "true"
     },
     {
@@ -166,7 +166,7 @@
       "id": 25,
       "name": "Crusher 360 Ultra-Realistic Audio   ",
       "price": 299.99,
-      "category": "Earbuds",
+      "category": "Headphone",
       "wireless": "true"
     },
     {

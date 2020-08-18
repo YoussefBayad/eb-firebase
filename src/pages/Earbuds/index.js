@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.scss';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
 
@@ -13,7 +12,9 @@ const Earbuds = () => {
     <div className="shop">
       <h1>Earbuds</h1>
       <Links />
-      <Products products={products} />
+      <Products
+        products={products.filter((product) => product.category === 'Earbuds')}
+      />
     </div>
   );
 };

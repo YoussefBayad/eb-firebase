@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from '../Product';
 import './index.scss';
+
 const Products = ({ products }) => {
   return (
     <div className="products">

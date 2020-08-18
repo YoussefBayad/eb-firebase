@@ -8,13 +8,14 @@ import { store } from '../../index';
 
 const Battery = () => {
   const products = store.getState();
-  const ol = products.filter((product) => product.category === 'Battery');
-  console.log(ol);
+
   return (
     <div className="shop">
       <h1>Batteries</h1>
       <Links />
-      <Products products={products} />
+      <Products
+        products={products.filter((product) => product.category === 'Battery')}
+      />
     </div>
   );
 };

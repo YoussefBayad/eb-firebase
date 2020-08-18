@@ -10,10 +10,3 @@
     font-size: 5rem;
   }
 }
-
-.products {
-  margin-top: 7rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 7rem;
-}
