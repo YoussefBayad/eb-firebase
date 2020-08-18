@@ -1,4 +1,10 @@
 import React from 'react';
+
+// store
+
+import { store } from '../../index';
+
+//style
 import './index.scss';
 
 const Product = ({ product }) => {
@@ -7,7 +13,14 @@ const Product = ({ product }) => {
       <img src={`/img/${product.name.trim()}.webp`} alt={product.name} />
       <p>{product.name}</p>
       <p className="price">${product.price}</p>
-      <button className="buy">Add To Cart</button>
+      <button
+        className="buy"
+        onClick={() => {
+          store.dispatch({ type: 'addToCart', id: product.id });
+        }}
+      >
+        Add To Cart
+      </button>
     </div>
   );
 };

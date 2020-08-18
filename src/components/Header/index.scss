@@ -14,7 +14,10 @@ nav {
   background-color: black;
   padding: 1rem;
   border-bottom: 1px solid #636262;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
   .logo {
     color: white;
     font-size: 3rem;
@@ -23,7 +26,8 @@ nav {
       color: $accent;
     }
   }
-  .right-nav img {
+  .right-nav img,
+  .cart {
     height: 3rem;
     margin-right: 2rem;
 
@@ -33,6 +37,25 @@ nav {
     &:hover {
       transform: scale(1.1);
     }
+  }
+  .cart {
+    display: inline-block;
+
+    position: relative;
+  }
+  .cart-items-number {
+    position: absolute;
+    text-align: center;
+    padding: 0.1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    top: -0.5rem;
+    right: 0.5rem;
+    background-color: $accent;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
   }
   .subheader {
     color: white;

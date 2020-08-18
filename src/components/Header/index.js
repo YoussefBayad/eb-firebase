@@ -1,11 +1,22 @@
 import React from 'react';
+
+// router
 import { Link } from 'react-router-dom';
+
+//data
+
+import { store } from '../../index';
+// img
 import search from '../../assets/icon/search.svg';
 import person from '../../assets/icon/person.svg';
-import cart from '../../assets/icon/cart.svg';
+import cartIcon from '../../assets/icon/cart.svg';
+
+//style
 import './index.scss';
 
 const Header = () => {
+  const { cart } = store.getState();
+  const cartLength = cart.length;
   return (
     <nav>
       <div className="nav-container">
@@ -16,7 +27,12 @@ const Header = () => {
         <div className="right-nav">
           <img src={search} alt="search icon" />
           <img src={person} alt="person icon" />
-          <img src={cart} alt="cart icon" />
+          <div className="cart">
+            <img src={cartIcon} alt="cart icon" />
+            {cartLength > 0 && (
+              <p className="cart-items-number">{cartLength}</p>
+            )}
+          </div>
         </div>
       </div>
     </nav>

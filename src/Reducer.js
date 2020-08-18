@@ -22,6 +22,12 @@ const Reducer = (state = { ...data, cart: [] }, action) => {
         .sort((a, b) => (a.price < b.price ? 1 : -1));
 
       return { ...state, products: highest };
+    case 'addToCart':
+      const clickedProduct = state.products.filter(
+        (product) => product.id === action.id
+      );
+
+      return { ...state, cart: [...state.cart, clickedProduct] };
     default:
       return state;
   }

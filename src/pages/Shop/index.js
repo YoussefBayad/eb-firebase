@@ -10,6 +10,8 @@ import Products from '../../components/Products';
 import './index.scss';
 
 const Shop = () => {
+  //products
+
   const { products } = store.getState();
 
   return (
