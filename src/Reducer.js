@@ -3,7 +3,7 @@ import data from './data.json';
 
 /* Reducer */
 
-const Reducer = (state = { ...data, cart: [], openCart: true }, action) => {
+const Reducer = (state = { ...data, cart: [], openCart: false }, action) => {
   switch (action.type) {
     case 'latest':
       const latest = state.products
