@@ -50,7 +50,17 @@ const Cart = () => {
 
         <div className="cart-footer">
           <button className="checkout-btn">
-            <span>CHECKOUT</span> <span>.</span> $ 100.99
+            <span>CHECKOUT</span> <span>.</span>{' '}
+            <span>
+              $ {''}
+              {cart.length > 0
+                ? cart
+                    .reduce((a, p) => {
+                      return a + p.price * p.count;
+                    }, 0)
+                    .toFixed(2)
+                : '00.00 usd'}
+            </span>
           </button>
         </div>
       </div>

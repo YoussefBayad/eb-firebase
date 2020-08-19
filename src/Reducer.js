@@ -9,7 +9,7 @@ const Reducer = (
     cart: [
      
     ],
-    openCart: true,
+    openCart: false,
   },
   action
 ) => {

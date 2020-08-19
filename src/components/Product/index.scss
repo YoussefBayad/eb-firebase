@@ -36,4 +36,13 @@
       background-color: darken($accent, 15%);
     }
   }
+  .in-cart {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 1rem 2rem;
+    &:hover {
+      background-color: darken(white, 10%);
+    }
+  }
 }
