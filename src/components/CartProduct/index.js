@@ -18,11 +18,19 @@ const CartProduct = ({ product }) => {
         <p className="cart-product-price">${product.price} usd</p>
         <div className="quantity">
           <div className="count">
-            <button onClick={() => store.dispatch({ type: 'incrementCount' })}>
+            <button
+              onClick={() =>
+                store.dispatch({ type: 'incrementCount', id: product.id })
+              }
+            >
               +
             </button>
-            1
-            <button onClick={() => store.dispatch({ type: 'decrementCount' })}>
+            {product.count}
+            <button
+              onClick={() =>
+                store.dispatch({ type: 'decrementCount', id: product.id })
+              }
+            >
               -
             </button>
           </div>
