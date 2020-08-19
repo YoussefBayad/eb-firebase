@@ -3,7 +3,22 @@ import data from './data.json';
 
 /* Reducer */
 
-const Reducer = (state = { ...data, cart: [], openCart: false }, action) => {
+const Reducer = (
+  state = {
+    ...data,
+    cart: [
+      {
+        id: 1,
+        name: 'indy fuel true wireless earbuds',
+        price: 119.99,
+        category: 'Earbuds',
+        wireless: 'true',
+      },
+    ],
+    openCart: true,
+  },
+  action
+) => {
   switch (action.type) {
     case 'latest':
       const latest = state.products
@@ -31,8 +46,11 @@ const Reducer = (state = { ...data, cart: [], openCart: false }, action) => {
         ...state,
         cart: [...state.cart, { ...product, count: 1 }],
       };
-    case 'openCart':
-      return { ...state, openCart: !state.openCart };
+    case 'removeFromCart':
+      const newCart = state.cart.filter((product) => product.id !== action.id);
+      console.log(newCart);
+      return { ...state, cart: newCart };
+
     case 'incrementCount':
       //   const clickedProduct = state.products.filter(
       //     (product) => product.id === action.id
@@ -40,8 +58,11 @@ const Reducer = (state = { ...data, cart: [], openCart: false }, action) => {
       // const  products= state.products.filter(product => product.id !== action.id);
       //   // console.log(products)
       //   console.log(state)
-      console.log('increment');
       return state;
+    case 'decrementCount':
+      return state;
+    case 'openCart':
+      return { ...state, openCart: !state.openCart };
     default:
       return state;
   }
