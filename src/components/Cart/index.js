@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import CartProduct from '../CartProduct';
 
+// hooks
+
 // animation
 
 import Fade from 'react-reveal/Fade';
@@ -17,19 +19,9 @@ const Cart = () => {
 
   // Ref
 
-  // useEffect(() => {
-  //   const handler = (e) => {
-  //     if (!cartRef.current.contains(e.target)) {
-  //       console.log(e);
-  //     }
-  //   };
-
-  //   document.addEventListener('mousedown', handler);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handler);
-  //   };
-  // }, []);
-
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  });
   return (
     <Fade right>
       <div className="cart">
@@ -37,7 +29,9 @@ const Cart = () => {
           <h1>CART</h1>
           <h1
             className="close-cart"
-            onClick={() => store.dispatch({ type: 'openCart' })}
+            onClick={() => {
+              store.dispatch({ type: 'openCart' });
+            }}
           >
             X
           </h1>

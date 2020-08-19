@@ -7,7 +7,7 @@ const Reducer = (
   state = {
     ...data,
     cart: [
-     
+     ...JSON.parse(localStorage.getItem('cart'))
     ],
     openCart: false,
   },
