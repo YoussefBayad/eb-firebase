@@ -6,6 +6,47 @@ footer {
   justify-content: space-around;
   font-size: 1.5rem;
   font-weight: 400;
-  padding: 2rem;
+  padding: 4rem 1rem 15rem;
   letter-spacing: 0.1rem;
+
+  .hear-it-first {
+    text-align: center;
+    .input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-left: 4rem;
+      input {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+      }
+      &img {
+        width: 1rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  .social-media {
+    & h2 {
+      margin-bottom: 2rem;
+    }
+    img {
+      margin-right: 2rem;
+    }
+  }
+  .footer-links {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    line-height: 2;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  & img {
+    width: 3rem;
+  }
 }

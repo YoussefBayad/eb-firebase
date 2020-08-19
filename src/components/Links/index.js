@@ -15,52 +15,52 @@ const Links = ({ filter }) => {
     <div className="links">
       {filter === 'Shop' && (
         <>
-          <Link to="/headphones" className="link ">
+          <Link to="/shop/headphones" className="link ">
             Headphones
           </Link>
-          <Link to="/earbuds" className="link ">
+          <Link to="/shop/earbuds" className="link ">
             Earbuds
           </Link>
-          <Link to="/batteries" className="link ">
+          <Link to="/shop/batteries" className="link ">
             Battery
           </Link>
         </>
       )}
       {filter === 'Headphones' && (
         <>
-          <Link to="/" className="link ">
+          <Link to="/shop" className="link ">
             Shop
           </Link>
-          <Link to="/earbuds" className="link ">
+          <Link to="/shop/earbuds" className="link ">
             Earbuds
           </Link>
-          <Link to="/batteries" className="link ">
+          <Link to="/shop/batteries" className="link ">
             Battery
           </Link>
         </>
       )}
       {filter === 'Earbuds' && (
         <>
-          <Link to="/" className="link ">
+          <Link to="/shop" className="link ">
             Shop
           </Link>
-          <Link to="/earbuds/wireless" className="link ">
+          <Link to="/shop/earbuds/wireless" className="link ">
             Wireless
           </Link>
-          <Link to="/earbuds/wired" className="link ">
+          <Link to="/shop/earbuds/wired" className="link ">
             Wired
           </Link>
         </>
       )}
       {filter === 'Battery' && (
         <>
-          <Link to="/" className="link ">
+          <Link to="/shop" className="link ">
             Shop
           </Link>
-          <Link to="/headphones" className="link ">
+          <Link to="/shop/headphones" className="link ">
             Headphones
           </Link>
-          <Link to="/earbuds" className="link ">
+          <Link to="/shop/earbuds" className="link ">
             Earbuds
           </Link>
         </>
