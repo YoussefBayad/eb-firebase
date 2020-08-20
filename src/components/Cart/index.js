@@ -15,7 +15,7 @@ import './index.scss';
 
 const Cart = () => {
   // cart
-  const { cart } = store.getState();
+  const { cart, openCart } = store.getState();
 
   // Ref
 
@@ -41,7 +41,6 @@ const Cart = () => {
             <CartProduct key={product.id} product={product} />
           ))}
         </div>
-
         <div className="cart-footer">
           <button className="checkout-btn">
             <span>CHECKOUT</span> <span>.</span>{' '}

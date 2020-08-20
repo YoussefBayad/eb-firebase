@@ -37,11 +37,11 @@ ul {
 //overlay
 
 .overlay {
-  transition: all 1s ease;
+  transition: all 0.4s ease;
   height: 100%;
   width: 100%;
   z-index: 1;
   background-color: rgb(252, 252, 252);
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: pointer;
 }
