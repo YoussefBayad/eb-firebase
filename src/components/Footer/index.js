@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="hear-it-first">
         <h2>Hear It First</h2>
         <div className="input">
-          <input type="text" placeholder="Sign Up For Email ..." required />
+          <input type="email" placeholder="Sign Up For Email ..." required />
           <img src={chevronRight} alt="click" />
         </div>
       </div>
@@ -41,16 +41,22 @@ const Footer = () => {
       <div className="social-media">
         <h2>FOLLOW US</h2>
         <div className="social-media-icons">
-          <a href="https://twitter.com/bayad_jo">
+          <a href="https://twitter.com/bayad_jo" target="_blank">
             <img src={twitter} alt="my twitter account" />
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100030355061041">
+          <a
+            href="https://www.facebook.com/profile.php?id=100030355061041"
+            target="_blank"
+          >
             <img src={facebook} alt="my facebook account" />
           </a>
-          <a href="https://www.instagram.com/jo_byd/">
+          <a href="https://www.instagram.com/jo_byd/" target="_blank">
             <img src={instagram} alt="my instagram account" />
           </a>
-          <a href="https://www.linkedin.com/in/youssef-bayad-5584171b4/">
+          <a
+            href="https://www.linkedin.com/in/youssef-bayad-5584171b4/"
+            target="_blank"
+          >
             <img src={linkedin} alt="my linkedin account" />
           </a>
         </div>

@@ -1,0 +1,149 @@
+@import '../../default.scss';
+
+.showcase {
+  width: 100%;
+  height: 80vh;
+  left: 0;
+  padding-left: 16rem;
+  padding-top: 5rem;
+  margin-bottom: 8rem;
+  background: url('/img/homebg.webp') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  & .text {
+    color: white;
+    width: 40rem;
+    height: 100%;
+    float: left;
+    text-align: left;
+  }
+  h1 {
+    font-size: 4.5rem;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+  }
+  p {
+    line-height: 1.5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+  }
+
+  .link {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1rem;
+    background-color: white;
+    color: $accent;
+    border-radius: 0.5rem;
+    @include transition;
+    box-shadow: 5px 5px 10px 2px black;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .scroll-down {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 47%;
+    width: 5rem;
+    background-color: white;
+    box-shadow: 3px 3px 10px 1px black;
+    cursor: pointer;
+
+    border-radius: 50%;
+    // transform: translate(-50%);
+    @include transition;
+    &:hover {
+      transform: translateY(50%);
+      box-shadow: none;
+    }
+  }
+}
+
+.cards {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  h1 {
+    font-size: 3rem;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .eardubs-card {
+    background: url('/img/earbuds-home-page.webp') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .headphones-card {
+    background: url('/img/headphones-home-page.webp') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .eardubs-card,
+  .headphones-card {
+    margin: 10rem 0;
+    margin-bottom: 20rem;
+    padding: 4rem;
+    background-color: lightgrey;
+    border-radius: 1rem;
+    height: 60rem;
+    width: 57rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+
+    @include transition;
+
+    &::after {
+      content: '';
+      border-radius: 1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.5;
+    }
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 3px 3px 20px 2px black;
+    }
+
+    .text {
+      z-index: 1;
+      h1 {
+        font-size: 3rem;
+        font-weight: bolder;
+        margin-bottom: 3.5rem;
+      }
+
+      a {
+        font-size: 1.7rem;
+        padding: 1.4rem;
+        background-color: $accent;
+        border-radius: 0.5rem;
+        box-shadow: 3px 3px 20px 2px black;
+        @include transition;
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

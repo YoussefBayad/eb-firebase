@@ -67,7 +67,7 @@ const Links = ({ filter }) => {
       )}
 
       <div className="price-filter">
-        <h3>Filter :</h3>
+        <h3>Sort :</h3>
         <select onChange={(e) => store.dispatch({ type: e.target.value })}>
           <option value="latest">Latest</option>
           <option value="highest">Highest Price</option>

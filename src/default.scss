@@ -22,9 +22,6 @@ html {
 a {
   text-decoration: none;
   color: white;
-  &:hover {
-    color: $accent;
-  }
 }
 ul {
   list-style: none;

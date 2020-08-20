@@ -36,17 +36,17 @@ function App() {
         <Router>
           <Header />
           <Subheader />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={HomePage} />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <div className="container">
               <Route exact path="/shop" component={Shop} />
               <Route exact path="/shop/headphones" component={Headphones} />
               <Route exact path="/shop/earbuds" component={Earbuds} />
               <Route exact path="/shop/earbuds/wireless" component={Wireless} />
               <Route exact path="/shop/earbuds/wired" component={Wired} />
               <Route exact path="/shop/batteries" component={Battery} />
-            </Switch>
-          </div>
+            </div>
+          </Switch>
         </Router>
         <Footer />
       </div>

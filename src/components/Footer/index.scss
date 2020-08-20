@@ -1,3 +1,5 @@
+@import '../../default.scss';
+
 footer {
   background-color: black;
   color: white;
@@ -18,12 +20,20 @@ footer {
       margin-top: 2rem;
       margin-left: 4rem;
       input {
-        padding: 0.5rem;
+        padding: 0.8rem;
         font-size: 1.5rem;
+        border-radius: 1rem;
+        outline: none;
+        border: none;
       }
-      &img {
-        width: 1rem;
+      & img {
+        width: 2.5rem;
         margin-left: 0.5rem;
+        @include transition;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
   }
@@ -33,6 +43,10 @@ footer {
     }
     img {
       margin-right: 2rem;
+      @include transition;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   .footer-links {
@@ -44,6 +58,9 @@ footer {
     div {
       display: flex;
       flex-direction: column;
+      a:hover {
+        color: $accent;
+      }
     }
   }
   & img {
