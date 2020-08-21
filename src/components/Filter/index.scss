@@ -1,0 +1,19 @@
+@import '../../default';
+.filter {
+  display: inline-block;
+  position: relative;
+}
+.filter-input {
+  position: absolute;
+  right: 6rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  height: 100%;
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  &::placeholder {
+    font-size: 1.5rem;
+  }
+}

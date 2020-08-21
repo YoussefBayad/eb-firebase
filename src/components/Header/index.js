@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 
 import { store } from '../../index';
 // img
-import search from '../../assets/icon/search.svg';
 import person from '../../assets/icon/person.svg';
 import cartIcon from '../../assets/icon/cart.svg';
 
 //style
 import './index.scss';
+import Filter from '../Filter';
 
 const Header = () => {
   const { cart, openCart } = store.getState();
@@ -26,7 +26,7 @@ const Header = () => {
           </Link>
 
           <div className="right-nav">
-            <img src={search} alt="search icon" />
+            <Filter />
             <img src={person} alt="person icon" />
             <div
               className="cart-icon"
