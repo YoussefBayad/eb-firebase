@@ -9,11 +9,16 @@ const Filter = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleClick = (e) => {
-    const results = products.filter((product) =>
-      product.name.toLowerCase().includes(e.target.value)
-    );
+    let results = [];
+    if (e.target.value === '') {
+      setSearchResults(results);
+    } else {
+      results = products.filter((product) =>
+        product.name.toLowerCase().includes(e.target.value.toLowerCase())
+      );
 
-    setSearchResults(results);
+      setSearchResults(results);
+    }
   };
   return (
     <div className="filter">
