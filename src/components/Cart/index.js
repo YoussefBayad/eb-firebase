@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CartProduct from '../CartProduct';
-
-// hooks
+import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
 // animation
 
@@ -16,16 +15,25 @@ import './index.scss';
 
 const Cart = () => {
   // cart
-  const { cart, openCart } = store.getState();
+  const { cart } = store.getState();
+  const node = useRef();
 
-  // Ref
+  //handle clicked
+
+  const handleClick = (e) => {
+    store.dispatch({ type: 'openCart' });
+  };
+
+  // outside click
+  const [ref] = useOutsideClickRef(handleClick);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
-  });
+  }, []);
+
   return (
     <Fade right>
-      <div className="cart">
+      <div ref={ref} className="cart">
         <div className="cart-header">
           <h1>CART</h1>
           <h1

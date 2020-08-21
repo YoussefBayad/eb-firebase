@@ -3,12 +3,21 @@ import { Link } from 'react-router-dom';
 import search from '../../assets/icon/search.svg';
 import './index.scss';
 import { store } from '../../index.js';
+import useOutsideClickRef from '@rooks/use-outside-click-ref';
+
 const Filter = () => {
+  //state
+
   const { products } = store.getState();
   const [showFilter, setShowFilter] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleClick = (e) => {
+  // handle input change
+
+  const handleChange = (e) => {
+    setShowSearchResults(true);
+
     let results = [];
     if (e.target.value === '') {
       setSearchResults(results);
@@ -20,6 +29,14 @@ const Filter = () => {
       setSearchResults(results);
     }
   };
+
+  // hide search results div
+
+  const handleClick = () => {
+    setShowSearchResults(false);
+  };
+  const [ref] = useOutsideClickRef(handleClick);
+
   return (
     <div className="filter">
       {showFilter && (
@@ -27,7 +44,7 @@ const Filter = () => {
           className="filter-input"
           type="text"
           placeholder="Search ..."
-          onChange={handleClick}
+          onChange={handleChange}
         />
       )}
       <img
@@ -35,8 +52,8 @@ const Filter = () => {
         alt="search icon"
         onClick={() => setShowFilter((prev) => !prev)}
       />
-      {searchResults.length > 0 && (
-        <div className="search-results">
+      {searchResults.length > 0 && showSearchResults && (
+        <div ref={ref} className="search-results">
           {searchResults.map((product) => (
             <Link key={product.id} to={`/shop/${product.id}`}>
               <div className="search-product">
