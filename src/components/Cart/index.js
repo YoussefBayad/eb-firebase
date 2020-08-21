@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import CartProduct from '../CartProduct';
 
 // hooks
@@ -42,7 +43,13 @@ const Cart = () => {
           ))}
         </div>
         <div className="cart-footer">
-          <button className="checkout-btn">
+          <Link
+            to="/payment"
+            className="checkout-btn"
+            onClick={() => {
+              store.dispatch({ type: 'openCart' });
+            }}
+          >
             <span>CHECKOUT</span> <span>.</span>{' '}
             <span>
               $ {''}
@@ -54,7 +61,7 @@ const Cart = () => {
                     .toFixed(2)
                 : '00.00 usd'}
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </Fade>

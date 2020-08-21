@@ -8,6 +8,7 @@ import { store } from '../../index';
 import './index.scss';
 
 /* component  */
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   const { cart } = store.getState();
@@ -21,10 +22,11 @@ const Product = ({ product }) => {
   return (
     <Zoom>
       <div className="product">
+        {/* <Link className="product-link" to={`/shop/${product.id}`}> */}
         <img src={`/img/${product.name.trim()}.webp`} alt={product.name} />
         <p>{product.name}</p>
         <p className="price">${product.price}</p>
-
+        {/* </Link> */}
         {
           // check If Product Exist in cart
         }

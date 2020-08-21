@@ -14,14 +14,16 @@ import Footer from './components/Footer/index.js';
 
 /* pages*/
 
-import HomePage from './pages/HomePage';
+import HomePage from './pages/Home';
 import Shop from './pages/Shop';
+import Payment from './pages/Payment';
 import Earbuds from './pages/Earbuds';
 import Wireless from './pages/Earbuds/Wireless';
 import Wired from './pages/Earbuds/Wired';
 
 import Headphones from './pages/Headphones';
 import Battery from './pages/Battery';
+import ProductPage from './pages/ProductPage';
 
 /* style*/
 
@@ -31,25 +33,28 @@ function App() {
   const { openCart } = store.getState();
   return (
     <div className=" app">
-      {openCart && <Cart />}
-      <div className={`${openCart ? 'overlay' : ''}`}>
-        <Router>
+      <Router>
+        {openCart && <Cart />}
+        <div className={`${openCart ? 'overlay' : ''}`}>
           <Header />
           <Subheader />
+
           <Switch>
             <Route exact path="/" component={HomePage} />
             <div className="container">
               <Route exact path="/shop" component={Shop} />
+              <Route exact path="/payment" component={Payment} />
               <Route exact path="/shop/headphones" component={Headphones} />
               <Route exact path="/shop/earbuds" component={Earbuds} />
               <Route exact path="/shop/earbuds/wireless" component={Wireless} />
               <Route exact path="/shop/earbuds/wired" component={Wired} />
               <Route exact path="/shop/batteries" component={Battery} />
+              <Route exact path="/shop/:id" component={ProductPage} />
             </div>
           </Switch>
-        </Router>
-        <Footer />
-      </div>
+        </div>
+      </Router>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Product from '../Product';
 import Fade from 'react-reveal/Fade';
 
