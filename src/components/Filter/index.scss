@@ -8,12 +8,37 @@
   right: 6rem;
   border-radius: 0.5rem;
   border: none;
-
-  height: 100%;
-  flex: 1;
+  width: 25rem;
   padding: 0.5rem;
   font-size: 1.7rem;
   &::placeholder {
     font-size: 1.5rem;
+  }
+}
+
+.search-results {
+  position: absolute;
+  height: 40vh;
+  width: 25rem;
+  overflow: auto;
+  left: -26rem;
+  background-color: rgba(255, 255, 255, 0.945);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.search-product {
+  display: flex;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  .search-img {
+    width: 6rem;
+    height: 6rem;
+  }
+  p {
+    color: black !important;
+  }
+  .search-product-name {
+    margin-bottom: 0.3rem;
   }
 }

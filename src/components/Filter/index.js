@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import search from '../../assets/icon/search.svg';
 import './index.scss';
 import { store } from '../../index.js';
 const Filter = () => {
   const { products } = store.getState();
   const [showFilter, setShowFilter] = useState(false);
-  const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {
+  const handleClick = (e) => {
     const results = products.filter((product) =>
-      product.name.toLowerCase().includes(query)
+      product.name.toLowerCase().includes(e.target.value)
     );
-    console.log(results);
 
     setSearchResults(results);
-  }, [query]);
+  };
   return (
     <div className="filter">
       {showFilter && (
@@ -23,8 +22,7 @@ const Filter = () => {
           className="filter-input"
           type="text"
           placeholder="Search ..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleClick}
         />
       )}
       <img
@@ -32,6 +30,25 @@ const Filter = () => {
         alt="search icon"
         onClick={() => setShowFilter((prev) => !prev)}
       />
+      {searchResults.length > 0 && (
+        <div className="search-results">
+          {searchResults.map((product) => (
+            <Link key={product.id} to={`/shop/${product.id}`}>
+              <div className="search-product">
+                <img
+                  className="search-img"
+                  src={`/img/${product.name.trim()}.webp`}
+                  alt=""
+                />
+                <div className="text">
+                  <p className="search-product-name">{product.name}</p>
+                  <p>${product.price}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
