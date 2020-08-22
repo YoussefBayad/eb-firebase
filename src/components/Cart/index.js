@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartProduct from '../CartProduct';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
@@ -16,7 +16,6 @@ import './index.scss';
 const Cart = () => {
   // cart
   const { cart } = store.getState();
-  const node = useRef();
 
   //handle clicked
 

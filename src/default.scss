@@ -43,5 +43,12 @@ ul {
   z-index: 1;
   background-color: rgb(252, 252, 252);
   opacity: 0.7;
-  cursor: pointer;
+}
+
+// hover
+.hover {
+  @include transition;
+  &:hover {
+    color: $accent;
+  }
 }

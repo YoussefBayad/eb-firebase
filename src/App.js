@@ -49,7 +49,7 @@ function App() {
               <Route exact path="/shop/earbuds/wireless" component={Wireless} />
               <Route exact path="/shop/earbuds/wired" component={Wired} />
               <Route exact path="/shop/batteries" component={Battery} />
-              <Route exact path="/shop/:id" component={ProductPage} />
+              <Route exact path="/shop/product/:id" component={ProductPage} />
             </div>
           </Switch>
         </div>

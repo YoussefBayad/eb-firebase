@@ -55,7 +55,7 @@ const Filter = () => {
       {searchResults.length > 0 && showSearchResults && (
         <div ref={ref} className="search-results">
           {searchResults.map((product) => (
-            <Link key={product.id} to={`/shop/${product.id}`}>
+            <Link key={product.id} to={`/shop/product/${product.id}`}>
               <div className="search-product">
                 <img
                   className="search-img"

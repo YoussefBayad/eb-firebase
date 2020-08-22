@@ -5,42 +5,78 @@
       "name": "indy fuel true wireless earbuds",
       "price": 119.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 2,
       "name": "Push Ultra True wireless earbuds ",
       "price": 129.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "40",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 3,
-      "name": " Sesh Evo True Wireless Eabuds ",
+      "name": " Sesh® Evo True Wireless Eabuds ",
       "price": 79.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "24",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 4,
       "name": "Indy™ Evo True Wireless Earbuds",
       "price": 199.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 5,
       "name": "Original Sesh® True Wireless Earbuds with Print ",
       "price": 59.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 6,
       "name": " Strong Push™ Ultra True Wireless Earbuds with Print  ",
       "price": 129.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "24",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 7,
@@ -62,21 +98,39 @@
       "name": "Hesh 2 Over-Ear Wireless Headphone ",
       "price": 99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 11,
       "name": "Hesh 3 Wireless Over-Ear Headphone  ",
       "price": 69.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 12,
       "name": "Cassette Wireless On-Ear Headphones  ",
       "price": 39.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
 
     {
@@ -84,56 +138,104 @@
       "name": "Indy True Wireless Earbuds",
       "price": 111.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "40",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 15,
       "name": " Crusher ANC Personalized Noise Canceling Wireless Headphones",
       "price": 229.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "false",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 16,
       "name": "Ink’d+ Earbuds with Microphone ",
       "price": 14,
       "category": "Earbuds",
-      "wireless": "false"
+      "wireless": "false",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 17,
       "name": "Ink’d+ Wireless Earbuds  ",
       "price": 40,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 18,
       "name": " Jib Earbuds with Microphone ",
       "price": 19,
       "category": "Earbuds",
-      "wireless": "false"
+      "wireless": "false",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 19,
       "name": " Method® Active Wireless Sport Earbuds",
       "price": 69.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 20,
       "name": "Jib+ Wireless Earbuds  ",
       "price": 59,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 21,
       "name": " Crusher Wireless Immersive Bass Headphone ",
       "price": 259.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     },
     {
       "id": 22,
@@ -147,91 +249,169 @@
       "name": "Chops Flex Sport Earbuds  ",
       "price": 29.99,
       "category": "Earbuds",
-      "wireless": "false"
+      "wireless": "false",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 24,
       "name": " Riff Wireless On-Ear Headphone ",
       "price": 29.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 25,
       "name": "Crusher 360 Ultra-Realistic Audio   ",
       "price": 299.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "24",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 26,
       "name": "Sesh® True Wireless Earbuds  ",
       "price": 59.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "24",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 27,
       "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack   ",
       "price": 44.99,
       "category": "Battery",
-      "wireless": ""
+      "wireless": "",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 28,
       "name": " Set In-Ear Sport Earbuds  ",
       "price": 29.99,
       "category": "Earbuds",
-      "wireless": "false"
+      "wireless": "false",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 29,
       "name": "Stash™ Fuel 10,000 mAh Wireless Battery Pack",
       "price": 79.99,
       "category": "Battery",
-      "wireless": ""
+      "wireless": "",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 30,
       "name": "Stash™ Mini 5,000 mAh Portable Battery Pack",
       "price": 29.99,
       "category": "Battery",
-      "wireless": ""
+      "wireless": "",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 31,
       "name": "Energized Stash™ Mini 5,000 mAh Portable Battery Pack",
       "price": 29.99,
       "category": "Battery",
-      "wireless": ""
+      "wireless": "",
+      "wirelessCharging": "false",
+      "totalCharge": "0",
+      "waterProof": "false",
+      "fullControl": "false",
+      "eitherBudSolo": "false",
+      "tile": "false"
     },
     {
       "id": 32,
       "name": "Uproar Wireless Headphone",
       "price": 49.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "24",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 33,
       "name": "Wild Indy™ Evo True Wireless Earbuds with Print",
       "price": 89.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "30",
+      "waterProof": "true",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 34,
       "name": "Venue Noise Canceling Wireless Headphone",
       "price": 119.99,
       "category": "Headphone",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "false",
+      "totalCharge": "30",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "false",
+      "tile": "true"
     },
     {
       "id": 35,
       "name": "Vert Clip-Anywhere Wireless Earbuds",
       "price": 69.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "wirelessCharging": "true",
+      "totalCharge": "30",
+      "waterProof": "false",
+      "fullControl": "true",
+      "eitherBudSolo": "true",
+      "tile": "true"
     }
   ]
 }

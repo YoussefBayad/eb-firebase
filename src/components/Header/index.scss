@@ -1,15 +1,5 @@
 @import '../../default';
 
-.nav-container {
-  width: 80%;
-  max-width: 1300px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 6rem;
-}
-
 nav {
   background-color: black;
   padding: 1rem;
@@ -18,13 +8,29 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1;
+
+  .nav-container {
+    width: 80%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+  }
+
+  a {
+    @extend .hover;
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
   .logo {
+    @extend .hover;
+
     color: white;
     font-size: 3rem;
-    @include transition;
-    &:hover {
-      color: $accent;
-    }
+    margin-left: 0;
+    margin-right: 3rem;
   }
   .right-nav img,
   .cart-icon {

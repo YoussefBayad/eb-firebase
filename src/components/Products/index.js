@@ -6,6 +6,7 @@ import Fade from 'react-reveal/Fade';
 import './index.scss';
 
 const Products = ({ products }) => {
+  console.log(products);
   return (
     <Fade bottom>
       <div className="products">

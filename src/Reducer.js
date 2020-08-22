@@ -63,7 +63,8 @@ const Reducer = (
   
   /* remove from cart */
 
-  else if (action.type ===  'removeFromCart') {  const newCart = state.cart.filter((product) => product.id !== action.id);
+  else if (action.type ===  'removeFromCart') { 
+     const newCart = state.cart.filter((product) => product.id !== action.id);
     return { ...state, cart: newCart };
     }
     

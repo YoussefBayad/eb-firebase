@@ -18,30 +18,31 @@ const Header = () => {
   const { cart, openCart } = store.getState();
   const cartLength = cart.length;
   return (
-    <>
-      <nav>
-        <div className="nav-container">
+    <nav>
+      <div className="nav-container">
+        <div className="left-nav">
           <Link to="/" className="logo">
             EB
           </Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/about">About Us</Link>
+        </div>
+        <div className="right-nav">
+          <Filter />
+          <img src={person} alt="person icon" />
+          <div
+            className="cart-icon"
+            onClick={() => {
+              store.dispatch({ type: 'openCart' });
+            }}
+          >
+            <img src={cartIcon} alt="cart icon" />
 
-          <div className="right-nav">
-            <Filter />
-            <img src={person} alt="person icon" />
-            <div
-              className="cart-icon"
-              onClick={() => {
-                store.dispatch({ type: 'openCart' });
-              }}
-            >
-              <img src={cartIcon} alt="cart icon" />
-
-              <p className="cart-items-number">{cartLength}</p>
-            </div>
+            <p className="cart-items-number">{cartLength}</p>
           </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
