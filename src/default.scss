@@ -54,3 +54,24 @@ ul {
     color: $accent;
   }
 }
+
+// btns
+.checkout-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  width: 80%;
+  font-size: 1.7rem;
+  cursor: pointer;
+  @include transition;
+  span {
+    margin-right: 1.5rem;
+  }
+
+  &:hover {
+    color: black;
+    background-color: rgb(211, 207, 207);
+  }
+}
