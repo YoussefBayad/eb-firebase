@@ -5,7 +5,6 @@ import data from './data.json';
 
 let products;
 const localStorageProducts = JSON.parse(localStorage.getItem('products'));
-console.log(localStorageProducts)
 if (localStorageProducts !== null){
   products = localStorageProducts;
 }
@@ -138,7 +137,21 @@ return {...state , products:[...products]};
     return {...state , products:[...products]};
      }
 
-     /* open Cart */
+  /* payment completed */
+
+
+  else if (action.type ===  'payment-completed') {   
+    
+    // new cart
+      const products = state.products.map((product) => 
+          {return {...product , count:0}})
+          localStorage.setItem('products', JSON.stringify(products));
+
+    return {...state , products:[...products]};
+     }
+
+
+  /* open Cart */
      
   else if (action.type ===  'openCart') {   
       
