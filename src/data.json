@@ -11,7 +11,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 4,
@@ -50,7 +53,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 5,
@@ -63,7 +67,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 6,
@@ -76,7 +81,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 7,
@@ -90,7 +96,8 @@
       "name": "Fuelbase™ Wireless Charging Pad ",
       "price": 39.99,
       "category": "Battery",
-      "wireless": ""
+      "wireless": "",
+      "count": 0
     },
 
     {
@@ -104,7 +111,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 11,
@@ -117,7 +125,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 12,
@@ -130,7 +139,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
 
     {
@@ -144,7 +154,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 15,
@@ -157,7 +168,8 @@
       "waterProof": "true",
       "fullControl": "false",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 16,
@@ -170,7 +182,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 17,
@@ -183,7 +196,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 18,
@@ -196,7 +210,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 19,
@@ -209,7 +224,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 20,
@@ -222,7 +238,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 21,
@@ -235,14 +252,16 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 22,
       "name": "Push True Wireless Earbuds ",
       "price": 69.99,
       "category": "Earbuds",
-      "wireless": "true"
+      "wireless": "true",
+      "count": 0
     },
     {
       "id": 23,
@@ -255,7 +274,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 24,
@@ -268,7 +288,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 25,
@@ -281,7 +302,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 26,
@@ -294,7 +316,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 27,
@@ -307,7 +330,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 28,
@@ -320,7 +344,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 29,
@@ -333,7 +358,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 30,
@@ -346,7 +372,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 31,
@@ -359,7 +386,8 @@
       "waterProof": "false",
       "fullControl": "false",
       "eitherBudSolo": "false",
-      "tile": "false"
+      "tile": "false",
+      "count": 0
     },
     {
       "id": 32,
@@ -372,7 +400,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 33,
@@ -385,7 +414,8 @@
       "waterProof": "true",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 34,
@@ -398,7 +428,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "false",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     },
     {
       "id": 35,
@@ -411,7 +442,8 @@
       "waterProof": "false",
       "fullControl": "true",
       "eitherBudSolo": "true",
-      "tile": "true"
+      "tile": "true",
+      "count": 0
     }
   ]
 }
