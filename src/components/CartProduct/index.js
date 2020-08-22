@@ -3,6 +3,10 @@ import React from 'react';
 //store
 import { store } from '../../index.js';
 
+// components
+
+import Count from '../ProductCount';
+
 //style
 import './index.scss';
 const CartProduct = ({ product }) => {
@@ -17,23 +21,7 @@ const CartProduct = ({ product }) => {
         <p className="cart-product-name">{product.name}</p>
         <p className="cart-product-price">${product.price} usd</p>
         <div className="quantity">
-          <div className="count">
-            <button
-              onClick={() =>
-                store.dispatch({ type: 'incrementCount', id: product.id })
-              }
-            >
-              +
-            </button>
-            {product.count}
-            <button
-              onClick={() =>
-                store.dispatch({ type: 'decrementCount', id: product.id })
-              }
-            >
-              -
-            </button>
-          </div>
+          <Count id={product.id} count={product.count} />
           <h5
             className="cart-remove-product"
             onClick={() =>
