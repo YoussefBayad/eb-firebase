@@ -15,8 +15,8 @@ import './index.scss';
 import Filter from '../Filter';
 
 const Header = () => {
-  const { cart, openCart } = store.getState();
-  const cartLength = cart.length;
+  const { products } = store.getState();
+  const cartLength = products.filter((product) => product.count > 0).length;
   return (
     <nav>
       <div className="nav-container">

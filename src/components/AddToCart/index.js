@@ -1,24 +1,13 @@
 import React from 'react';
 
 // store
-
 import { store } from '../../index.js';
-
 // style
 import './index.scss';
-const AddToCart = ({ id }) => {
-  const { cart } = store.getState();
-
-  // check if product exist in cart
-
-  let checkIfProductExist;
-
-  if (cart.length > -1) {
-    checkIfProductExist = cart.some((item) => item.id === id);
-  }
+const AddToCart = ({ id, count }) => {
   return (
     <>
-      {checkIfProductExist ? (
+      {count > 0 ? (
         <button
           className="buy in-cart"
           onClick={() => store.dispatch({ type: 'openCart' })}
@@ -29,12 +18,8 @@ const AddToCart = ({ id }) => {
         <button
           className="buy"
           onClick={() => {
-            if (checkIfProductExist) {
-              store.dispatch({ type: 'incrementCount', id: id });
-            } else {
-              store.dispatch({ type: 'addToCart', id: id });
-              store.dispatch({ type: 'openCart' });
-            }
+            store.dispatch({ type: 'incrementCount', id: id });
+            store.dispatch({ type: 'openCart' });
           }}
         >
           Add To Cart

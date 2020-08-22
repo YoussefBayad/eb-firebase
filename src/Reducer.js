@@ -1,16 +1,28 @@
 /* data */
 import data from './data.json';
 
+// assigning products
+
+let products;
+const localStorageProducts = JSON.parse(localStorage.getItem('products'));
+console.log(localStorageProducts)
+if (localStorageProducts !== null){
+  products = localStorageProducts;
+}
+else{
+  products = data.products;
+}
+
+
 /* Reducer */
 
 const Reducer = (
 
   // state
   state = {
-    ...data,
+    
 
-    cart: [
-     ...JSON.parse(localStorage.getItem('cart'))
+    products: [...products
     ],
 
     openCart: false,
@@ -47,33 +59,38 @@ const Reducer = (
   }
   
   
-  /*add to cart   */ 
-
-  else if (action.type ===  'addToCart')
-  {
-    const clickedProduct = state.products.filter(
-      (product) => product.id === action.id
-    );
-    const product = clickedProduct[0];
-    return {
-      ...state,
-      cart: [...state.cart, { ...product, count: 1 }],
-    }
-  }
+ 
   
   /* remove from cart */
 
   else if (action.type ===  'removeFromCart') { 
-     const newCart = state.cart.filter((product) => product.id !== action.id);
-    return { ...state, cart: newCart };
-    }
+     // clicked product
+  let clickedProduct = state.products.filter(
+    (product) => product.id === action.id
+  ).[0]; 
+
+// reset Count
+clickedProduct = {...clickedProduct, count: 0};
+
+//new cart 
+const  products = state.products.map((product) => {
+  if(    product.id === action.id){
+    return clickedProduct;
+  }
+ return product
+
+});
+    
+return {...state , products:[...products]};
+
+}
     
 /* increment and decrement */
 
   else if (action.type ===  'incrementCount') {   
 
   // clicked product
-  let clickedProduct = state.cart.filter(
+  let clickedProduct = state.products.filter(
       (product) => product.id === action.id
     ).[0]; 
 
@@ -82,7 +99,7 @@ const Reducer = (
   clickedProduct = {...clickedProduct, count: count +1};
 
   //new cart 
-  const  newCart = state.cart.map((product) => {
+  const  products = state.products.map((product) => {
     if(    product.id === action.id){
       return clickedProduct;
     }
@@ -90,13 +107,13 @@ const Reducer = (
 
   });
       
-  return {...state , cart:[...newCart]};
+  return {...state , products:[...products]};
   }
      
   else if (action.type ===  'decrementCount') {   
     
     // clicked product
-     let clickedProduct = state.cart.filter(
+     let clickedProduct = state.products.filter(
         (product) => product.id === action.id
       ).[0]; 
 
@@ -111,14 +128,14 @@ const Reducer = (
       }
 
     // new cart
-      const  newCart = state.cart.map((product) => {
+      const products = state.products.map((product) => {
         if(    product.id === action.id){
           return clickedProduct;
         }
          return product
         }); 
 
-    return {...state , cart:[...newCart]};
+    return {...state , products:[...products]};
      }
 
      /* open Cart */

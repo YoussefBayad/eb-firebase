@@ -15,8 +15,8 @@ import './index.scss';
 
 const Cart = () => {
   // cart
-  const { cart } = store.getState();
-
+  const { products } = store.getState();
+  const cart = products.filter((product) => product.count > 0);
   //handle clicked
 
   const handleClick = (e) => {
@@ -27,7 +27,7 @@ const Cart = () => {
   const [ref] = useOutsideClickRef(handleClick);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('products', JSON.stringify(products));
   }, []);
 
   return (
