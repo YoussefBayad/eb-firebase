@@ -4,22 +4,22 @@
   margin-top: 5rem;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   .link {
     // #585150
     background-color: white;
     border: 2px solid black;
     color: black;
-    padding: 1rem;
-    width: 15rem;
+    padding: 1.5rem;
+    width: 18rem;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     @include transition;
 
     &:hover {
-      background-color: darken(white, 15%);
+      background-color: darken(white, 10%);
     }
   }
   .price-filter {

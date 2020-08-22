@@ -10,9 +10,7 @@ nav {
   z-index: 1;
 
   .nav-container {
-    width: 80%;
-    max-width: 1300px;
-    margin: auto;
+    @extend .container;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,7 +19,7 @@ nav {
 
   a {
     @extend .hover;
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-left: 2rem;
   }
   .logo {

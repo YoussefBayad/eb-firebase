@@ -28,7 +28,7 @@ const Cart = () => {
 
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(products));
-  }, []);
+  }, [products]);
 
   return (
     <Fade right>
