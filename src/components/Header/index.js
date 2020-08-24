@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 //data
 
 import { store } from '../../index';
+
+// signInWithGoogle
+
+import { signInWithGoogle } from '../../Firebase/uitils.js';
 // img
 import person from '../../assets/icon/person.svg';
 import cartIcon from '../../assets/icon/cart.svg';
@@ -29,7 +33,7 @@ const Header = () => {
         </div>
         <div className="right-nav">
           <Filter />
-          <img src={person} alt="person icon" />
+          <img src={person} alt="person icon" onClick={signInWithGoogle} />
           <div
             className="cart-icon"
             onClick={() => {

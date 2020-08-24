@@ -3,12 +3,15 @@
 .product {
   margin-bottom: 5rem;
   cursor: pointer;
-  transition: all 0.5s ease;
-  &:hover {
-    transform: scale(1.05);
-  }
+
   img {
     width: 90%;
+    transition: all 0.5s ease;
+    margin-bottom: 1rem;
+
+    &:hover {
+      transform: scale(1.05) !important;
+    }
   }
   p {
     font-size: 1.5rem;
