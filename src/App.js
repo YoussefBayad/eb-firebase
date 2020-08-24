@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //stores
 import { store } from './index';
+
+// auth
+
+import { auth } from './Firebase/uitils.js';
 
 /* components */
 
@@ -30,6 +34,17 @@ import ProductPage from './pages/ProductPage';
 import './default.scss';
 
 function App() {
+  useEffect(() => {
+    const authListener = auth.onAuthStateChanged((userAuth) => {
+      if (!userAuth) return;
+      console.log(userAuth);
+      store.dispatch({ type: 'auth', currentUser: userAuth });
+    });
+
+    return () => {
+      authListener();
+    };
+  }, []);
   const { openCart } = store.getState();
   return (
     <div className=" app">

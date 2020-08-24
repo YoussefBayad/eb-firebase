@@ -25,6 +25,7 @@ const Reducer = (
     ],
 
     openCart: false,
+    currentUser:null,
    },
   
   action
@@ -156,6 +157,11 @@ return {...state , products:[...products]};
   else if (action.type ===  'openCart') {   
       
       return { ...state, openCart: !state.openCart }}
+
+     /* auth */ 
+  else if (action.type ===  'auth') {   
+      
+      return { ...state, currentUser:action.currentUser }}
 
 
    else

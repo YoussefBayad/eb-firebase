@@ -19,7 +19,7 @@ import './index.scss';
 import Filter from '../Filter';
 
 const Header = () => {
-  const { products } = store.getState();
+  const { products, currentUser } = store.getState();
   const cartLength = products.filter((product) => product.count > 0).length;
   return (
     <nav>
@@ -33,7 +33,25 @@ const Header = () => {
         </div>
         <div className="right-nav">
           <Filter />
-          <img src={person} alt="person icon" onClick={signInWithGoogle} />
+          {currentUser !== null ? (
+            <div className="user" title={currentUser.displayName}>
+              <img
+                src={currentUser.photoURL}
+                alt="user image"
+                className="user-image"
+              />
+            </div>
+          ) : (
+            <Link to="/login">
+              <div className="user" title="LogIn">
+                <img
+                  src={person}
+                  alt="person icon"
+                  // onClick={signInWithGoogle}
+                />
+              </div>
+            </Link>
+          )}
           <div
             className="cart-icon"
             onClick={() => {

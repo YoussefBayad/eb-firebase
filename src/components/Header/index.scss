@@ -42,9 +42,13 @@ nav {
       transform: scale(1.1);
     }
   }
-  .cart-icon {
+  .cart-icon,
+  .user {
     display: inline-block;
     position: relative;
+  }
+  .user-image {
+    border-radius: 50%;
   }
   .cart-items-number {
     position: absolute;
