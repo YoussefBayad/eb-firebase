@@ -315,7 +315,7 @@ const Payment = () => {
               placeholder="Phone number for order/shipping updates and exclusive offers"
               required
             />
-            <button>Complete Payment</button>
+            <button className="btn">Complete Payment</button>
           </form>
         </div>
       )}

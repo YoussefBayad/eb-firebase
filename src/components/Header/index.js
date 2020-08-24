@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 
 import { store } from '../../index';
 
-// signInWithGoogle
-
-import { signInWithGoogle } from '../../Firebase/uitils.js';
 // img
 import person from '../../assets/icon/person.svg';
 import cartIcon from '../../assets/icon/cart.svg';
@@ -33,7 +30,7 @@ const Header = () => {
         </div>
         <div className="right-nav">
           <Filter />
-          {currentUser !== null ? (
+          {currentUser ? (
             <div className="user" title={currentUser.displayName}>
               <img
                 src={currentUser.photoURL}
@@ -44,11 +41,7 @@ const Header = () => {
           ) : (
             <Link to="/login">
               <div className="user" title="LogIn">
-                <img
-                  src={person}
-                  alt="person icon"
-                  // onClick={signInWithGoogle}
-                />
+                <img src={person} alt="person icon" />
               </div>
             </Link>
           )}

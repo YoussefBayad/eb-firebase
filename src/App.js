@@ -6,7 +6,7 @@ import { store } from './index';
 
 // auth
 
-import { auth } from './Firebase/uitils.js';
+import { auth } from './Firebase/utils.js';
 
 /* components */
 
@@ -19,6 +19,7 @@ import Footer from './components/Footer/index.js';
 /* pages*/
 
 import HomePage from './pages/Home';
+import Login from './pages/Login';
 import Shop from './pages/Shop';
 import Payment from './pages/Payment';
 import Earbuds from './pages/Earbuds';
@@ -59,6 +60,7 @@ function App() {
             <Route exact path="/" component={HomePage} />
             <div className="container">
               <Route exact path="/shop" component={Shop} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/payment" component={Payment} />
               <Route exact path="/shop/headphones" component={Headphones} />
               <Route exact path="/shop/earbuds" component={Earbuds} />
