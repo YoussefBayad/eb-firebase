@@ -1,4 +1,4 @@
-@import '../Payment/index.scss';
+@import '../../default.scss';
 .login {
   height: 85vh;
   text-align: center;
@@ -16,24 +16,5 @@
   h1 {
     margin-bottom: 5rem;
     font-size: 4rem;
-  }
-  .btn {
-    margin: 3rem;
-    margin-left: 1.5rem;
-    background-color: black;
-    border-radius: 0.5rem;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 2rem;
-    font-size: 1.7rem;
-    width: 30rem;
-    cursor: pointer;
-    @include transition;
-
-    &:hover {
-      color: black;
-      background-color: rgb(211, 207, 207);
-    }
   }
 }

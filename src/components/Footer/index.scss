@@ -4,11 +4,11 @@ footer {
   background-color: black;
   color: white;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   font-size: 1.5rem;
   font-weight: 400;
-  padding: 4rem 1rem 15rem;
+  padding: 6rem 1rem 15rem;
   letter-spacing: 0.1rem;
 
   .hear-it-first {
@@ -53,13 +53,21 @@ footer {
     width: 35%;
     display: flex;
     justify-content: space-between;
-    align-items: space-between;
+    align-items: flex-start;
     line-height: 2;
     div {
       display: flex;
       flex-direction: column;
-      a:hover {
-        color: $accent;
+      button {
+        outline: none;
+        border: none;
+        color: white;
+        background-color: transparent;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        &:hover {
+          color: $accent;
+        }
       }
     }
   }

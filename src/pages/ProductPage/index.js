@@ -14,8 +14,7 @@ import waterProof from '../../assets/icon/waterproof.webp'
 import fullControl from '../../assets/icon/fullcontrol.webp'
 import tile from '../../assets/icon/tile.webp'
 import eitherBudSolo from '../../assets/icon/either-bud-solo.webp'
-import hour30 from '../../assets/icon/30hour.webp'
-import hour24 from '../../assets/icon/24hour.webp'
+
 import hour40 from '../../assets/icon/40hour.webp'
 // style
 import "./index.scss"

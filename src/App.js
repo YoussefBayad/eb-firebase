@@ -37,9 +37,13 @@ import './default.scss';
 function App() {
   useEffect(() => {
     const authListener = auth.onAuthStateChanged((userAuth) => {
-      if (!userAuth) return;
-      console.log(userAuth);
-      store.dispatch({ type: 'auth', currentUser: userAuth });
+      if (!userAuth) {
+        store.dispatch({ type: 'auth', currentUser: null });
+        console.log('loged out');
+      } else {
+        store.dispatch({ type: 'auth', currentUser: userAuth });
+        console.log(userAuth);
+      }
     });
 
     return () => {

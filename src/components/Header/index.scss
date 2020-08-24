@@ -7,7 +7,7 @@ nav {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
 
   .nav-container {
     @extend .container;
@@ -30,28 +30,36 @@ nav {
     margin-left: 0;
     margin-right: 3rem;
   }
-  .right-nav img,
-  .cart-icon {
-    height: 3rem;
-    margin-right: 2rem;
+  .right-nav {
+    & img {
+      height: 3rem;
+      margin-right: 3rem;
 
-    @include transition;
-    cursor: pointer;
+      @include transition;
+      cursor: pointer;
 
-    &:hover {
-      transform: scale(1.1);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    a {
+      margin: 0;
     }
   }
+
   .cart-icon,
   .user {
     display: inline-block;
     position: relative;
   }
-  .user {
-    margin-right: 2rem;
-  }
+
   .user-image {
     border-radius: 50%;
+  }
+
+  .cart-icon img {
+    margin-right: 0;
   }
   .cart-items-number {
     position: absolute;
@@ -61,13 +69,10 @@ nav {
     font-weight: bold;
     color: white;
     top: -0.5rem;
-    right: 0.5rem;
+    right: -1.5rem;
     background-color: $accent;
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-  }
-  .subheader {
-    color: white;
   }
 }

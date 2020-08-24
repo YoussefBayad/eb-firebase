@@ -28,7 +28,7 @@ const HomePage = () => {
             <div className="eardubs-card">
               <div className="text">
                 <h1>Earbusds</h1>
-                <Link to="/shop/earbuds">View All</Link>
+                <button to="/shop/earbuds">View All</button>
               </div>
             </div>
           </Link>
@@ -36,7 +36,7 @@ const HomePage = () => {
             <div className="headphones-card">
               <div className="text">
                 <h1>Headphones</h1>
-                <Link to="/shop/headphones">View All</Link>
+                <button to="/shop/headphones">View All</button>
               </div>
             </div>
           </Link>
