@@ -48,6 +48,7 @@ const Filter = () => {
         />
       )}
       <img
+        className="search-icon"
         src={search}
         alt="search icon"
         onClick={() => setShowFilter((prev) => !prev)}

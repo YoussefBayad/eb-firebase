@@ -2,10 +2,12 @@
 
 .product-intro {
   @extend .container;
-
+  margin-top: 5rem;
   display: flex;
   align-items: center;
+  flex-wrap: wrap-reverse;
   justify-content: space-between;
+
   .product-description {
     & h1 {
       font-size: 3rem;
@@ -51,5 +53,11 @@
       margin-right: 2rem;
       width: 5rem;
     }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .product-img {
+    width: 50rem !important;
   }
 }

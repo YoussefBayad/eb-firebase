@@ -17,4 +17,22 @@
     margin-bottom: 5rem;
     font-size: 4rem;
   }
+  button {
+    width: 80%;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sign-in {
+    width: 90%;
+  }
+  h1 {
+    margin-bottom: 4rem !important;
+    font-size: 3rem !important;
+  }
+  button {
+    width: 90% !important;
+  }
 }

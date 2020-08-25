@@ -43,7 +43,7 @@ const ProductPage = () => {
       <AddToCart id={product.id} count={product.count}/>
       </div>
       </div>
-      <img src={`/img/${product.name.trim()}.webp`} alt={product.name}/>
+      <img className="product-img"  src={`/img/${product.name.trim()}.webp`} alt={product.name}/>
       </div>
       <div className="product-info">
       <div className="product-info-container">

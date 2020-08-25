@@ -75,3 +75,18 @@ footer {
     width: 3rem;
   }
 }
+
+@media screen and (max-width: 900px) {
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & > div {
+      margin-bottom: 5rem;
+    }
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center !important;
+  }
+}

@@ -5,7 +5,6 @@
   top: 0;
   right: 0;
   width: 40rem;
-  min-width: 35rem;
   height: 100vh;
   background-color: #ffffff;
   z-index: 2;
@@ -41,5 +40,14 @@
     padding: 3rem;
     border-top: 2px lightgrey solid;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart {
+    width: 100%;
+  }
+  .cart-footer {
+    padding: 2rem 1rem !important;
   }
 }

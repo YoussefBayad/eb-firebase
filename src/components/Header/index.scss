@@ -76,3 +76,26 @@ nav {
     border-radius: 50%;
   }
 }
+
+@media screen and (max-width: 580px) {
+  nav {
+    padding: 0rem;
+  }
+  .left-nav a:nth-child(3) {
+    display: none;
+  }
+  .right-nav {
+    & img {
+      height: 2.5rem !important;
+      margin-right: 0rem !important;
+      margin-left: 1rem;
+    }
+  }
+  a {
+    margin-left: 0rem !important;
+  }
+  .logo {
+    font-size: 2.5rem !important;
+    margin-right: 1rem !important;
+  }
+}
