@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// redux
+
 import { createStore } from 'redux';
-import App from './App';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 import Reducer from './Reducer';
 
-/* Store */
+// App
+import App from './App';
 
-export const store = createStore(
-  Reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+/* Store */
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+export const store = createStore(Reducer, devToolsEnhancer({ trace: true }));
+
+/* render */
 
 const render = () => {
   ReactDOM.render(
