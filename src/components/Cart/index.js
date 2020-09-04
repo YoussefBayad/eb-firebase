@@ -20,6 +20,8 @@ const Cart = () => {
   //handle clicked
 
   const handleClick = (e) => {
+    if (e.target.className === 'cart-remove-product') return;
+
     store.dispatch({ type: 'openCart' });
   };
 
