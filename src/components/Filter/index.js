@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import search from '../../assets/icon/search.svg';
-import './index.scss';
-import { store } from '../../index.js';
+
+// outside click
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
+
+//store
+import { store } from '../../index.js';
+
+// image
+import search from '../../assets/icon/search.svg';
+
+// style
+import './index.scss';
+import FilterResults from '../FilterResults/index.js';
 
 const Filter = () => {
   //state
 
   const { products } = store.getState();
   const [showFilter, setShowFilter] = useState(false);
-  const [showSearchResults, setShowSearchResults] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
   // handle input change
 
   const handleChange = (e) => {
-    setShowSearchResults(true);
-
     let results = [];
     if (e.target.value === '') {
       setSearchResults(results);
@@ -30,17 +35,21 @@ const Filter = () => {
     }
   };
 
-  // hide search results div
+  // handle search svg click
 
   const handleClick = () => {
-    setShowSearchResults(false);
+    setShowFilter((prev) => !prev);
   };
+
+  // outside click search input
+
   const [ref] = useOutsideClickRef(handleClick);
 
   return (
     <div className="filter">
       {showFilter && (
         <input
+          ref={ref}
           className="filter-input"
           type="text"
           placeholder="Search ..."
@@ -51,26 +60,11 @@ const Filter = () => {
         className="search-icon"
         src={search}
         alt="search icon"
-        onClick={() => setShowFilter((prev) => !prev)}
+        onClick={handleClick}
       />
-      {searchResults.length > 0 && showSearchResults && (
-        <div ref={ref} className="search-results">
-          {searchResults.map((product) => (
-            <Link key={product.id} to={`/shop/product/${product.id}`}>
-              <div className="search-product">
-                <img
-                  className="search-img"
-                  src={`/img/${product.name.trim()}.webp`}
-                  alt=""
-                />
-                <div className="text">
-                  <p className="search-product-name">{product.name}</p>
-                  <p>${product.price}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+
+      {searchResults.length > 0 && (
+        <FilterResults searchResults={searchResults} />
       )}
     </div>
   );

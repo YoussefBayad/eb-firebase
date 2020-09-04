@@ -11,7 +11,6 @@ import Reducer from './Reducer';
 import App from './App';
 
 /* Store */
-// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 export const store = createStore(Reducer, devToolsEnhancer({ trace: true }));
 
