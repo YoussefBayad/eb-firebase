@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 // outside click
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
@@ -49,11 +49,13 @@ const Filter = () => {
     <div className="filter">
       {showFilter && (
         <input
+          // ref={ref}
           ref={ref}
           className="filter-input"
           type="text"
           placeholder="Search ..."
           onChange={handleChange}
+          autoFocus
         />
       )}
       <img
