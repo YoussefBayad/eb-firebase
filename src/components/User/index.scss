@@ -6,7 +6,7 @@
 }
 .logout {
   position: absolute;
-  right: -15%;
+  right: -200%;
   text-align: center;
   padding: 1rem;
   color: black;
@@ -18,10 +18,10 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid black;
   }
-  button {
+  button,
+  a {
+    display: inline-block;
     padding: 1rem;
-    width: 8rem;
-    margin: 0;
-    margin-top: 2rem;
+    margin: 1rem 0 !important;
   }
 }

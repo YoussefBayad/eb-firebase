@@ -99,3 +99,14 @@ ul {
     background-color: rgb(211, 207, 207);
   }
 }
+
+// input
+input,
+select {
+  margin: 1.5rem;
+  padding: 1rem 1.6rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  border: grey 2px solid;
+}

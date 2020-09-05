@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 //stores
 import { store } from './index';
 
 // auth
 
-import { auth } from './Firebase/utils.js';
+import { auth, handleUserProfile } from './Firebase/utils.js';
 
 /* components */
 
@@ -33,16 +38,24 @@ import ProductPage from './pages/ProductPage';
 /* style*/
 
 import './default.scss';
+import Registration from './pages/Registration';
 
-function App() {
+const App = () => {
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged((userAuth) => {
-      if (!userAuth) {
-        store.dispatch({ type: 'auth', currentUser: null });
-        console.log('loged out');
+    const authListener = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await handleUserProfile(userAuth);
+        userRef.onSnapshot((snapshot) => {
+          store.dispatch({
+            type: 'auth',
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
+            },
+          });
+        });
       } else {
-        store.dispatch({ type: 'auth', currentUser: userAuth });
-        console.log(userAuth);
+        store.dispatch({ type: 'auth', currentUser: null });
       }
     });
 
@@ -50,7 +63,7 @@ function App() {
       authListener();
     };
   }, []);
-  const { openCart } = store.getState();
+  const { currentUser, openCart } = store.getState();
   return (
     <div className=" app">
       <Router>
@@ -64,7 +77,18 @@ function App() {
             <Route exact path="/" component={HomePage} />
             <div className="container">
               <Route exact path="/shop" component={Shop} />
-              <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/login"
+                render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
+              />
+              <Route
+                exact
+                path="/registration"
+                render={() =>
+                  currentUser ? <Redirect to="/" /> : <Registration />
+                }
+              />
               <Route exact path="/payment" component={Payment} />
               <Route exact path="/shop/headphones" component={Headphones} />
               <Route exact path="/shop/earbuds" component={Earbuds} />
@@ -78,6 +102,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

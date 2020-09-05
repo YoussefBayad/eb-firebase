@@ -26,17 +26,26 @@ const User = () => {
   const [ref] = useOutsideClickRef(() => setOpen(false));
 
   return (
-    <>
-      {currentUser ? (
-        <div className="user" title={currentUser.displayName}>
-          <img
-            src={currentUser.photoURL}
-            alt="user"
-            className="user-image"
-            onClick={() => setOpen((prev) => !prev)}
-          />
-          {open && (
-            <div ref={ref} className="logout">
+    <div
+      className="user"
+      title={currentUser ? currentUser.displayName : 'Login'}
+    >
+      <img
+        src={
+          currentUser
+            ? currentUser.photoURL
+              ? currentUser.photoURL
+              : person
+            : person
+        }
+        alt="user"
+        className="user-image"
+        onClick={() => setOpen((prev) => !prev)}
+      />
+      {open && (
+        <div ref={ref} className="logout">
+          {currentUser ? (
+            <>
               <h3>{currentUser.displayName}</h3>
               <button
                 className="btn"
@@ -47,17 +56,32 @@ const User = () => {
               >
                 Logout
               </button>
-            </div>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/registration"
+                className="btn"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                Register
+              </Link>
+              <Link
+                to="/login"
+                className="btn"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                login
+              </Link>
+            </>
           )}
         </div>
-      ) : (
-        <Link to="/login">
-          <div className="user" title="LogIn">
-            <img src={person} alt="person icon" />
-          </div>
-        </Link>
       )}
-    </>
+    </div>
   );
 };
 
