@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-// import logger from 'redux-logger';
 import rootReducer from './rootReducer';
 /* data */
 import data from '../data.json';
@@ -18,10 +17,6 @@ const initialState = {
   currentUser: null,
   openCart: false,
 };
-
-//middlewares
-
-// export const middleware = [logger];
 
 export const store = createStore(
   rootReducer,
