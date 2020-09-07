@@ -8,6 +8,7 @@ import {
 
 //stores
 import { store } from './index';
+import { middlewares } from './redux/createStore';
 
 // auth
 
