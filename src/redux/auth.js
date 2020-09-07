@@ -1,8 +1,3 @@
-/* data */
-import data from '../data.json';
-
-const { products } = data;
-
 // action types
 
 const AUTH = 'auth';
@@ -17,16 +12,12 @@ export const auth = (currentUser) => ({
 // Reducer
 
 export default function authReducer(
-  state = {
-    products: [...products],
-    openCart: false,
-    currentUser: null,
-  },
+  state = null,
 
   action
 ) {
   if (action.type === AUTH) {
-    return { ...state, currentUser: action.currentUser };
+    return action.currentUser;
   } else {
     return state;
   }

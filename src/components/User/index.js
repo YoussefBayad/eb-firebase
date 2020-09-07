@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 //link
 import { Link } from 'react-router-dom';
 
-//store
+//redux
 
-import { store } from '../../index';
+import { useSelector } from 'react-redux';
 
 // auth
 
@@ -22,7 +22,7 @@ import './index.scss';
 
 const User = () => {
   const [open, setOpen] = useState(false);
-  const { currentUser } = store.getState();
+  const currentUser = useSelector((state) => state.currentUser);
   const [ref] = useOutsideClickRef(() => setOpen(false));
 
   return (

@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+//redux
+import { useSelector, useDispatch } from 'react-redux';
+import { OPEN_CART } from '../../redux/openCart';
+
 import CartProduct from '../CartProduct';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
@@ -8,21 +13,21 @@ import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import Fade from 'react-reveal/Fade';
 
 //store
-import { store } from '../../index.js';
 
 //style
 import './index.scss';
 
 const Cart = () => {
+  const dispatch = useDispatch();
   // cart
-  const { products } = store.getState();
+  const products = useSelector((state) => state.products);
   const cart = products.filter((product) => product.count > 0);
   //handle clicked
 
   const handleClick = (e) => {
     if (e.target.className === 'cart-remove-product') return;
 
-    store.dispatch({ type: 'openCart' });
+    dispatch({ type: OPEN_CART });
   };
 
   // outside click
@@ -40,7 +45,7 @@ const Cart = () => {
           <h1
             className="close-cart"
             onClick={() => {
-              store.dispatch({ type: 'openCart' });
+              dispatch({ type: OPEN_CART });
             }}
           >
             X
@@ -56,7 +61,7 @@ const Cart = () => {
             to="/payment"
             className="checkout-btn"
             onClick={() => {
-              store.dispatch({ type: 'openCart' });
+              dispatch({ type: OPEN_CART });
             }}
           >
             <span>CHECKOUT</span> <span>.</span>{' '}

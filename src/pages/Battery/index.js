@@ -3,11 +3,11 @@ import './index.scss';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
 
-/* Store */
-import { store } from '../../index';
+// redux
+import { useSelector } from 'react-redux';
 
 const Battery = () => {
-  const { products } = store.getState();
+  const products = useSelector((state) => state.products);
 
   return (
     <div className="shop">

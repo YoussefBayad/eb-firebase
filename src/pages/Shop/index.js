@@ -1,5 +1,5 @@
 import React from 'react';
-import { store } from '../../index';
+import store from '../../redux/createStore.js';
 
 /* components*/
 import Links from '../../components/Links';
@@ -13,7 +13,6 @@ const Shop = () => {
   //products
 
   const { products } = store.getState();
-
   return (
     <div className="shop">
       <h1>Shop</h1>

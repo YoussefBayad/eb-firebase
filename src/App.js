@@ -6,10 +6,8 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-//stores
-import { store } from './index';
-import { middlewares } from './redux/createStore';
-
+//redux
+import { useDispatch, useSelector } from 'react-redux';
 // auth
 
 import { auth, handleUserProfile } from './Firebase/utils.js';
@@ -42,12 +40,13 @@ import './default.scss';
 import Registration from './pages/Registration';
 
 const App = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot((snapshot) => {
-          store.dispatch({
+          dispatch({
             type: 'auth',
             currentUser: {
               id: snapshot.id,
@@ -56,7 +55,7 @@ const App = () => {
           });
         });
       } else {
-        store.dispatch({ type: 'auth', currentUser: null });
+        dispatch({ type: 'auth', currentUser: null });
       }
     });
 
@@ -64,7 +63,7 @@ const App = () => {
       authListener();
     };
   }, []);
-  const { currentUser, openCart } = store.getState();
+  const { currentUser, openCart } = useSelector((state) => state);
   return (
     <div className=" app">
       <Router>

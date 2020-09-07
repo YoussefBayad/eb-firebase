@@ -2,11 +2,11 @@ import React from 'react';
 import Links from '../../../components/Links';
 import Products from '../../../components/Products';
 
-/* data */
-import { store } from '../../../index';
+// redux
+import { useSelector } from 'react-redux';
 
 const Wired = () => {
-  const { products } = store.getState();
+  const products = useSelector((state) => state.products);
 
   return (
     <div className="shop">

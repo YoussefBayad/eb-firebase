@@ -3,8 +3,8 @@ import React, { useState, useRef } from 'react';
 // outside click
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
-//store
-import { store } from '../../index.js';
+//redux
+import { useSelector } from 'react-redux';
 
 // image
 import search from '../../assets/icon/search.svg';
@@ -16,7 +16,7 @@ import FilterResults from '../FilterResults/index.js';
 const Filter = () => {
   //state
 
-  const { products } = store.getState();
+  const products = useSelector((state) => state.products);
   const [showFilter, setShowFilter] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 

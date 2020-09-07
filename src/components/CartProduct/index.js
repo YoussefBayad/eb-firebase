@@ -1,7 +1,7 @@
 import React from 'react';
 
-//store
-import { store } from '../../index.js';
+import { useDispatch } from 'react-redux';
+import { REMOVE_FROM_CART } from '../../redux/products';
 
 // components
 
@@ -10,6 +10,7 @@ import Count from '../ProductCount';
 //style
 import './index.scss';
 const CartProduct = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <div className="cart-product">
       <img
@@ -24,9 +25,7 @@ const CartProduct = ({ product }) => {
           <Count id={product.id} count={product.count} />
           <h5
             className="cart-remove-product"
-            onClick={() =>
-              store.dispatch({ type: 'removeFromCart', id: product.id })
-            }
+            onClick={() => dispatch({ type: REMOVE_FROM_CART, id: product.id })}
           >
             REMOVE
           </h5>

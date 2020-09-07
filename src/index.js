@@ -1,25 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 // redux
-
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
-import Reducer from './Reducer';
-
+import { Provider } from 'react-redux';
+import store from './redux/createStore';
 // App
 import App from './App';
-
-/* Store */
-
-export const store = createStore(Reducer, devToolsEnhancer({ trace: true }));
-
-/* render */
 
 const render = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <Router>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </Router>
     </React.StrictMode>,
     document.getElementById('root')
   );

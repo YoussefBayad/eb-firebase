@@ -1,16 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { OPEN_CART } from '../../redux/openCart';
+import { INCREMENT } from '../../redux/products';
 
-// store
-import { store } from '../../index.js';
 // style
 import './index.scss';
+
 const AddToCart = ({ id, count }) => {
+  const dispatch = useDispatch();
   return (
     <>
       {count > 0 ? (
         <button
           className="buy in-cart"
-          onClick={() => store.dispatch({ type: 'openCart' })}
+          onClick={() => dispatch({ type: OPEN_CART })}
         >
           In Cart
         </button>
@@ -18,8 +21,9 @@ const AddToCart = ({ id, count }) => {
         <button
           className="buy"
           onClick={() => {
-            store.dispatch({ type: 'incrementCount', id: id });
-            store.dispatch({ type: 'openCart' });
+            console.log('dispatched');
+            dispatch({ type: INCREMENT, id });
+            dispatch({ type: OPEN_CART });
           }}
         >
           Add To Cart

@@ -24,12 +24,9 @@ const Header = () => {
           <Link to="/">About Us</Link>
         </div>
         <div className="right-nav">
-          {/* filter */}
           <Filter />
-          {/* user */}
           <User />
 
-          {/* cart */}
           <CartIcon />
         </div>
       </div>

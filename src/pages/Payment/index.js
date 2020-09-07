@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-
-//store
-
-import { store } from '../../index';
+import { useDispatch } from 'react-redux';
 import Completed from '../../components/PaymentCompleted';
-
 import './index.scss';
 
 const Payment = () => {
+  const dispatch = useDispatch();
   // state
 
   const [completed, setCompleted] = useState(false);
@@ -16,7 +13,7 @@ const Payment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setCompleted(true);
-    store.dispatch({ type: 'payment-completed' });
+    dispatch({ type: 'payment-completed' });
   };
   const handleChange = (e) => {
     setName(e.target.value);

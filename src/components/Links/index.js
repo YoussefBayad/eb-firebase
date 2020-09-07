@@ -1,16 +1,15 @@
 import React from 'react';
 
-/* react router */
+// react router
 import { Link } from 'react-router-dom';
 
-/* store */
-
-import { store } from '../../index';
-
-/* style*/
+//redux
+import { useDispatch } from 'react-redux';
+// style
 import './index.scss';
 
 const Links = ({ filter }) => {
+  const dispatch = useDispatch();
   return (
     <div className="links">
       {filter === 'Shop' && (
@@ -68,7 +67,7 @@ const Links = ({ filter }) => {
 
       <div className="price-filter">
         <h3>Sort :</h3>
-        <select onChange={(e) => store.dispatch({ type: e.target.value })}>
+        <select onChange={(e) => dispatch({ type: e.target.value })}>
           <option value="latest">Latest</option>
           <option value="highest">Highest Price</option>
           <option value="lowest">Lowest Price</option>

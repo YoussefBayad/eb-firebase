@@ -2,11 +2,11 @@ import React from 'react';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
 
-/* Store */
-import { store } from '../../index';
+// redux
+import { useSelector } from 'react-redux';
 
 const Headphones = () => {
-  const { products } = store.getState();
+  const products = useSelector((state) => state.products);
   const headphones = products.filter(
     (product) => product.category === 'Headphone'
   );
