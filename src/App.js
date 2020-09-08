@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { auth, handleUserProfile } from './Firebase/utils.js';
 
 /* components */
-
+import AdminToolBar from './components/AdminToolBar';
 import Header from './components/Header';
 import Subheader from './components/Subheader';
 import Cart from './components/Cart';
@@ -24,22 +24,27 @@ import Footer from './components/Footer/index.js';
 
 import HomePage from './pages/Home';
 import Login from './pages/Login';
+import Registration from './pages/Registration';
 import Shop from './pages/Shop';
 import Payment from './pages/Payment';
+import Admin from './pages/Admin';
 import Earbuds from './pages/Earbuds';
 import Wireless from './pages/Earbuds/Wireless';
 import Wired from './pages/Earbuds/Wired';
-
 import Headphones from './pages/Headphones';
 import Battery from './pages/Battery';
 import ProductPage from './pages/ProductPage';
 
-/* style*/
+// HOC
+import WithAdminAuth from './hoc/withAdminAuth.js';
+
+// style
 
 import './default.scss';
-import Registration from './pages/Registration';
 
 const App = () => {
+  const { currentUser, openCart } = useSelector((state) => state);
+  console.log(currentUser);
   const dispatch = useDispatch();
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
@@ -63,12 +68,12 @@ const App = () => {
       authListener();
     };
   }, []);
-  const { currentUser, openCart } = useSelector((state) => state);
   return (
     <div className=" app">
       <Router>
         {openCart && <Cart />}
         <div className={`${openCart ? 'overlay' : ''}`}>
+          <AdminToolBar />
           <Header />
           <Subheader />
 
@@ -88,6 +93,15 @@ const App = () => {
                 render={() =>
                   currentUser ? <Redirect to="/" /> : <Registration />
                 }
+              />
+              <Route
+                exact
+                path="/admin"
+                render={() => (
+                  <WithAdminAuth>
+                    <Admin />
+                  </WithAdminAuth>
+                )}
               />
               <Route exact path="/payment" component={Payment} />
               <Route exact path="/shop/headphones" component={Headphones} />

@@ -1,0 +1,18 @@
+@import '../../default';
+.admin-tool-bar {
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+  .admin-link {
+    padding: 0.7rem;
+    color: black;
+    background-color: #e4e1e1;
+    float: right;
+    @include transition;
+    font-size: 2rem;
+    &:hover {
+      color: $accent;
+      background-color: white;
+    }
+  }
+}

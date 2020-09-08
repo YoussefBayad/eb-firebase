@@ -21,7 +21,6 @@ const AddToCart = ({ id, count }) => {
         <button
           className="buy"
           onClick={() => {
-            console.log('dispatched');
             dispatch({ type: INCREMENT, id });
             dispatch({ type: OPEN_CART });
           }}
