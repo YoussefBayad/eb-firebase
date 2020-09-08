@@ -15,7 +15,7 @@ const CartProduct = ({ product }) => {
     <div className="cart-product">
       <img
         className="cart-product-img"
-        src={`/img/${product.name.trim()}.webp`}
+        src={`/img/${product.name.replace(/\s/g, '')}.webp`}
         alt={product.name}
       />
       <div className="cart-product-description">

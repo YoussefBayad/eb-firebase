@@ -9,10 +9,6 @@ export const DECREMENT = 'decrementCount';
 
 export const PAYMENT_COMPLETED = 'payment-completed';
 
-// action creators
-
-//
-
 // Reducer
 
 export default function productReducer(

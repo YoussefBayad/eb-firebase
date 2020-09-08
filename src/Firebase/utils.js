@@ -34,6 +34,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   if (!snapshot.exists) {
     const { displayName, email, photoURL } = userAuth;
     const timestamp = new Date();
+    const userRoles = ['user'];
 
     try {
       await userRef.set({
@@ -41,6 +42,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         email,
         photoURL,
         createdAt: timestamp,
+        userRoles,
         ...additionalData,
       });
     } catch (err) {

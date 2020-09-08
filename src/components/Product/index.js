@@ -13,7 +13,10 @@ const Product = ({ product }) => {
     <Zoom>
       <div className="product">
         <Link to={`/shop/product/${product.id}`}>
-          <img src={`/img/${product.name.trim()}.webp`} alt={product.name} />
+          <img
+            src={`/img/${product.name.replace(/\s/g, '')}.webp`}
+            alt={product.name.replace(/\s/g, '')}
+          />
           <p>{product.name}</p>
           <p className="price">${product.price}</p>
         </Link>

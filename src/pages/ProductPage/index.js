@@ -40,7 +40,7 @@ const ProductPage = () => {
         </div>
         <img
           className="product-img"
-          src={`/img/${product.name.trim()}.webp`}
+          src={`/img/${product.name.replace(/\s/g, '')}.webp`}
           alt={product.name}
         />
       </div>

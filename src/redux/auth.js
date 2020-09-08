@@ -2,13 +2,6 @@
 
 const AUTH = 'auth';
 
-// action creators
-
-export const auth = (currentUser) => ({
-  type: AUTH,
-  currentUser,
-});
-
 // Reducer
 
 export default function authReducer(
