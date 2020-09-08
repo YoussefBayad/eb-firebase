@@ -11,36 +11,30 @@ import FormSelect from '../../components/forms/FormSelect';
 import Button from '../../components/forms/Button';
 import './index.scss';
 
-const mapState = ({ productsData }) => ({
-  products: productsData.products,
-});
-
 const Admin = (props) => {
-  const { products } = useSelector(mapState);
+  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState('mens');
-  const [productName, setProductName] = useState('');
-  const [productThumbnail, setProductThumbnail] = useState('');
-  const [productPrice, setProductPrice] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [category, setCategory] = useState('headphones');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     dispatch(fetchProductsStart());
   }, []);
 
-  const toggleModal = () => setHideModal(!hideModal);
+  const toggleModal = () => setShowModal(!showModal);
 
   const configModal = {
-    hideModal,
+    showModal,
     toggleModal,
   };
 
   const resetForm = () => {
-    setHideModal(true);
-    setProductCategory('mens');
-    setProductName('');
-    setProductThumbnail('');
-    setProductPrice(0);
+    setShowModal(false);
+    setCategory('headphones');
+    setName('');
+    setPrice(0);
   };
 
   const handleSubmit = (e) => {
@@ -48,10 +42,9 @@ const Admin = (props) => {
 
     dispatch(
       addProductStart({
-        productCategory,
-        productName,
-        productThumbnail,
-        productPrice,
+        category,
+        name,
+        price,
       })
     );
     resetForm();
@@ -76,30 +69,29 @@ const Admin = (props) => {
               label="Category"
               options={[
                 {
-                  value: 'mens',
-                  name: 'Mens',
+                  value: 'headphones',
+                  name: 'Headphones',
                 },
                 {
-                  value: 'womens',
-                  name: 'Womens',
+                  value: 'earbuds',
+                  name: 'Earbuds',
+                },
+                {
+                  value: 'Battery',
+                  name: 'Battery',
                 },
               ]}
-              handleChange={(e) => setProductCategory(e.target.value)}
+              handleChange={(e) => setCategory(e.target.value)}
             />
 
             <FormInput
               label="Name"
               type="text"
-              value={productName}
-              handleChange={(e) => setProductName(e.target.value)}
+              value={name}
+              handleChange={(e) => setName(e.target.value)}
             />
 
-            <FormInput
-              label="Main image URL"
-              type="url"
-              value={productThumbnail}
-              handleChange={(e) => setProductThumbnail(e.target.value)}
-            />
+            <FormInput label="Main image URL" />
 
             <FormInput
               label="Price"
@@ -107,8 +99,8 @@ const Admin = (props) => {
               min="0.00"
               max="10000.00"
               step="0.01"
-              value={productPrice}
-              handleChange={(e) => setProductPrice(e.target.value)}
+              value={price}
+              handleChange={(e) => setPrice(e.target.value)}
             />
 
             <Button type="submit">Add product</Button>
@@ -134,25 +126,23 @@ const Admin = (props) => {
                 >
                   <tbody>
                     {products.map((product, index) => {
-                      const {
-                        productName,
-                        productThumbnail,
-                        productPrice,
-                        documentID,
-                      } = product;
-
+                      const { name, price, id } = product;
                       return (
-                        <tr key={index}>
+                        <tr>
                           <td>
-                            <img className="thumb" src={productThumbnail} />
+                            <img
+                              className="thumb"
+                              src={`/img/${product.name.replace(
+                                /\s/g,
+                                ''
+                              )}.webp`}
+                            />
                           </td>
-                          <td>{productName}</td>
-                          <td>£{productPrice}</td>
+                          <td>{name}</td>
+                          <td>${price}</td>
                           <td>
                             <Button
-                              onClick={() =>
-                                dispatch(deleteProductStart(documentID))
-                              }
+                              onClick={() => dispatch(deleteProductStart(id))}
                             >
                               Delete
                             </Button>

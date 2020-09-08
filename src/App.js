@@ -44,7 +44,6 @@ import './default.scss';
 
 const App = () => {
   const { currentUser, openCart } = useSelector((state) => state);
-  console.log(currentUser);
   const dispatch = useDispatch();
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
