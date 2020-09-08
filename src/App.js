@@ -1,10 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,15 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { auth, handleUserProfile } from './Firebase/utils.js';
 
-/* components */
-import AdminToolBar from './components/AdminToolBar';
-import Header from './components/Header';
-import Subheader from './components/Subheader';
-import Cart from './components/Cart';
+// layout
+import AdminLayout from './layouts/AdminLayout';
+import MainLayout from './layouts/MainLayout.js';
+import HomeLayout from './layouts/HomeLayout.js';
 
-import Footer from './components/Footer/index.js';
-
-/* pages*/
+// pages
 
 import HomePage from './pages/Home';
 import Login from './pages/Login';
@@ -68,52 +60,50 @@ const App = () => {
     };
   }, []);
   return (
-    <div className=" app">
-      <Router>
-        {openCart && <Cart />}
-        <div className={`${openCart ? 'overlay' : ''}`}>
-          <AdminToolBar />
-          <Header />
-          <Subheader />
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <HomeLayout>
+            <HomePage />
+          </HomeLayout>
+        )}
+      />
 
-          <Switch>
-            <Route exact path="/shop/product/:id" component={ProductPage} />
-            <Route exact path="/" component={HomePage} />
-            <div className="container">
-              <Route exact path="/shop" component={Shop} />
-              <Route
-                exact
-                path="/login"
-                render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
-              />
-              <Route
-                exact
-                path="/registration"
-                render={() =>
-                  currentUser ? <Redirect to="/" /> : <Registration />
-                }
-              />
-              <Route
-                exact
-                path="/admin"
-                render={() => (
-                  <WithAdminAuth>
-                    <Admin />
-                  </WithAdminAuth>
-                )}
-              />
-              <Route exact path="/payment" component={Payment} />
-              <Route exact path="/shop/headphones" component={Headphones} />
-              <Route exact path="/shop/earbuds" component={Earbuds} />
-              <Route exact path="/shop/earbuds/wireless" component={Wireless} />
-              <Route exact path="/shop/earbuds/wired" component={Wired} />
-              <Route exact path="/shop/batteries" component={Battery} />
-            </div>
-          </Switch>
-        </div>
-      </Router>
-      <Footer />
-    </div>
+      <Route
+        exact
+        path="/admin"
+        render={() => (
+          <WithAdminAuth>
+            <AdminLayout>
+              <Admin />
+            </AdminLayout>
+          </WithAdminAuth>
+        )}
+      />
+
+      <MainLayout>
+        <Route exact path="/shop" render={() => <Shop />} />
+        <Route
+          exact
+          path="/login"
+          render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
+        />
+        <Route
+          exact
+          path="/registration"
+          render={() => (currentUser ? <Redirect to="/" /> : <Registration />)}
+        />
+        <Route exact path="/shop/product/:id" render={() => <ProductPage />} />
+        <Route exact path="/shop/headphones" component={Headphones} />
+        <Route exact path="/shop/earbuds" component={Earbuds} />
+        <Route exact path="/shop/earbuds/wireless" component={Wireless} />
+        <Route exact path="/shop/earbuds/wired" component={Wired} />
+        <Route exact path="/shop/batteries" component={Battery} />
+        <Route exact path="/payment" component={Payment} />
+      </MainLayout>
+    </Switch>
   );
 };
 

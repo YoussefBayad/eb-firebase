@@ -24,7 +24,7 @@ const Header = () => {
           <Link to="/">About Us</Link>
         </div>
         <div className="right-nav">
-          <Filter />
+          <Filter show={false} />
           <User />
 
           <CartIcon />

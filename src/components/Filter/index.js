@@ -13,11 +13,11 @@ import search from '../../assets/icon/search.svg';
 import './index.scss';
 import FilterResults from '../FilterResults/index.js';
 
-const Filter = () => {
+const Filter = ({ show }) => {
   //state
 
   const products = useSelector((state) => state.products);
-  const [showFilter, setShowFilter] = useState(false);
+  const [showFilter, setShowFilter] = useState(show);
   const [searchResults, setSearchResults] = useState([]);
 
   // handle input change

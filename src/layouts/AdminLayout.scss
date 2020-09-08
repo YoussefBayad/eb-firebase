@@ -1,0 +1,18 @@
+.controlPanel {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100%;
+
+  .sidebar {
+    padding: 5rem 0;
+    width: 20%;
+    border-right: 1px solid #d3d3d3;
+  }
+
+  .content {
+    padding: 5rem 0;
+    flex: 2;
+    margin-left: 3rem;
+  }
+}

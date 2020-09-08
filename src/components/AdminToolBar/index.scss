@@ -2,17 +2,16 @@
 .admin-tool-bar {
   width: 100%;
   height: 4rem;
-  background-color: white;
+  background-color: #d1cece;
   .admin-link {
-    padding: 0.8rem;
+    padding: 0.9rem;
     color: black;
-    background-color: #e4e1e1;
+    background-color: #eeecec;
     float: right;
     @include transition;
     font-size: 2rem;
     &:hover {
-      color: $accent;
-      background-color: white;
+      background-color: $accent;
     }
   }
 }

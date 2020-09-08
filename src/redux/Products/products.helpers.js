@@ -1,6 +1,7 @@
 import { firestore } from '../../Firebase/utils';
 
 export const handleAddProduct = (product) => {
+  console.log('inside');
   return new Promise((resolve, reject) => {
     firestore
       .collection('products')

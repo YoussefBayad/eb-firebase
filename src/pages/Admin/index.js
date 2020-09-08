@@ -5,6 +5,7 @@ import {
   fetchProductsStart,
   deleteProductStart,
 } from '../../redux/Products/products.actions';
+import { handleAddProduct } from '../../redux/Products/products.helpers';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
@@ -40,13 +41,11 @@ const Admin = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      addProductStart({
-        category,
-        name,
-        price,
-      })
-    );
+    handleAddProduct({
+      category,
+      name,
+      price,
+    });
     resetForm();
   };
 
