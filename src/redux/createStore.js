@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './rootReducer';
+import createSagaMiddle from 'redux-saga';
+import rootSaga from './rootSaga';
+
 /* data */
 import data from '../data.json';
 
@@ -18,10 +21,14 @@ const initialState = {
   openCart: false,
 };
 
+const sagaMiddleware = createSagaMiddle();
+export const middlewares = [sagaMiddleware];
+
 export const store = createStore(
   rootReducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(...middlewares)
 );
+sagaMiddleware.run(rootSaga);
 
 export default store;
