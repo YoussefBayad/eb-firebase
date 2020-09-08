@@ -1,5 +1,4 @@
 .formRow {
-
   input {
     display: block;
     width: 100%;
@@ -12,4 +11,13 @@
     border: 1px solid #9e9e9e;
     outline: none;
   }
+  input[type='checkbox'] {
+    height: 4rem;
+    width: 2rem;
+    margin: 0;
+  }
+}
+
+label {
+  font-size: 1.5rem;
 }

@@ -19,6 +19,7 @@ const Admin = (props) => {
   const [category, setCategory] = useState('headphones');
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
+  const [wireless, setWireless] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductsStart());
@@ -40,11 +41,14 @@ const Admin = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(wireless);
 
     handleAddProduct({
       category,
       name,
       price,
+      count: 0,
+      wireless,
     });
     resetForm();
   };
@@ -88,9 +92,10 @@ const Admin = (props) => {
               type="text"
               value={name}
               handleChange={(e) => setName(e.target.value)}
+              required
             />
 
-            <FormInput label="Main image URL" />
+            <FormInput label="Main image URL" required />
 
             <FormInput
               label="Price"
@@ -100,8 +105,16 @@ const Admin = (props) => {
               step="0.01"
               value={price}
               handleChange={(e) => setPrice(e.target.value)}
+              required
             />
-
+            <FormInput
+              label="Wirless"
+              type="checkbox"
+              value={wireless}
+              handleChange={(e) => {
+                setWireless(e.target.checked);
+              }}
+            />
             <Button type="submit">Add product</Button>
           </form>
         </div>

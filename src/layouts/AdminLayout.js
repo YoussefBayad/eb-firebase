@@ -1,9 +1,11 @@
 import React from 'react';
 import VerticalNav from '../components/VerticalNav';
 import './AdminLayout.scss';
+import AdminToolBar from '../components/AdminToolBar';
 const AdminLayout = ({ children }) => {
   return (
     <div className="adminLayout">
+      <AdminToolBar />
       <div className="controlPanel">
         <div className="sidebar">
           <VerticalNav />
