@@ -1,18 +1,18 @@
 import React from 'react';
-import './styles.scss';
+import './index.scss';
 
 const FormInput = ({ handleChange, label, ...otherProps }) => {
   return (
-    <div className="formRow">
-      {label && (
-        <label>
-          {label}
-        </label>
-      )}
+    <div className={otherProps.type === 'checkbox' ? 'checkbox' : 'form-row'}>
+      {label && <label>{label}</label>}
 
-      <input className="formInput" onChange={handleChange} {...otherProps} />
+      <input
+        className="product-input"
+        onChange={handleChange}
+        {...otherProps}
+      />
     </div>
   );
-}
+};
 
 export default FormInput;

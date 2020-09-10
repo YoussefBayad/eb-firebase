@@ -22,13 +22,13 @@ export const handleFetchProducts = () => {
       .collection('products')
       .get()
       .then((snapshot) => {
-        const productsArray = snapshot.docs.map((doc) => {
+        const products = snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
             documentID: doc.id,
           };
         });
-        resolve(productsArray);
+        resolve(products);
       })
       .catch((err) => {
         reject(err);

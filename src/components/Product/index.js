@@ -1,6 +1,5 @@
 import React from 'react';
 import Zoom from 'react-reveal/Zoom';
-
 //style
 import './index.scss';
 

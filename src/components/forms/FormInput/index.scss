@@ -1,0 +1,18 @@
+.addNewProductForm {
+  & h2 {
+    margin-bottom: 2.5rem;
+  }
+  & label {
+    display: inline-block;
+    font-size: 1.5rem;
+    width: 15rem;
+  }
+}
+
+.product-input {
+  margin-right: 3rem;
+}
+
+.checkbox {
+  display: inline;
+}

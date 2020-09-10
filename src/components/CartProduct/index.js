@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
-import { REMOVE_FROM_CART } from '../../redux/products';
+import types from '../../redux/Products/products.types';
 
 // components
 
@@ -25,7 +25,9 @@ const CartProduct = ({ product }) => {
           <Count id={product.id} count={product.count} />
           <h5
             className="cart-remove-product"
-            onClick={() => dispatch({ type: REMOVE_FROM_CART, id: product.id })}
+            onClick={() =>
+              dispatch({ type: types.REMOVE_FROM_CART, id: product.id })
+            }
           >
             REMOVE
           </h5>

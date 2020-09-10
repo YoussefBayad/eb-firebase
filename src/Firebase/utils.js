@@ -15,11 +15,11 @@ export const firestore = firebase.firestore();
 
 // googleAuth
 
-const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 
-googleProvider.setCustomParameters({ prompt: 'select_account' });
+GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
 // user  profiler
 
@@ -51,4 +51,13 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   }
 
   return userRef;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };

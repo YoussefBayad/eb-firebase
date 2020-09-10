@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { checkUserSession } from './redux/User/user.actions';
+import { handleFetchProducts } from './redux/Products/products.helpers';
+import productsTypes from './redux/Products/products.types';
 
 //redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 // auth
 
 import { auth, handleUserProfile } from './Firebase/utils.js';
@@ -29,14 +33,15 @@ import ProductPage from './pages/ProductPage';
 
 // HOC
 import WithAdminAuth from './hoc/withAdminAuth.js';
+import WithAuth from './hoc/withAuth';
 
 // style
 
 import './default.scss';
 
 const App = () => {
-  const { currentUser, openCart } = useSelector((state) => state);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -54,6 +59,12 @@ const App = () => {
         dispatch({ type: 'auth', currentUser: null });
       }
     });
+
+    handleFetchProducts()
+      .then((products) =>
+        dispatch({ type: productsTypes.SET_PRODUCTS, products })
+      )
+      .catch((err) => console.log(err));
 
     return () => {
       authListener();
@@ -82,20 +93,36 @@ const App = () => {
           </WithAdminAuth>
         )}
       />
+      <Route
+        exact
+        path="/shop/product/:id"
+        render={() => (
+          <HomeLayout>
+            <ProductPage />
+          </HomeLayout>
+        )}
+      />
 
       <MainLayout>
         <Route exact path="/shop" render={() => <Shop />} />
         <Route
           exact
           path="/login"
-          render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
+          render={() => (
+            <WithAuth>
+              <Login />
+            </WithAuth>
+          )}
         />
         <Route
           exact
           path="/registration"
-          render={() => (currentUser ? <Redirect to="/" /> : <Registration />)}
+          render={() => (
+            <WithAuth>
+              <Registration />
+            </WithAuth>
+          )}
         />
-        <Route exact path="/shop/product/:id" render={() => <ProductPage />} />
         <Route exact path="/shop/headphones" component={Headphones} />
         <Route exact path="/shop/earbuds" component={Earbuds} />
         <Route exact path="/shop/earbuds/wireless" component={Wireless} />

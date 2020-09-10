@@ -11,7 +11,10 @@ const CartIcon = () => {
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.products);
-  const cartLength = products.filter((product) => product.count > 0).length;
+  let cartLength;
+  products
+    ? (cartLength = products.filter((product) => product.count > 0).length)
+    : (cartLength = 0);
 
   return (
     <div

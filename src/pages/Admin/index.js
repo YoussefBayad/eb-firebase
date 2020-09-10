@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductStart,
   fetchProductsStart,
   deleteProductStart,
 } from '../../redux/Products/products.actions';
-import { handleAddProduct } from '../../redux/Products/products.helpers';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
@@ -20,10 +19,12 @@ const Admin = (props) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [wireless, setWireless] = useState(false);
-
-  useEffect(() => {
-    dispatch(fetchProductsStart());
-  }, []);
+  const [wirelessCharging, setWirelessCharging] = useState(false);
+  const [waterProof, setWaterProof] = useState(false);
+  const [fullControl, setFullControl] = useState(false);
+  const [eitherBudSolo, setEitherBudSolo] = useState(false);
+  const [tile, setTile] = useState(false);
+  const [totalCharge, setTotalCharge] = useState(0);
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -41,14 +42,20 @@ const Admin = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(wireless);
 
-    handleAddProduct({
+    addProductStart({
       category,
       name,
       price,
       count: 0,
       wireless,
+      wirelessCharging,
+      waterProof,
+      fullControl,
+      eitherBudSolo,
+      tile,
+      totalCharge,
+      timestamp: new Date(),
     });
     resetForm();
   };
@@ -107,6 +114,17 @@ const Admin = (props) => {
               handleChange={(e) => setPrice(e.target.value)}
               required
             />
+
+            <FormInput
+              label="Total Charge"
+              type="number"
+              min="1"
+              max="100"
+              value={totalCharge}
+              handleChange={(e) => {
+                setTotalCharge(e.target.value);
+              }}
+            />
             <FormInput
               label="Wirless"
               type="checkbox"
@@ -115,6 +133,51 @@ const Admin = (props) => {
                 setWireless(e.target.checked);
               }}
             />
+            {category !== 'battery' && (
+              <>
+                <FormInput
+                  label="Water Pr0of"
+                  type="checkbox"
+                  value={waterProof}
+                  handleChange={(e) => {
+                    setWaterProof(e.target.checked);
+                  }}
+                />
+                <FormInput
+                  label="Tile"
+                  type="checkbox"
+                  value={tile}
+                  handleChange={(e) => {
+                    setTile(e.target.checked);
+                  }}
+                />
+                <FormInput
+                  label="full Control"
+                  type="checkbox"
+                  value={fullControl}
+                  handleChange={(e) => {
+                    setFullControl(e.target.checked);
+                  }}
+                />
+                <FormInput
+                  label="either BudSolo"
+                  type="checkbox"
+                  value={eitherBudSolo}
+                  handleChange={(e) => {
+                    setEitherBudSolo(e.target.checked);
+                  }}
+                />
+                <FormInput
+                  label="Wireless Charging"
+                  type="checkbox"
+                  value={wirelessCharging}
+                  handleChange={(e) => {
+                    setWirelessCharging(e.target.checked);
+                  }}
+                />
+              </>
+            )}
+
             <Button type="submit">Add product</Button>
           </form>
         </div>
@@ -153,11 +216,7 @@ const Admin = (props) => {
                           <td>{name}</td>
                           <td>${price}</td>
                           <td>
-                            <Button
-                              onClick={() => dispatch(deleteProductStart(id))}
-                            >
-                              Delete
-                            </Button>
+                            <Button>Delete</Button>
                           </td>
                         </tr>
                       );

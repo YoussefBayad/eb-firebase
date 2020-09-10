@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { OPEN_CART } from '../../redux/openCart';
-import { INCREMENT } from '../../redux/products';
+import types from '../../redux/Products/products.types';
 
 // style
 import './index.scss';
@@ -21,7 +21,7 @@ const AddToCart = ({ id, count }) => {
         <button
           className="buy"
           onClick={() => {
-            dispatch({ type: INCREMENT, id });
+            dispatch({ type: types.INCREMENT, id });
             dispatch({ type: OPEN_CART });
           }}
         >

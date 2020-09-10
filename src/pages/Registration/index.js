@@ -1,56 +1,61 @@
-import React, { useState } from 'react';
-
-// auth
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { signUpUserStart } from '../../redux/User/user.actions';
 import { auth, handleUserProfile } from '../../Firebase/utils.js';
 
 // style
 import './index.scss';
 
 const Registration = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const currentUser = useSelector((state) => state.currentUser);
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (currentUser) {
+      reset();
+      history.push('/');
+    }
+  }, [currentUser]);
+
+  const reset = () => {
+    setDisplayName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setErrors([]);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // password check
-
-    if (password !== confirmPassword) {
-      setError("Passwords don't match");
-      return;
-    } else {
-      setError(null);
-    }
-
-    try {
-      // register
-
-      const { user } = await auth.createUserWithEmailAndPassword(
+    dispatch(
+      signUpUserStart({
+        displayName,
         email,
-        password
-      );
-      await handleUserProfile(user, { displayName });
-
-      // reset input field
-
-      setDisplayName('');
-      setConfirmPassword('');
-      setPassword('');
-      setEmail('');
-    } catch (err) {
-      setError(err.message);
-    }
+        password,
+        confirmPassword,
+      })
+    );
   };
 
   return (
     <div className="contact-information">
       <h1>Register</h1>
+      {errors.length > 0 && (
+        <ul>
+          {errors.map((err, index) => {
+            return <li key={index}>{err}</li>;
+          })}
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
-        <h2 className="error">{error}</h2>
         <input
           type="name"
           placeholder="Enter your name"
@@ -67,7 +72,6 @@ const Registration = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-
         <input
           type="password"
           placeholder="Password"
@@ -78,7 +82,6 @@ const Registration = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
         <input
           type="password"
           placeholder="Confirm password"
@@ -87,7 +90,6 @@ const Registration = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-
         <button className="btn">Register</button>
       </form>
     </div>

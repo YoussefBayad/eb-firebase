@@ -21,7 +21,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   // cart
   const { products, openCart } = useSelector((state) => state);
-  const cart = products.filter((product) => product.count > 0);
+  let cart;
+  products
+    ? (cart = products.filter((product) => product.count > 0))
+    : (cart = []);
   //handle clicked
 
   const handleClick = (e) => {

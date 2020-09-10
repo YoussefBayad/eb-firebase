@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
-
-// signInWithGoogle
-import { signInWithGoogle, auth } from '../../Firebase/utils.js';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from '../../redux/User/user.actions';
 
 //style
 import './index.scss';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const currentUser = useSelector((state) => state.currentUser);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  // sign in
+  useEffect(() => {
+    if (currentUser) {
+      resetForm();
+      history.push('/');
+    }
+  }, [currentUser]);
+
+  const resetForm = () => {
+    setEmail('');
+    setPassword('');
+    setError(null);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-    } catch (err) {
-      setError(err.message);
-    }
+    dispatch(emailSignInStart({ email, password }));
+  };
+
+  const handleGoogleSignIn = () => {
+    dispatch(googleSignInStart());
   };
 
   return (
@@ -49,7 +66,7 @@ const Login = () => {
 
           <button className="btn">Sign In</button>
         </form>
-        <button className="btn" onClick={signInWithGoogle}>
+        <button className="btn" onClick={handleGoogleSignIn}>
           Sign In With Google
         </button>
       </div>
