@@ -6,7 +6,7 @@ import types from '../../redux/Products/products.types';
 // style
 import './index.scss';
 
-const AddToCart = ({ id, count }) => {
+const AddToCart = ({ documentID, count }) => {
   const dispatch = useDispatch();
   return (
     <>
@@ -21,7 +21,7 @@ const AddToCart = ({ id, count }) => {
         <button
           className="buy"
           onClick={() => {
-            dispatch({ type: types.INCREMENT, id });
+            dispatch({ type: types.INCREMENT, id: documentID });
             dispatch({ type: OPEN_CART });
           }}
         >

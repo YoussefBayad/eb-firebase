@@ -61,3 +61,7 @@ export const getCurrentUser = () => {
     }, reject);
   });
 };
+
+// timestamp
+
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp;

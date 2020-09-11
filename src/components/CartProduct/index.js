@@ -15,18 +15,22 @@ const CartProduct = ({ product }) => {
     <div className="cart-product">
       <img
         className="cart-product-img"
-        src={`/img/${product.name.replace(/\s/g, '')}.webp`}
+        src={
+          product.photoURL
+            ? product.photoURL
+            : `/img/${product.name.replace(/\s/g, '')}.webp`
+        }
         alt={product.name}
       />
       <div className="cart-product-description">
         <p className="cart-product-name">{product.name}</p>
         <p className="cart-product-price">${product.price} usd</p>
         <div className="quantity">
-          <Count id={product.id} count={product.count} />
+          <Count id={product.documentID} count={product.count} />
           <h5
             className="cart-remove-product"
             onClick={() =>
-              dispatch({ type: types.REMOVE_FROM_CART, id: product.id })
+              dispatch({ type: types.REMOVE_FROM_CART, id: product.documentID })
             }
           >
             REMOVE

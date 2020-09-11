@@ -5,7 +5,7 @@ import { handleFetchProducts } from './redux/Products/products.helpers';
 import productsTypes from './redux/Products/products.types';
 
 //redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // auth
 
@@ -41,7 +41,7 @@ import './default.scss';
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const products = useSelector((state) => state.products);
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -59,12 +59,17 @@ const App = () => {
         dispatch({ type: 'auth', currentUser: null });
       }
     });
+    if (products !== null && products.length > 0) return;
+    else {
+      console.log('fetching data');
+      handleFetchProducts()
+        .then((products) => {
+          console.log(products);
 
-    handleFetchProducts()
-      .then((products) =>
-        dispatch({ type: productsTypes.SET_PRODUCTS, products })
-      )
-      .catch((err) => console.log(err));
+          dispatch({ type: productsTypes.SET_PRODUCTS, products });
+        })
+        .catch((err) => console.log(err));
+    }
 
     return () => {
       authListener();

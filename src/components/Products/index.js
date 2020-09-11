@@ -12,7 +12,7 @@ const Products = ({ products }) => {
       <div className="products">
         {products &&
           products.map((product) => (
-            <Product product={product} key={product.id} />
+            <Product product={product} key={product.documentID} />
           ))}
         {!products && (
           <img
@@ -21,6 +21,7 @@ const Products = ({ products }) => {
             style={{ margin: '20rem auto' }}
           />
         )}
+        {products && products.length === 0 && <h1>Failed Reload </h1>}
       </div>
     </Fade>
   );

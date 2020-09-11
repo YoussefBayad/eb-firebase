@@ -11,15 +11,19 @@ const Product = ({ product }) => {
   return (
     <Zoom>
       <div className="product">
-        <Link to={`/shop/product/${product.id}`}>
+        <Link to={`/shop/product/${product.documentID}`}>
           <img
-            src={`/img/${product.name.replace(/\s/g, '')}.webp`}
+            src={
+              product.photoURL
+                ? product.photoURL
+                : `/img/${product.name.replace(/\s/g, '')}.webp`
+            }
             alt={product.name.replace(/\s/g, '')}
           />
           <p>{product.name}</p>
           <p className="price">${product.price}</p>
         </Link>
-        <AddToCart id={product.id} count={product.count} />
+        <AddToCart documentID={product.documentID} count={product.count} />
       </div>
     </Zoom>
   );

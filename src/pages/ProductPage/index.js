@@ -23,7 +23,9 @@ const ProductPage = () => {
 
   const { id } = useParams();
   const products = useSelector((state) => state.products);
-  const product = products.filter((product) => product.id === Number(id))[0];
+  const product = products.filter(
+    (product) => product.documentID === Number(id)
+  )[0];
 
   // check if product in cart destruct count
 
@@ -34,13 +36,17 @@ const ProductPage = () => {
           <h1>{product.name} </h1>
           <h2>${product.price} usd </h2>
           <div>
-            <Count id={product.id} count={product.count} />
-            <AddToCart id={product.id} count={product.count} />
+            <Count id={product.documentID} count={product.count} />
+            <AddToCart id={product.documentID} count={product.count} />
           </div>
         </div>
         <img
           className="product-img"
-          src={`/img/${product.name.replace(/\s/g, '')}.webp`}
+          src={
+            product.photoURL
+              ? product.photoURL
+              : `/img/${product.name.replace(/\s/g, '')}.webp`
+          }
           alt={product.name}
         />
       </div>

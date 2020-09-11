@@ -9,7 +9,6 @@ const useAuth = (props) => {
   useEffect(() => {
     if (!currentUser) {
       history.push(history.location.pathname);
-      console.log(history);
     } else {
       history.push('/');
     }

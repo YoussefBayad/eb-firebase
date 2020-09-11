@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import fetchProducts from './fetch';
 import {
-  addProductStart,
-  fetchProductsStart,
-  deleteProductStart,
-} from '../../redux/Products/products.actions';
+  handleAddProduct,
+  handleDeleteProduct,
+} from '../../redux/Products/products.helpers';
+import { timestamp } from '../../Firebase/utils';
+import data from '../../data.json';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
@@ -16,6 +18,7 @@ const Admin = (props) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState('headphones');
+  const [photoURL, setPhotoURL] = useState(null);
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [wireless, setWireless] = useState(false);
@@ -43,20 +46,21 @@ const Admin = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addProductStart({
-      category,
-      name,
-      price,
-      count: 0,
-      wireless,
-      wirelessCharging,
-      waterProof,
-      fullControl,
-      eitherBudSolo,
-      tile,
-      totalCharge,
-      timestamp: new Date(),
-    });
+    // addProductStart({
+    //   product.category,
+    //   photoURL,
+    //   name,
+    //   price,
+    //   count: 0,
+    //   wireless,
+    //   wirelessCharging,
+    //   waterProof,
+    //   fullControl,
+    //   eitherBudSolo,
+    //   tile,
+    //   totalCharge,
+    //   createdAt: timestamp(),
+    // })
     resetForm();
   };
 
@@ -102,7 +106,13 @@ const Admin = (props) => {
               required
             />
 
-            <FormInput label="Main image URL" required />
+            <FormInput
+              label="Main image URL"
+              type="url"
+              value={photoURL}
+              handleChange={(e) => setPhotoURL(e.target.value)}
+              required
+            />
 
             <FormInput
               label="Price"
@@ -126,7 +136,7 @@ const Admin = (props) => {
               }}
             />
             <FormInput
-              label="Wirless"
+              label="Wireless"
               type="checkbox"
               value={wireless}
               handleChange={(e) => {
@@ -136,7 +146,7 @@ const Admin = (props) => {
             {category !== 'battery' && (
               <>
                 <FormInput
-                  label="Water Pr0of"
+                  label="Water Prof"
                   type="checkbox"
                   value={waterProof}
                   handleChange={(e) => {
@@ -207,10 +217,14 @@ const Admin = (props) => {
                           <td>
                             <img
                               className="thumb"
-                              src={`/img/${product.name.replace(
-                                /\s/g,
-                                ''
-                              )}.webp`}
+                              src={
+                                product.photoURL
+                                  ? product.photoURL
+                                  : `/img/${product.name.replace(
+                                      /\s/g,
+                                      ''
+                                    )}.webp`
+                              }
                             />
                           </td>
                           <td>{name}</td>

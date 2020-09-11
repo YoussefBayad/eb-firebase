@@ -21,11 +21,18 @@ const FilterResults = ({ searchResults }) => {
       {showSearchResults && (
         <div ref={ref} className="search-results" onClick={handleClick}>
           {searchResults.map((product) => (
-            <Link key={product.id} to={`/shop/product/${product.id}`}>
+            <Link
+              key={product.documentID}
+              to={`/shop/product/${product.documentID}`}
+            >
               <div className="search-product">
                 <img
                   className="search-img"
-                  src={`/img/${product.name.replace(/\s/g, '')}.webp`}
+                  src={
+                    product.photoURL
+                      ? product.photoURL
+                      : ` /img/${product.name.replace(/\s/g, '')}.webp`
+                  }
                   alt="product img"
                 />
                 <div className="text">

@@ -60,7 +60,7 @@ const Cart = () => {
               </div>
               <div className="cart-main">
                 {cart.map((product) => (
-                  <CartProduct key={product.id} product={product} />
+                  <CartProduct key={product.documentID} product={product} />
                 ))}
               </div>
               <div className="cart-footer">

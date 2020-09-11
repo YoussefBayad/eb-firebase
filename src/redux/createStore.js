@@ -3,31 +3,17 @@ import rootReducer from './rootReducer';
 import createSagaMiddle from 'redux-saga';
 import rootSaga from './rootSaga';
 import thunk from 'redux-thunk';
-
-/* data */
-// import data from '../data.json';
-//localStorage
-// const localStorageProducts = JSON.parse(localStorage.getItem('products'));
-// if (localStorageProducts !== null) {
-//   products = localStorageProducts;
-// } else {
-// products = data.products;
-// }
-// initial state
-
-// const initialState = {
-//   products: [],
-//   currentUser: null,
-//   openCart: false,
-// };
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const sagaMiddleware = createSagaMiddle();
 export const middlewares = [thunk, sagaMiddleware];
+const composeEnhancers = composeWithDevTools({
+  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
 
 const store = createStore(
   rootReducer,
-
-  applyMiddleware(...middlewares)
+  composeEnhancers(applyMiddleware(...middlewares))
 );
 sagaMiddleware.run(rootSaga);
 

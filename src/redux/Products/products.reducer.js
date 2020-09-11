@@ -22,7 +22,9 @@ export default function productReducer(
   if (action.type === SET_PRODUCTS) {
     return [...action.products];
   } else if (action.type === LATEST) {
-    const latest = state.slice().sort((a, b) => (a.id > b.id ? 1 : -1));
+    const latest = state
+      .slice()
+      .sort((a, b) => (a.documentID > b.documentID ? 1 : -1));
     return [...latest];
   } else if (action.type === LOWEST) {
     const lowest = state.slice().sort((a, b) => (a.price > b.price ? 1 : -1));
@@ -33,14 +35,16 @@ export default function productReducer(
     return [...highest];
   } else if (action.type === REMOVE_FROM_CART) {
     // clicked product
-    let clickedProduct = state.filter((product) => product.id === action.id)[0];
+    let clickedProduct = state.filter(
+      (product) => product.documentID === action.id
+    )[0];
 
     // reset Count
     clickedProduct = { ...clickedProduct, count: 0 };
 
     //new cart
     const products = state.map((product) => {
-      if (product.id === action.id) {
+      if (product.documentID === action.id) {
         return clickedProduct;
       }
       return product;
@@ -48,15 +52,17 @@ export default function productReducer(
     return [...products];
   } else if (action.type === INCREMENT) {
     // clicked product
-    let clickedProduct = state.filter((product) => product.id === action.id)[0];
-
+    let clickedProduct = state.filter(
+      (product) => product.documentID === action.id
+    )[0];
+    console.log(clickedProduct);
     // incrementing Count
     const count = clickedProduct.count;
     clickedProduct = { ...clickedProduct, count: count + 1 };
 
     //new cart
     const products = state.map((product) => {
-      if (product.id === action.id) {
+      if (product.documentID === action.id) {
         return clickedProduct;
       }
       return product;
@@ -65,7 +71,9 @@ export default function productReducer(
     return [...products];
   } else if (action.type === DECREMENT) {
     // clicked product
-    let clickedProduct = state.filter((product) => product.id === action.id)[0];
+    let clickedProduct = state.filter(
+      (product) => product.documentID === action.id
+    )[0];
 
     // preventing count from < 0 values
     const count = clickedProduct.count;
@@ -77,7 +85,7 @@ export default function productReducer(
 
     // new cart
     const products = state.map((product) => {
-      if (product.id === action.id) {
+      if (product.documentID === action.id) {
         return clickedProduct;
       }
       return product;
