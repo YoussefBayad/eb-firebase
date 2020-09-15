@@ -1,16 +1,15 @@
-// action types
-export const OPEN_CART = 'openCart';
+import { createSlice } from '@reduxjs/toolkit';
 
-// Reducer
+const initialState = false;
 
-export default function openCartReducer(
-  state = false,
+const openCartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    openCart(state) {
+      state = !state;
+    },
+  },
+});
 
-  action
-) {
-  if (action.type === OPEN_CART) {
-    return !state;
-  } else {
-    return state;
-  }
-}
+export const { openCart } = openCartSlice.actions;

@@ -2,7 +2,7 @@ import React from 'react';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
-import { OPEN_CART } from '../../redux/openCart';
+import { openCart } from '../../redux/openCart';
 
 // img
 import cartIcon from '../../assets/icon/cart.svg';
@@ -20,7 +20,7 @@ const CartIcon = () => {
     <div
       className="cart-icon"
       onClick={() => {
-        dispatch({ type: OPEN_CART });
+        dispatch(openCart());
       }}
     >
       <img src={cartIcon} alt="cart icon" />

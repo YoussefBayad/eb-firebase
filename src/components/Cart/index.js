@@ -1,43 +1,32 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-//redux
 import { useSelector, useDispatch } from 'react-redux';
 import { OPEN_CART } from '../../redux/openCart';
-
 import CartProduct from '../CartProduct';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
-
-// animation
-
 import Fade from 'react-reveal/Fade';
-
-//store
-
-//style
 import './index.scss';
 
 const Cart = () => {
   const dispatch = useDispatch();
-  // cart
+
+  // cart items
   const { products, openCart } = useSelector((state) => state);
   let cart;
   products
     ? (cart = products.filter((product) => product.count > 0))
     : (cart = []);
-  //handle clicked
 
   const handleClick = (e) => {
     if (e.target.className === 'cart-remove-product') return;
 
-    dispatch({ type: OPEN_CART });
+    dispatch(openCart());
   };
 
-  // outside click
   const [ref] = useOutsideClickRef(handleClick);
 
   useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
+    // localStorage.setItem('products', JSON.stringify(products));
   }, [products]);
 
   return (
@@ -52,7 +41,7 @@ const Cart = () => {
                 <h1
                   className="close-cart"
                   onClick={() => {
-                    dispatch({ type: OPEN_CART });
+                    dispatch(openCart());
                   }}
                 >
                   X
@@ -68,7 +57,7 @@ const Cart = () => {
                   to="/payment"
                   className="checkout-btn"
                   onClick={() => {
-                    dispatch({ type: OPEN_CART });
+                    dispatch(openCart());
                   }}
                 >
                   <span>CHECKOUT</span> <span>.</span>{' '}

@@ -24,7 +24,7 @@ export default function productReducer(
   } else if (action.type === LATEST) {
     const latest = state
       .slice()
-      .sort((a, b) => (a.documentID > b.documentID ? 1 : -1));
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
     return [...latest];
   } else if (action.type === LOWEST) {
     const lowest = state.slice().sort((a, b) => (a.price > b.price ? 1 : -1));

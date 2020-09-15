@@ -1,4 +1,3 @@
-import { auth } from '../../Firebase/utils';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { setProducts, fetchProductsStart } from './products.actions';
 import {
@@ -8,19 +7,13 @@ import {
 } from './products.helpers';
 import productsTypes from './products.types';
 
-export function* addProduct({
-  payload: { productCategory, productName, productThumbnail, productPrice },
-}) {
+export function* addProduct(product) {
+  console.log('inside addproduct saga ');
+
   try {
-    const timestamp = new Date();
-    yield handleAddProduct({
-      productCategory,
-      productName,
-      productThumbnail,
-      productPrice,
-      productAdminUserUID: auth.currentUser.uid,
-      createdDate: timestamp,
-    });
+    console.log('inside addproduct saga try');
+
+    yield handleAddProduct(product);
     yield put(fetchProductsStart());
   } catch (err) {
     // console.log(err);

@@ -47,7 +47,7 @@ const Payment = () => {
             </div>
 
             <select id="country" name="country" required>
-              <option value="Country">Country...</option>
+              <option value="">Country...</option>
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
               <option value="Algeria">Algeria</option>

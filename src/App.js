@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { checkUserSession } from './redux/User/user.actions';
 import { handleFetchProducts } from './redux/Products/products.helpers';
 import productsTypes from './redux/Products/products.types';
 
@@ -59,17 +58,13 @@ const App = () => {
         dispatch({ type: 'auth', currentUser: null });
       }
     });
-    if (products !== null && products.length > 0) return;
-    else {
-      console.log('fetching data');
-      handleFetchProducts()
-        .then((products) => {
-          console.log(products);
+    handleFetchProducts()
+      .then((products) => {
+        console.log(products);
 
-          dispatch({ type: productsTypes.SET_PRODUCTS, products });
-        })
-        .catch((err) => console.log(err));
-    }
+        dispatch({ type: productsTypes.SET_PRODUCTS, products });
+      })
+      .catch((err) => console.log(err));
 
     return () => {
       authListener();

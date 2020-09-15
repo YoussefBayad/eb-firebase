@@ -6,7 +6,6 @@ import {
   handleDeleteProduct,
 } from '../../redux/Products/products.helpers';
 import { timestamp } from '../../Firebase/utils';
-import data from '../../data.json';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
@@ -18,8 +17,10 @@ const Admin = (props) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState('headphones');
-  const [photoURL, setPhotoURL] = useState(null);
-  const [name, setName] = useState('');
+  const [photoURL, setPhotoURL] = useState(
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/220px-React-icon.svg.png'
+  );
+  const [name, setName] = useState('React');
   const [price, setPrice] = useState(0);
   const [wireless, setWireless] = useState(false);
   const [wirelessCharging, setWirelessCharging] = useState(false);
@@ -27,7 +28,7 @@ const Admin = (props) => {
   const [fullControl, setFullControl] = useState(false);
   const [eitherBudSolo, setEitherBudSolo] = useState(false);
   const [tile, setTile] = useState(false);
-  const [totalCharge, setTotalCharge] = useState(0);
+  const [totalCharge, setTotalCharge] = useState(1);
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -40,27 +41,28 @@ const Admin = (props) => {
     setShowModal(false);
     setCategory('headphones');
     setName('');
+    setPhotoURL(null);
     setPrice(0);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // addProductStart({
-    //   product.category,
-    //   photoURL,
-    //   name,
-    //   price,
-    //   count: 0,
-    //   wireless,
-    //   wirelessCharging,
-    //   waterProof,
-    //   fullControl,
-    //   eitherBudSolo,
-    //   tile,
-    //   totalCharge,
-    //   createdAt: timestamp(),
-    // })
+    console.log('dispatched');
+    handleAddProduct({
+      category,
+      photoURL,
+      name,
+      price,
+      count: 0,
+      wireless,
+      wirelessCharging,
+      waterProof,
+      fullControl,
+      eitherBudSolo,
+      tile,
+      totalCharge,
+      createdAt: timestamp(),
+    });
     resetForm();
   };
 

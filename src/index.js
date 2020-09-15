@@ -7,18 +7,13 @@ import store from './redux/createStore';
 // App
 import App from './App';
 
-const render = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Router>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-};
-
-render();
-store.subscribe(render);
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
