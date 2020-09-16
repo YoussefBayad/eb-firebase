@@ -42,33 +42,31 @@ const App = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch({
-            type: 'auth',
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data(),
-            },
-          });
-        });
-      } else {
-        dispatch({ type: 'auth', currentUser: null });
-      }
-    });
-    handleFetchProducts()
-      .then((products) => {
-        console.log(products);
-
-        dispatch({ type: productsTypes.SET_PRODUCTS, products });
-      })
-      .catch((err) => console.log(err));
-
-    return () => {
-      authListener();
-    };
+    // const authListener = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await handleUserProfile(userAuth);
+    //     userRef.onSnapshot((snapshot) => {
+    //       dispatch({
+    //         type: 'auth',
+    //         currentUser: {
+    //           id: snapshot.id,
+    //           ...snapshot.data(),
+    //         },
+    //       });
+    //     });
+    //   } else {
+    //     dispatch({ type: 'auth', currentUser: null });
+    //   }
+    // });
+    // handleFetchProducts()
+    //   .then((products) => {
+    //     console.log(products);
+    //     dispatch({ type: productsTypes.SET_PRODUCTS, products });
+    //   })
+    //   .catch((err) => console.log(err));
+    // return () => {
+    //   authListener();
+    // };
   }, []);
   return (
     <Switch>

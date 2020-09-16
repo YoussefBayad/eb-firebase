@@ -2,7 +2,7 @@ import React from 'react';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
-import { openCart } from '../../redux/cartSlice';
+import { openCart } from '../../redux/cart/cartSlice';
 
 // img
 import cartIcon from '../../assets/icon/cart.svg';

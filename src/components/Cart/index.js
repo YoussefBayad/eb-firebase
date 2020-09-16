@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { openCart } from '../../redux/cartSlice';
+import { openCart } from '../../redux/cart/cartSlice';
 import CartProduct from '../CartProduct';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import Fade from 'react-reveal/Fade';
@@ -11,11 +11,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   // cart items
-  const { products, isCartOpen } = useSelector((state) => state);
-  let cart;
-  products
-    ? (cart = products.filter((product) => product.count > 0))
-    : (cart = []);
+  const { products, cart } = useSelector((state) => state);
 
   const handleClick = (e) => {
     if (e.target.className === 'cart-remove-product') return;
@@ -31,7 +27,7 @@ const Cart = () => {
 
   return (
     <>
-      {isCartOpen && (
+      {cart.isCartOpen && (
         <>
           <div className="overlay"></div>
           <Fade right>
@@ -48,7 +44,7 @@ const Cart = () => {
                 </h1>
               </div>
               <div className="cart-main">
-                {cart.map((product) => (
+                {cart.data.map((product) => (
                   <CartProduct key={product.documentID} product={product} />
                 ))}
               </div>

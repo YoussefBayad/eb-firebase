@@ -7,9 +7,22 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // style
 import './index.scss';
+import { latest, lowest, highest } from '../../redux/Products/productsSlice';
 
 const Links = ({ filter }) => {
   const dispatch = useDispatch();
+
+  const handlePriceFilterChange = (e) => {
+    const value = e.target.value;
+
+    if (value === 'lowest') {
+      dispatch(lowest());
+    } else if (value === 'highest') {
+      dispatch(highest());
+    } else if (value === 'latest') {
+      dispatch(latest());
+    }
+  };
   return (
     <div className="links">
       {filter === 'Shop' && (
@@ -67,7 +80,7 @@ const Links = ({ filter }) => {
 
       <div className="price-filter">
         <h3>Sort :</h3>
-        <select onChange={(e) => dispatch({ type: e.target.value })}>
+        <select onChange={handlePriceFilterChange}>
           <option value="latest">Latest</option>
           <option value="highest">Highest Price</option>
           <option value="lowest">Lowest Price</option>

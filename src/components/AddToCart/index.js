@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { openCart } from '../../redux/cartSlice';
+import { openCart } from '../../redux/cart/cartSlice';
 import types from '../../redux/Products/products.types';
 
 // style
