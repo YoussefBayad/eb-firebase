@@ -47,7 +47,6 @@ const Admin = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('dispatched');
     // handleAddProduct({
     //   category,
     //   photoURL,

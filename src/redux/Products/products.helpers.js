@@ -1,24 +1,23 @@
 import { firestore } from '../../Firebase/utils';
 
-export const handleAddProduct = (product) => {
-  return new Promise((resolve, reject) => {
-    console.log('inside addproduct helper');
+// export const handleAddProduct = (product) => {
+//   return new Promise((resolve, reject) => {
+//     ('inside addproduct helper');
 
-    firestore
-      .collection('products')
-      .doc()
-      .set(product)
-      .then(() => {
-        resolve();
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-};
+//     firestore
+//       .collection('products')
+//       .doc()
+//       .set(product)
+//       .then(() => {
+//         resolve();
+//       })
+//       .catch((err) => {
+//         reject(err);
+//       });
+//   });
+// };
 
 export const handleFetchProducts = () => {
-  console.log('fetching data');
   return new Promise((resolve, reject) => {
     firestore
       .collection('products')

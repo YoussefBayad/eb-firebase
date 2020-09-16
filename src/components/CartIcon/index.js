@@ -15,7 +15,6 @@ const CartIcon = () => {
   products
     ? (cartLength = products.filter((product) => product.count > 0).length)
     : (cartLength = 0);
-  console.log(openCart);
 
   return (
     <div

@@ -122,7 +122,6 @@ export default App;
 // });
 // handleFetchProducts()
 //   .then((products) => {
-//     console.log(products);
 //     dispatch({ type: productsTypes.SET_PRODUCTS, products });
 //   })
 //   .catch((err) => console.log(err));

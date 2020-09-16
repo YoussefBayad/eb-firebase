@@ -13,23 +13,22 @@ const cartSlice = createSlice({
       state.isCartOpen = !state.isCartOpen;
     },
     addToCart(state, action) {
-      let clickedProduct = action.payload.products.find(
-        (product) => product.documentID === action.id
-      );
-      state.data.push(clickedProduct);
+      state.data.push(action.payload);
     },
     removeFromCart(state, action) {
-      state.data.filter((product) => product.documentID !== action.payload.id);
+      state.data = state.data.filter(
+        (product) => product.documentID !== action.payload
+      );
     },
     increment(state, action) {
-      let clickedProduct = state.data.find(
-        (product) => product.documentID === action.payload.id
+      const clickedProduct = state.data.find(
+        (product) => product.documentID === action.payload
       );
       clickedProduct.count++;
     },
     decrement(state, action) {
-      let clickedProduct = state.find(
-        (product) => product.documentID === action.payload.id
+      const clickedProduct = state.data.find(
+        (product) => product.documentID === action.payload
       );
       // preventing count from negative value
       if (clickedProduct.count === 1) return;

@@ -6,12 +6,12 @@ import Products from '../../components/Products';
 import './index.scss';
 
 const Shop = () => {
-  const { products } = useSelector((state) => state.products.data);
+  const { data, status } = useSelector((state) => state.products);
   return (
     <div className="shop">
       <h1>Shop</h1>
       <Links filter="Shop" />
-      <Products products={products} />
+      <Products data={data} status={status} />
     </div>
   );
 };

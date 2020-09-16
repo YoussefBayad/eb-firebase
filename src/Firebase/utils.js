@@ -45,9 +45,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         userRoles,
         ...additionalData,
       });
-    } catch (err) {
-      // console.log(err);
-    }
+    } catch (err) {}
   }
 
   return userRef;

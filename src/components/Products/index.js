@@ -6,22 +6,22 @@ import spinner from '../../assets/icon/spinner.gif';
 
 import './index.scss';
 
-const Products = ({ products }) => {
+const Products = ({ data, status }) => {
   return (
     <Fade bottom>
       <div className="products">
-        {products &&
-          products.map((product) => (
+        {status === 'succeeded' &&
+          data.map((product) => (
             <Product product={product} key={product.documentID} />
           ))}
-        {!products && (
+        {status === 'loading' && (
           <img
             src={spinner}
             alt="Loading ..."
             style={{ margin: '20rem auto' }}
           />
         )}
-        {products && products.length === 0 && <h1>Failed Reload </h1>}
+        {status === 'failed' && <h1>Failed Reload </h1>}
       </div>
     </Fade>
   );

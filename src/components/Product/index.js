@@ -23,7 +23,7 @@ const Product = ({ product }) => {
           <p>{product.name}</p>
           <p className="price">${product.price}</p>
         </Link>
-        <AddToCart documentID={product.documentID} count={product.count} />
+        <AddToCart product={product} />
       </div>
     </Zoom>
   );
