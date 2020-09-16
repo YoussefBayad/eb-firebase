@@ -16,7 +16,7 @@ import FilterResults from '../FilterResults/index.js';
 const Filter = ({ show }) => {
   //state
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
   const [showFilter, setShowFilter] = useState(show);
   const [searchResults, setSearchResults] = useState([]);
 

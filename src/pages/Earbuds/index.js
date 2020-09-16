@@ -6,7 +6,7 @@ import Products from '../../components/Products';
 import { useSelector } from 'react-redux';
 
 const Earbuds = () => {
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
 
   return (
     <div className="shop">

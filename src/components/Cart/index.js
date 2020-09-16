@@ -1,74 +1,37 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { openCart } from '../../redux/cart/cartSlice';
-import CartProduct from '../CartProduct';
-import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import Fade from 'react-reveal/Fade';
+import CartHeader from '../CartHeader';
+import CartMain from '../CartMain';
+import CartFooter from '../CartFooter';
+import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import './index.scss';
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const { isCartOpen, data: products } = useSelector((state) => state.cart);
 
-  // cart items
-  const { products, cart } = useSelector((state) => state);
-
-  const handleClick = (e) => {
+  const handleOutsideClick = (e) => {
     if (e.target.className === 'cart-remove-product') return;
-
     dispatch(openCart());
   };
-
-  const [ref] = useOutsideClickRef(handleClick);
+  const [ref] = useOutsideClickRef(handleOutsideClick);
 
   useEffect(() => {
-    // localStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
+    // localStorage.setItem('cart', JSON.stringify(cart));
+  }, []);
 
   return (
     <>
-      {cart.isCartOpen && (
+      {isCartOpen && (
         <>
           <div className="overlay"></div>
           <Fade right>
             <div ref={ref} className="cart">
-              <div className="cart-header">
-                <h1>CART</h1>
-                <h1
-                  className="close-cart"
-                  onClick={() => {
-                    dispatch(openCart());
-                  }}
-                >
-                  X
-                </h1>
-              </div>
-              <div className="cart-main">
-                {cart.data.map((product) => (
-                  <CartProduct key={product.documentID} product={product} />
-                ))}
-              </div>
-              <div className="cart-footer">
-                <Link
-                  to="/payment"
-                  className="checkout-btn"
-                  onClick={() => {
-                    dispatch(openCart());
-                  }}
-                >
-                  <span>CHECKOUT</span> <span>.</span>{' '}
-                  <span>
-                    $ {''}
-                    {cart.length > 0
-                      ? cart
-                          .reduce((a, p) => {
-                            return a + p.price * p.count;
-                          }, 0)
-                          .toFixed(2)
-                      : '00.00 usd'}
-                  </span>
-                </Link>
-              </div>
+              <CartHeader openCart={openCart} />
+              <CartMain products={products} />
+              <CartFooter products={products} openCart={openCart} />
             </div>
           </Fade>
         </>

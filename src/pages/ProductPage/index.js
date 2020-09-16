@@ -22,7 +22,7 @@ const ProductPage = () => {
   // destruct data
 
   const { id } = useParams();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
   const product = products.filter(
     (product) => product.documentID === Number(id)
   )[0];

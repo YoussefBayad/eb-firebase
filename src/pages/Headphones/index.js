@@ -6,7 +6,7 @@ import Products from '../../components/Products';
 import { useSelector } from 'react-redux';
 
 const Headphones = () => {
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
   const headphones = products.filter(
     (product) => product.category === 'Headphone'
   );

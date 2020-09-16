@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkUserIsAdmin } from '../../hooks/useAdminAuth';
-
 import './index.scss';
+
 const AdminToolBar = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const isAdmin = checkUserIsAdmin(currentUser);
