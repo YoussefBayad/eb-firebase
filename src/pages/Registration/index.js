@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { signUpUserStart } from '../../redux/User/user.actions';
 import { auth, handleUserProfile } from '../../Firebase/utils.js';
 
 // style
@@ -35,14 +34,13 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      signUpUserStart({
-        displayName,
-        email,
-        password,
-        confirmPassword,
-      })
-    );
+    dispatch();
+    // signUpUserStart({
+    //   displayName,
+    //   email,
+    //   password,
+    //   confirmPassword,
+    // })
   };
 
   return (

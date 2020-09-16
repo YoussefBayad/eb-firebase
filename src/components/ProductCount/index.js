@@ -1,16 +1,15 @@
 import React from 'react';
-//redux
 import { useDispatch } from 'react-redux';
-import types from '../../redux/Products/products.types';
-//style
+import { decrement, increment } from '../../redux/cart/cartSlice';
 import './index.scss';
+
 const Count = ({ id, count }) => {
   const dispatch = useDispatch();
   return (
     <div className="count">
-      <button onClick={() => dispatch({ type: types.INCREMENT, id })}>+</button>
+      <button onClick={() => dispatch(increment(id))}>+</button>
       {count}
-      <button onClick={() => dispatch({ type: types.DECREMENT, id })}>-</button>
+      <button onClick={() => dispatch(decrement(id))}>-</button>
     </div>
   );
 };

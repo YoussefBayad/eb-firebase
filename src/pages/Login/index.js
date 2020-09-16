@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  emailSignInStart,
-  googleSignInStart,
-} from '../../redux/User/user.actions';
 
 //style
 import './index.scss';
@@ -32,11 +28,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(emailSignInStart({ email, password }));
+    // dispatch(emailSignInStart({ email, password }));
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(googleSignInStart());
+    // dispatch(googleSignInStart());
   };
 
   return (

@@ -1,18 +1,12 @@
 import React from 'react';
-import store from '../../redux/createStore.js';
 
-/* components*/
+import { useSelector } from 'react-redux';
 import Links from '../../components/Links';
 import Products from '../../components/Products';
-
-/* style */
-
 import './index.scss';
 
 const Shop = () => {
-  //products
-
-  const { products } = store.getState();
+  const { products } = useSelector((state) => state.products.data);
   return (
     <div className="shop">
       <h1>Shop</h1>

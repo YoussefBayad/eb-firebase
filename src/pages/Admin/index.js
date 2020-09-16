@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchProducts from './fetch';
-import {
-  handleAddProduct,
-  handleDeleteProduct,
-} from '../../redux/Products/products.helpers';
+// import fetchProducts from './fetch';
+// import {
+//   handleAddProduct,
+//   handleDeleteProduct,
+// } from '../../redux/Products/products.helpers';
 import { timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
@@ -48,21 +48,21 @@ const Admin = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('dispatched');
-    handleAddProduct({
-      category,
-      photoURL,
-      name,
-      price,
-      count: 0,
-      wireless,
-      wirelessCharging,
-      waterProof,
-      fullControl,
-      eitherBudSolo,
-      tile,
-      totalCharge,
-      createdAt: timestamp(),
-    });
+    // handleAddProduct({
+    //   category,
+    //   photoURL,
+    //   name,
+    //   price,
+    //   count: 0,
+    //   wireless,
+    //   wirelessCharging,
+    //   waterProof,
+    //   fullControl,
+    //   eitherBudSolo,
+    //   tile,
+    //   totalCharge,
+    //   createdAt: timestamp(),
+    // });
     resetForm();
   };
 

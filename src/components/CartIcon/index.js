@@ -10,7 +10,7 @@ import cartIcon from '../../assets/icon/cart.svg';
 const CartIcon = () => {
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
   let cartLength;
   products
     ? (cartLength = products.filter((product) => product.count > 0).length)
