@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-
-// react router Link
 import { Link } from 'react-router-dom';
-
-// outside click
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
 const FilterResults = ({ searchResults }) => {
   const [showSearchResults, setShowSearchResults] = useState(true);
-
-  // hide search results div
 
   const handleClick = () => {
     setShowSearchResults(false);
@@ -18,7 +12,7 @@ const FilterResults = ({ searchResults }) => {
 
   return (
     <>
-      {showSearchResults && (
+      {searchResults.length > 0 && showSearchResults && (
         <div ref={ref} className="search-results" onClick={handleClick}>
           {searchResults.map((product) => (
             <Link
