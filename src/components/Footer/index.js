@@ -6,7 +6,6 @@ import './index.scss';
 import chevronRight from '../../assets/icon/chevron-right.svg';
 import facebook from '../../assets/icon/facebook.svg';
 import twitter from '../../assets/icon/twitter.svg';
-import instagram from '../../assets/icon/instagram.svg';
 import linkedin from '../../assets/icon/linkedin.svg';
 
 const Footer = () => {
@@ -50,9 +49,7 @@ const Footer = () => {
           >
             <img src={facebook} alt="my facebook account" />
           </a>
-          <a href="https://www.instagram.com/jo_byd/" target="_blank">
-            <img src={instagram} alt="my instagram account" />
-          </a>
+
           <a
             href="https://www.linkedin.com/in/youssef-bayad-5584171b4/"
             target="_blank"

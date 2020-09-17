@@ -22,10 +22,12 @@ html {
 body {
   overflow-x: hidden;
 }
+
 a {
   text-decoration: none;
   color: white;
 }
+
 ul {
   list-style: none;
 }
@@ -59,7 +61,7 @@ ul {
 }
 
 // btns
-.checkout-btn {
+.primary-btn {
   background-color: black;
   color: white;
   border: none;
@@ -79,24 +81,33 @@ ul {
   }
 }
 
-//
-.btn {
-  margin: 3rem;
-  margin-left: 1.5rem;
-  background-color: black;
-  border-radius: 0.5rem;
-  color: white;
+.buy-button {
+  display: inline-block;
   border: none;
   outline: none;
-  padding: 2rem;
-  font-size: 1.7rem;
-  width: 30rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  background-color: #cc5c43;
+  color: white;
   cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: darken($accent, 15%);
+  }
+}
+.in-cart {
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  color: $accent;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5rem;
   @include transition;
 
   &:hover {
-    color: black;
-    background-color: rgb(211, 207, 207);
+    background-color: darken(white, 10%);
   }
 }
 
@@ -109,4 +120,23 @@ select {
   border-radius: 0.5rem;
   display: inline-block;
   border: grey 2px solid;
+}
+
+// scroll down
+
+.scroll-down {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 47%;
+  width: 5rem;
+  background-color: white;
+  box-shadow: 2px 2px 5px 0px black;
+  cursor: pointer;
+
+  border-radius: 50%;
+  @include transition;
+  &:hover {
+    transform: translateY(50%);
+    box-shadow: none;
+  }
 }

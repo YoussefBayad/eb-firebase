@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { authChange } from './redux/User/userSlice.js';
 
 // auth
-
 import { auth, handleUserProfile } from './Firebase/utils.js';
 
 // layout
@@ -15,7 +14,6 @@ import MainLayout from './layouts/MainLayout.js';
 import HomeLayout from './layouts/HomeLayout.js';
 
 // pages
-
 import HomePage from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
@@ -34,7 +32,6 @@ import WithAdminAuth from './hoc/withAdminAuth.js';
 import WithAuth from './hoc/withAuth';
 
 // style
-
 import './default.scss';
 
 const App = () => {

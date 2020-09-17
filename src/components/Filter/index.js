@@ -5,7 +5,7 @@ import FilterResults from '../FilterResults/index.js';
 
 import './index.scss';
 
-const Filter = ({ show }) => {
+const Filter = () => {
   const products = useSelector((state) => state.products.data);
   const [searchResults, setSearchResults] = useState([]);
 
@@ -27,11 +27,9 @@ const Filter = ({ show }) => {
 
   return (
     <div className="filter">
-      <FilterInput show={show} handleChange={handleChange} />
+      <FilterInput handleChange={handleChange} />
 
-      {searchResults.length > 0 && (
-        <FilterResults searchResults={searchResults} />
-      )}
+      <FilterResults searchResults={searchResults} />
     </div>
   );
 };

@@ -13,8 +13,8 @@ const HomePage = () => {
             distractions of an open office, We help you create your own quiet
             space. filtering out unwanted noise so all you hear is your music.
           </p>
-          <Link to="/shop" className="link">
-            Shop Now{' '}
+          <Link to="/shop" className="in-cart">
+            Shop Now
           </Link>
         </div>
         <a href="#flex">
@@ -25,18 +25,22 @@ const HomePage = () => {
         <h1>NEW RELEASES</h1>
         <div className="flex" id="flex">
           <Link to="/shop/earbuds">
-            <div className="eardubs-card">
+            <div className="earbuds-card card">
               <div className="text">
                 <h1>Earbusds</h1>
-                <button to="/shop/earbuds">View All</button>
+                <button className="buy-button" to="/shop/earbuds">
+                  View All
+                </button>
               </div>
             </div>
           </Link>
           <Link to="/shop/headphones">
-            <div className="headphones-card">
+            <div className="headphones-card card">
               <div className="text">
                 <h1>Headphones</h1>
-                <button to="/shop/headphones">View All</button>
+                <button className="buy-button" to="/shop/headphones">
+                  View All
+                </button>
               </div>
             </div>
           </Link>

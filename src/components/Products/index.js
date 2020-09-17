@@ -6,12 +6,12 @@ import spinner from '../../assets/icon/spinner.gif';
 
 import './index.scss';
 
-const Products = ({ data, status }) => {
+const Products = ({ data: products, status }) => {
   return (
     <Fade bottom>
       <div className="products">
         {status === 'succeeded' &&
-          data.map((product) => (
+          products.map((product) => (
             <Product product={product} key={product.documentID} />
           ))}
         {status === 'loading' && (

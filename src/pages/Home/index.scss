@@ -14,51 +14,30 @@
   position: relative;
   & .text {
     color: white;
-    width: 40rem;
+    max-width: 40rem;
+    min-width: 30rem;
     height: 100%;
     float: left;
     text-align: left;
   }
-  h1 {
+  & h1 {
     font-size: 4.5rem;
     font-weight: bolder;
     margin-bottom: 1rem;
   }
-  p {
+  & p {
     line-height: 1.5;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 8rem;
   }
-
-  .link {
-    font-size: 1.6rem;
+  & a {
     font-weight: bold;
     padding: 1rem;
-    background-color: white;
-    color: $accent;
-    border-radius: 0.5rem;
-    @include transition;
-    box-shadow: 5px 5px 10px 2px black;
-    &:hover {
-      box-shadow: none;
-    }
-  }
+    border: none;
+    box-shadow: 2px 2px 5px 1px black;
 
-  .scroll-down {
-    position: absolute;
-    bottom: -2.5rem;
-    left: 47%;
-    width: 5rem;
-    background-color: white;
-    box-shadow: 2px 2px 5px 0px black;
-    cursor: pointer;
-
-    border-radius: 50%;
-    // transform: translate(-50%);
-    @include transition;
     &:hover {
-      transform: translateY(50%);
       box-shadow: none;
     }
   }
@@ -68,8 +47,9 @@
   text-align: center;
   width: 80%;
   margin: auto;
-  h1 {
+  & h1 {
     font-size: 3rem;
+    width: 12ch;
   }
 
   .flex {
@@ -78,33 +58,27 @@
     gap: 4rem;
     margin: 10rem 0;
   }
-  .eardubs-card {
+  .earbuds-card {
     background: url('/img/earbuds-home-page.webp') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
   }
   .headphones-card {
     background: url('/img/headphones-home-page.webp') no-repeat center center;
+  }
+
+  .card {
+    position: relative;
+    height: 60rem;
+    display: flex;
+    align-items: flex-end;
+    text-align: left;
+    background-color: lightgrey;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
-  .eardubs-card,
-  .headphones-card {
-    // margin-bottom: 20rem;
     padding: 4rem;
-    background-color: lightgrey;
     border-radius: 1rem;
-    height: 60rem;
-    // width: 35%;
-    text-align: left;
     cursor: pointer;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
 
     @include transition;
 
@@ -131,29 +105,21 @@
         font-weight: bolder;
         margin-bottom: 3.5rem;
       }
-
-      button {
-        border: none;
-        outline: none;
-        color: white;
-        font-size: 1.7rem;
-        padding: 1.4rem;
-        background-color: $accent;
-        border-radius: 0.5rem;
-        box-shadow: 3px 3px 20px 2px black;
-        cursor: pointer;
-        @include transition;
-        &:hover {
-          box-shadow: none;
-        }
+    }
+    button {
+      box-shadow: 2px 2px 10px 1px black;
+      font-size: 1.7rem;
+      padding: 1.4rem;
+      &:hover {
+        box-shadow: none;
       }
     }
   }
 }
 
-@media screen and (max-width: 700px) {
-  .text {
-    width: 20rem !important;
+@media screen and (max-width: 500px) {
+  .showcase {
+    padding: 3rem;
   }
 }
 

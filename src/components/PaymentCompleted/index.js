@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 import checked from '../../assets/icon/checked.svg';
 import chevronRight from '../../assets/icon/chevron-right.svg';
+
 const Completed = ({ name }) => {
   return (
     <div className="payment-completed">

@@ -1,15 +1,8 @@
 import React from 'react';
-
-// router
 import { Link } from 'react-router-dom';
-
-// components
-
 import Filter from '../Filter';
 import User from '../User';
 import CartIcon from '../CartIcon';
-
-//style
 import './index.scss';
 
 const Header = () => {
@@ -24,9 +17,8 @@ const Header = () => {
           <Link to="/">About Us</Link>
         </div>
         <div className="right-nav">
-          <Filter show={false} />
+          <Filter />
           <User />
-
           <CartIcon />
         </div>
       </div>

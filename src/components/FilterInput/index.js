@@ -3,8 +3,8 @@ import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
 import search from '../../assets/icon/search.svg';
 
-const FilterInput = ({ handleChange, show }) => {
-  const [showFilter, setShowFilter] = useState(show);
+const FilterInput = ({ handleChange }) => {
+  const [showFilter, setShowFilter] = useState(false);
 
   const handleClick = () => {
     setShowFilter((prev) => !prev);
