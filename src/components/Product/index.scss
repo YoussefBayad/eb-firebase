@@ -4,7 +4,7 @@
   margin-bottom: 5rem;
   cursor: pointer;
 
-  img {
+  & img {
     width: 90%;
     transition: all 0.5s ease;
     margin-bottom: 1rem;
@@ -23,5 +23,11 @@
   .price {
     margin-top: 0.5rem;
     font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  & img {
+    width: 50%;
   }
 }
