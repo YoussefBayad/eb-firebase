@@ -26,8 +26,8 @@ const Cart = () => {
     // localStorage.setItem('cart', JSON.stringify(cart));
   }, []);
   const cartVariants = {
-    open: { x: 0 },
-    closed: { x: 600 },
+    open: { x: 0, transition: { duration: 0.6 } },
+    closed: { x: 500 },
   };
   return (
     <>

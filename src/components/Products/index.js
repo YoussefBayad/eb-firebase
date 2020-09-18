@@ -8,22 +8,18 @@ import './index.scss';
 
 const Products = ({ data: products, status }) => {
   return (
-    <Fade bottom>
-      <div className="products">
-        {status === 'succeeded' &&
-          products.map((product) => (
-            <Product product={product} key={product.documentID} />
-          ))}
-        {status === 'loading' && (
-          <img
-            src={spinner}
-            alt="Loading ..."
-            style={{ margin: '20rem auto' }}
-          />
-        )}
-        {status === 'failed' && <h1>Failed Reload </h1>}
-      </div>
-    </Fade>
+    // <Fade bottom>
+    <div className="products">
+      {status === 'succeeded' &&
+        products.map((product) => (
+          <Product product={product} key={product.documentID} />
+        ))}
+      {status === 'loading' && (
+        <img src={spinner} alt="Loading ..." style={{ margin: '20rem auto' }} />
+      )}
+      {status === 'failed' && <h1>Failed Reload </h1>}
+    </div>
+    // </Fade>
   );
 };
 

@@ -8,10 +8,10 @@ import './index.scss';
 const Filter = () => {
   const products = useSelector((state) => state.products.data);
   const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(true);
 
   const handleChange = (e) => {
-    console.log(e.target.value.trim());
-    console.log(searchResults.length);
+    setShowSearchResults(true);
     if (e.target.value.trim() === '') {
       setSearchResults([]);
     } else {
@@ -29,7 +29,11 @@ const Filter = () => {
     <div className="filter">
       <FilterInput handleChange={handleChange} />
 
-      <FilterResults searchResults={searchResults} />
+      <FilterResults
+        searchResults={searchResults}
+        showSearchResults={showSearchResults}
+        setShowSearchResults={setShowSearchResults}
+      />
     </div>
   );
 };

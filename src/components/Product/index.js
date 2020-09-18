@@ -6,7 +6,12 @@ import './index.scss';
 
 const Product = ({ product }) => {
   return (
-    <motion.div whileTap={{ scale: 0.9 }} animate className="product">
+    <motion.div
+      initial={{ y: 400 }}
+      animate={{ y: 0, transition: { duration: 0.5 } }}
+      whileTap={{ scale: 0.9 }}
+      className="product"
+    >
       <Link to={`/shop/product/${product.documentID}`}>
         <img
           src={

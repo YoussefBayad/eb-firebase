@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const FilterResults = ({ searchResults }) => {
-  const [showSearchResults, setShowSearchResults] = useState(true);
-
+const FilterResults = ({
+  searchResults,
+  setShowSearchResults,
+  showSearchResults,
+}) => {
   const handleClick = () => {
     setShowSearchResults(false);
   };
   const [ref] = useOutsideClickRef(handleClick);
 
   return (
-    <>
+    <AnimatePresence>
       {searchResults.length > 0 && showSearchResults && (
-        <div ref={ref} className="search-results" onClick={handleClick}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.4 } }}
+          exit={{ opacity: 0 }}
+          ref={ref}
+          className="search-results"
+          onClick={handleClick}
+        >
           {searchResults.map((product) => (
             <Link
               key={product.documentID}
@@ -36,9 +46,9 @@ const FilterResults = ({ searchResults }) => {
               </div>
             </Link>
           ))}
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 
