@@ -13,7 +13,7 @@ import Button from '../../components/forms/Button';
 import './index.scss';
 
 const Admin = (props) => {
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.data);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState('headphones');
@@ -212,9 +212,9 @@ const Admin = (props) => {
                 >
                   <tbody>
                     {products.map((product, index) => {
-                      const { name, price, id } = product;
+                      const { name, price, documentID } = product;
                       return (
-                        <tr>
+                        <tr key={documentID}>
                           <td>
                             <img
                               className="thumb"
@@ -226,6 +226,7 @@ const Admin = (props) => {
                                       ''
                                     )}.webp`
                               }
+                              alt={name}
                             />
                           </td>
                           <td>{name}</td>

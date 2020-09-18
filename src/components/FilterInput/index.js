@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 
-import search from '../../assets/icon/search.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const FilterInput = ({ handleChange }) => {
-  const [showFilter, setShowFilter] = useState(false);
-
-  const handleClick = () => {
-    setShowFilter((prev) => !prev);
-  };
+const FilterInput = ({ handleChange, handleClick, showFilter }) => {
   const [ref] = useOutsideClickRef(handleClick);
 
   return (
@@ -29,13 +23,6 @@ const FilterInput = ({ handleChange }) => {
           />
         )}
       </AnimatePresence>
-
-      <img
-        className="search-icon"
-        src={search}
-        alt="search icon"
-        onClick={handleClick}
-      />
     </>
   );
 };

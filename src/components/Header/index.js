@@ -14,7 +14,6 @@ const Header = () => {
             EB
           </Link>
           <Link to="/shop">Shop</Link>
-          <Link to="/">About Us</Link>
         </div>
         <div className="right-nav">
           <Filter />

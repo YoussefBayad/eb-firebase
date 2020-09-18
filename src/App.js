@@ -19,7 +19,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Shop from './pages/Shop';
 import Payment from './pages/Payment';
-// import Admin from './pages/Admin';
+import Admin from './pages/Admin';
 import Earbuds from './pages/Earbuds';
 import Wireless from './pages/Earbuds/Wireless';
 import Wired from './pages/Earbuds/Wired';
@@ -37,21 +37,21 @@ import './default.scss';
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch(
-            authChange({
-              id: snapshot.id,
-              ...snapshot.data(),
-            })
-          );
-        });
-      } else {
-        dispatch(authChange(null));
-      }
-    });
+    // const authListener = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await handleUserProfile(userAuth);
+    //     userRef.onSnapshot((snapshot) => {
+    //       dispatch(
+    //         authChange({
+    //           id: snapshot.id,
+    //           ...snapshot.data(),
+    //         })
+    //       );
+    //     });
+    //   } else {
+    //     dispatch(authChange(null));
+    //   }
+    // });
   }, [dispatch]);
   return (
     <Switch>
@@ -65,7 +65,7 @@ const App = () => {
         )}
       />
 
-      {/* <Route
+      <Route
         exact
         path="/admin"
         render={() => (
@@ -75,7 +75,7 @@ const App = () => {
             </AdminLayout>
           </WithAdminAuth>
         )}
-      /> */}
+      />
       <Route
         exact
         path="/shop/product/:id"

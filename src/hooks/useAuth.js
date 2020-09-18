@@ -12,7 +12,7 @@ const useAuth = (props) => {
     } else {
       history.push('/');
     }
-  }, [currentUser]);
+  }, [currentUser, history]);
 
   return currentUser;
 };

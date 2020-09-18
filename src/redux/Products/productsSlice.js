@@ -130,7 +130,8 @@ const productsSlice = createSlice({
     [fetchProducts.rejected]: (state, action) => {
       if (state.status === 'loading') {
         state.status = 'failed';
-        state.error = action.payload.message;
+        console.log(action.payload);
+        state.error = 'Failed Reload';
       }
     },
   },

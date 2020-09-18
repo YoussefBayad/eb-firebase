@@ -7,8 +7,9 @@ import './index.scss';
 const Product = ({ product }) => {
   return (
     <motion.div
-      initial={{ y: 400 }}
-      animate={{ y: 0, transition: { duration: 0.5 } }}
+      initial={{ scale: 0, y: 400 }}
+      animate={{ scale: 1, y: 0 }}
+      transition={{ duration: 1 }}
       whileTap={{ scale: 0.9 }}
       className="product"
     >
