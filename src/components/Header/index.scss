@@ -8,7 +8,6 @@ nav {
   top: 0;
   width: 100%;
   z-index: 10;
-
   .nav-container {
     @extend .container;
     display: flex;
@@ -17,40 +16,36 @@ nav {
     height: 6rem;
   }
 
-  a {
+  & a {
     @extend .hover;
     font-size: 1.7rem;
     margin-left: 2rem;
   }
   .logo {
     @extend .hover;
-
     color: white;
     font-size: 3rem;
     margin-left: 0;
     margin-right: 3rem;
   }
   .right-nav {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     & img {
       height: 3rem;
       margin-right: 3rem;
-
       @include transition;
       cursor: pointer;
-
       &:hover {
         transform: scale(1.1);
       }
-    }
-
-    a {
-      margin: 0;
     }
   }
 
   .cart-icon,
   .user {
-    display: inline-block;
     position: relative;
   }
 
@@ -77,25 +72,23 @@ nav {
   }
 }
 
-@media screen and (max-width: 580px) {
-  nav {
-    padding: 0rem;
-  }
-  .left-nav a:nth-child(3) {
-    display: none;
-  }
-  .right-nav {
-    & img {
-      height: 2.5rem !important;
-      margin-right: 0rem !important;
-      margin-left: 1rem;
-    }
-  }
-  a {
-    margin-left: 0rem !important;
-  }
-  .logo {
-    font-size: 2.5rem !important;
-    margin-right: 1rem !important;
-  }
-}
+// @media screen and (max-width: 580px) {
+//   nav {
+//     padding: 0rem;
+//   }
+
+//   .right-nav {
+//     & img {
+//       height: 2.5rem;
+//       margin-right: 0rem;
+//       margin-left: 1rem;
+//     }
+//   }
+//   a {
+//     margin-left: 0rem;
+//   }
+//   .logo {
+//     font-size: 2.5rem;
+//     margin-right: 1rem;
+//   }
+// }

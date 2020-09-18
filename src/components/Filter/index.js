@@ -31,23 +31,23 @@ const Filter = () => {
 
   return (
     <div className="filter">
-      <div className="flex">
+      <div className="filter-flex">
         <FilterInput
           handleChange={handleChange}
           handleClick={handleClick}
           showFilter={showFilter}
         />
-        <img
-          className="search-icon"
-          src={search}
-          alt="search icon"
-          onClick={handleClick}
+        <FilterResults
+          searchResults={searchResults}
+          showSearchResults={showSearchResults}
+          setShowSearchResults={setShowSearchResults}
         />
       </div>
-      <FilterResults
-        searchResults={searchResults}
-        showSearchResults={showSearchResults}
-        setShowSearchResults={setShowSearchResults}
+      <img
+        className="search-icon"
+        src={search}
+        alt="search icon"
+        onClick={handleClick}
       />
     </div>
   );
