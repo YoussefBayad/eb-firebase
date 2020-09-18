@@ -18,9 +18,7 @@ html {
   word-spacing: 0.1rem;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
-}
-body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 a {

@@ -16,18 +16,44 @@ nav {
     height: 6rem;
   }
 
-  & a {
-    @extend .hover;
-    font-size: 1.7rem;
-    margin-left: 2rem;
+  .left-nav {
+    display: flex;
+    .burger {
+      height: 2.3rem;
+      width: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+
+      &:hover > span {
+        background-color: $accent;
+      }
+      .burger-child {
+        display: inline-block;
+        height: 0.4rem;
+        width: 100%;
+        border-radius: 3rem;
+        background-color: white;
+        @include transition;
+      }
+      display: inline-block;
+    }
+    .logo {
+      color: white;
+      font-size: 3rem;
+      margin: 0 3rem;
+    }
+    & a {
+      @extend .hover;
+      font-size: 1.7rem;
+      margin: 0;
+      align-self: center;
+      margin-right: 3rem;
+    }
   }
-  .logo {
-    @extend .hover;
-    color: white;
-    font-size: 3rem;
-    margin-left: 0;
-    margin-right: 3rem;
-  }
+
   .right-nav {
     width: 80%;
     display: flex;
@@ -44,6 +70,32 @@ nav {
     }
   }
 
+  .responsive-nav {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 70%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 3rem;
+    font-size: 3rem;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.562);
+    &:hover > * {
+      @extend .hover;
+    }
+
+    & h1 {
+      color: lightcoral;
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      cursor: pointer;
+    }
+  }
   .cart-icon,
   .user {
     position: relative;
@@ -72,23 +124,29 @@ nav {
   }
 }
 
-// @media screen and (max-width: 580px) {
-//   nav {
-//     padding: 0rem;
-//   }
+@media screen and (max-width: 750px) {
+  .left-nav {
+    .burger {
+      display: inline-block !important;
+    }
+    & a {
+      display: none;
+    }
+    .logo {
+      display: block;
+    }
+  }
 
-//   .right-nav {
-//     & img {
-//       height: 2.5rem;
-//       margin-right: 0rem;
-//       margin-left: 1rem;
-//     }
-//   }
-//   a {
-//     margin-left: 0rem;
-//   }
-//   .logo {
-//     font-size: 2.5rem;
-//     margin-right: 1rem;
-//   }
-// }
+  .cart-icon,
+  .filter {
+    & img {
+      height: 4rem;
+      width: 4rem;
+    }
+  }
+  .right-nav {
+    .user {
+      display: none;
+    }
+  }
+}
