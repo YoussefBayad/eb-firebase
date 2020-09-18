@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { removeFromCart } from '../../redux/cart/cartSlice';
 import Count from '../ProductCount';
 import RemoveProduct from '../RemoveProduct';
@@ -6,7 +7,7 @@ import './index.scss';
 
 const CartProduct = ({ product }) => {
   return (
-    <div className="cart-product">
+    <motion.div className="cart-product">
       <img
         className="cart-product-img"
         src={
@@ -27,7 +28,7 @@ const CartProduct = ({ product }) => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

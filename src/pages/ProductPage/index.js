@@ -17,17 +17,16 @@ import hour40 from '../../assets/icon/40hour.webp';
 // style
 import './index.scss';
 import AddToCart from '../../components/AddToCart';
+import getProductData from './gatProductData';
 
 const ProductPage = () => {
-  // destruct data
-
   const { id } = useParams();
-  const products = useSelector((state) => state.products.data);
-  const product = products.filter(
-    (product) => product.documentID === Number(id)
-  )[0];
+  const {
+    products: { data: products },
+    cart: { data: cart },
+  } = useSelector((state) => state);
 
-  // check if product in cart destruct count
+  const product = getProductData(products, cart, id);
 
   return (
     <div className="product-showcase">
@@ -37,7 +36,7 @@ const ProductPage = () => {
           <h2>${product.price} usd </h2>
           <div>
             <Count id={product.documentID} count={product.count} />
-            <AddToCart id={product.documentID} count={product.count} />
+            <AddToCart product={product} />
           </div>
         </div>
         <img

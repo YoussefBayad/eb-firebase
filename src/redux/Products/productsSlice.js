@@ -4,6 +4,8 @@ import { firestore } from '../../Firebase/utils';
 const initialState = {
   data: [
     {
+      documentID: 1,
+
       photoURL: null,
       name: 'Energized Stash™ Mini 5,000 mAh Portable Battery Pack',
       price: 29.99,
@@ -18,6 +20,8 @@ const initialState = {
       count: 0,
     },
     {
+      documentID: 2,
+
       photoURL: null,
       name: 'Uproar Wireless Headphone',
       price: 49.99,
@@ -32,6 +36,8 @@ const initialState = {
       count: 0,
     },
     {
+      documentID: 3,
+
       photoURL: null,
       name: 'Wild Indy™ Evo True Wireless Earbuds with Print',
       price: 89.99,
@@ -46,6 +52,8 @@ const initialState = {
       count: 0,
     },
     {
+      documentID: 4,
+
       photoURL: null,
       name: 'Venue Noise Canceling Wireless Headphone',
       price: 119.99,
@@ -60,6 +68,7 @@ const initialState = {
       count: 0,
     },
     {
+      documentID: 5,
       photoURL: null,
       name: 'Vert Clip-Anywhere Wireless Earbuds',
       price: 69.99,
