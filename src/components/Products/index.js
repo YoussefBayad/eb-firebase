@@ -1,14 +1,12 @@
 import React from 'react';
 
 import Product from '../Product';
-import Fade from 'react-reveal/Fade';
 import spinner from '../../assets/icon/spinner.gif';
 
 import './index.scss';
 
 const Products = ({ data: products, status }) => {
   return (
-    // <Fade bottom>
     <div className="products">
       {status === 'succeeded' &&
         products.map((product) => (
@@ -19,7 +17,6 @@ const Products = ({ data: products, status }) => {
       )}
       {status === 'failed' && <h1>Failed Reload </h1>}
     </div>
-    // </Fade>
   );
 };
 

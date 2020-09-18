@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { openCart } from '../../redux/cart/cartSlice';
-import Fade from 'react-reveal/Fade';
 import CartHeader from '../CartHeader';
 import CartMain from '../CartMain';
 import CartFooter from '../CartFooter';
