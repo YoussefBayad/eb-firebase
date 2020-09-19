@@ -1,24 +1,11 @@
 .admin {
   padding: 0 10px;
 
-  .callToActions {
+  .call-to-actions {
     display: inline-block;
     width: 100%;
     padding: 0;
     margin: 0 auto;
-
-    ul,
-    li {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-    }
-
-    ul {
-      li {
-        display: inline-block;
-      }
-    }
   }
 }
 
@@ -27,8 +14,8 @@
     margin-top: 1.5rem;
   }
 
-  table.results {
-    tr {
+  .admin.products {
+    div {
       &:nth-child(even) {
         background-color: #d3d3d3;
       }

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { auth } from '../../Firebase/utils';
 import Button from '../forms/Button';
 
 const ResponsiveNav = ({ open, setOpen }) => {
@@ -47,13 +48,31 @@ const ResponsiveNav = ({ open, setOpen }) => {
               About Us
             </Link>
             {currentUser ? (
-              <Button onClick={() => setOpen(false)}>Logout</Button>
+              <Button
+                style={{ color: 'white' }}
+                onClick={() => {
+                  auth.signOut();
+                  setOpen(false);
+                }}
+              >
+                Logout
+              </Button>
             ) : (
               <>
-                <Link to="/login" onClick={() => setOpen(false)}>
+                <Link
+                  className="btn"
+                  style={{ color: 'white', textAlign: 'center' }}
+                  to="/login"
+                  onClick={() => setOpen(false)}
+                >
                   Login
                 </Link>
-                <Link to="/register" onClick={() => setOpen(false)}>
+                <Link
+                  className="btn"
+                  style={{ color: 'white', textAlign: 'center' }}
+                  to="/register"
+                  onClick={() => setOpen(false)}
+                >
                   Register
                 </Link>
               </>

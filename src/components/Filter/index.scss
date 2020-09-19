@@ -51,20 +51,21 @@
   }
 }
 
-// @media screen and (max-width: 600px) {
-//   .filter-input {
-//     width: 100vw;
-//     top: 6rem;
-//     left: 0;
-//     margin: 0;
-//     padding: 2rem;
-//     font-size: 2rem;
-//   }
-//   .search-results {
-//     height: 50vh;
-//     width: 80vw;
-//     top: 12.5rem;
-//     left: 50%;
-//     transform: translateX(-50%);
-//   }
-// }
+@media screen and (max-width: 550px) {
+  .filter-input {
+    width: 70vw;
+    top: 6.7rem;
+    left: 0rem;
+    margin: 0;
+    padding: 2rem;
+    font-size: 2rem;
+    z-index: 2;
+  }
+
+  .search-results {
+    height: 50vh;
+    width: 50vw;
+    top: 13.5rem;
+    left: 11rem;
+  }
+}

@@ -1,67 +1,52 @@
 @import '~../../default';
-.verticalNav {
+.vertical-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  .user-profile {
+    width: 100%;
+    padding: 1rem;
+    .user-img {
+      & img {
+        height: 9rem;
+        width: 9rem;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+    }
+    .display-name {
+      font-size: 1.7rem;
+    }
+    padding-bottom: 2rem;
+    border-bottom: 2px solid lightgrey;
+  }
+
   .menu {
-    margin: 3rem auto 0;
+    margin-top: 3rem;
+    width: 100%;
 
     ul {
       li {
-        list-style-type: none;
-        border-bottom: 1px solid #d3d3d3;
-
-        &:first-child {
-          border-top: 1px solid #d3d3d3;
-        }
-
-        a,
-        span {
-          display: block;
-          width: 100%;
-          padding: 2rem;
-          font-size: 1.6rem;
-          line-height: 1;
-          color: black;
-          cursor: pointer;
-          @include transition;
-        }
-
+        background-color: lightgrey;
+        margin-bottom: 1rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        @include transition;
+        @extend .hover;
         &:hover {
-          background-color: #d3d3d3;
+          background: lighten(lightgray, 10%);
         }
       }
-    }
-  }
-}
-
-.userProfile {
-  margin: 3rem auto 1rem;
-
-  ul,
-  li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  ul {
-    li {
-      display: block;
-      width: 100%;
-
-      img {
-        display: block;
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
-        margin: 0 auto;
-      }
-
-      .displayName {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin: 1.5rem auto;
-        font-size: 1.8rem;
-        text-transform: uppercase;
+      li > *,
+      a {
+        font-size: 2rem;
+        color: black;
       }
     }
   }

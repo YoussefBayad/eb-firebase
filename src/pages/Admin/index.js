@@ -67,12 +67,8 @@ const Admin = (props) => {
 
   return (
     <div className="admin">
-      <div className="callToActions">
-        <ul>
-          <li>
-            <Button onClick={() => toggleModal()}>Add new product</Button>
-          </li>
-        </ul>
+      <div className="call-to-actions">
+        <Button onClick={() => toggleModal()}>Add new product</Button>
       </div>
 
       <Modal {...configModal}>
@@ -195,54 +191,29 @@ const Admin = (props) => {
       </Modal>
 
       <div className="manageProducts">
-        <table border="0" cellPadding="0" cellSpacing="0">
-          <tbody>
-            <tr>
-              <th>
-                <h1>Manage Products</h1>
-              </th>
-            </tr>
-            <tr>
-              <td>
-                <table
-                  className="results"
-                  border="0"
-                  cellPadding="10"
-                  cellSpacing="0"
-                >
-                  <tbody>
-                    {products.map((product, index) => {
-                      const { name, price, documentID } = product;
-                      return (
-                        <tr key={documentID}>
-                          <td>
-                            <img
-                              className="thumb"
-                              src={
-                                product.photoURL
-                                  ? product.photoURL
-                                  : `/img/${product.name.replace(
-                                      /\s/g,
-                                      ''
-                                    )}.webp`
-                              }
-                              alt={name}
-                            />
-                          </td>
-                          <td>{name}</td>
-                          <td>${price}</td>
-                          <td>
-                            <Button>Delete</Button>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <h1>Manage Products</h1>
+        <div className="admin-products">
+          {products.map((product) => {
+            const { name, price, documentID, photoURL } = product;
+            return (
+              <div key={documentID}>
+                <img
+                  className="thumb"
+                  src={
+                    product.photoURL
+                      ? product.photoURL
+                      : `/img/${product.name.replace(/\s/g, '')}.webp`
+                  }
+                  alt={name}
+                />
+
+                <h2>{name}</h2>
+                <h2>${price}</h2>
+                <Button>Delete</Button>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

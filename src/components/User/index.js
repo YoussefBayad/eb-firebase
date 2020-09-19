@@ -20,6 +20,7 @@ import person from '../../assets/icon/person.svg';
 // style
 import './index.scss';
 import Button from '../forms/Button/index.js';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const User = () => {
   const [open, setOpen] = useState(false);
@@ -43,44 +44,53 @@ const User = () => {
         className="user-image"
         onClick={() => setOpen((prev) => !prev)}
       />
-      {open && (
-        <div ref={ref} className="logout">
-          {currentUser ? (
-            <>
-              <h3>{currentUser.displayName}</h3>
-              <Button
-                onClick={() => {
-                  auth.signOut();
-                  setOpen(false);
-                }}
-              >
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/registration"
-                className="btn"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                Register
-              </Link>
-              <Link
-                to="/login"
-                className="btn"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                login
-              </Link>
-            </>
-          )}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            exit={{ y: 1000 }}
+            transition={{ duration: 0.4 }}
+            ref={ref}
+            className="log"
+          >
+            {currentUser ? (
+              <>
+                <h3>{currentUser.displayName}</h3>
+                <Button
+                  onClick={() => {
+                    auth.signOut();
+                    setOpen(false);
+                  }}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/registration"
+                  className="btn"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  Register
+                </Link>
+                <Link
+                  to="/login"
+                  className="btn"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  login
+                </Link>
+              </>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
