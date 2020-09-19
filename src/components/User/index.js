@@ -19,6 +19,7 @@ import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import person from '../../assets/icon/person.svg';
 // style
 import './index.scss';
+import Button from '../forms/Button/index.js';
 
 const User = () => {
   const [open, setOpen] = useState(false);
@@ -47,15 +48,14 @@ const User = () => {
           {currentUser ? (
             <>
               <h3>{currentUser.displayName}</h3>
-              <button
-                className="btn"
+              <Button
                 onClick={() => {
                   auth.signOut();
                   setOpen(false);
                 }}
               >
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
             <>

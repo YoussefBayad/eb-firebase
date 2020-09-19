@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '../../components/forms/Button/index.js';
 import { auth, handleUserProfile } from '../../Firebase/utils.js';
 
 // style
@@ -88,7 +89,7 @@ const Registration = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <button className="btn">Register</button>
+        <Button className="btn">Register</Button>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '../forms/Button';
 
 const ResponsiveNav = ({ open, setOpen }) => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -46,7 +47,7 @@ const ResponsiveNav = ({ open, setOpen }) => {
               About Us
             </Link>
             {currentUser ? (
-              <button onClick={() => setOpen(false)}>Logout</button>
+              <Button onClick={() => setOpen(false)}>Logout</Button>
             ) : (
               <>
                 <Link to="/login" onClick={() => setOpen(false)}>

@@ -59,6 +59,22 @@ ul {
 }
 
 // btns
+.btn {
+  background-color: black;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.7rem;
+  width: 80%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  @include transition;
+  &:hover {
+    color: black;
+    background-color: rgb(211, 207, 207);
+  }
+}
 .primary-btn {
   background-color: black;
   color: white;

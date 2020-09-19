@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import Button from '../../components/forms/Button';
 
 //style
 import './index.scss';
@@ -60,11 +61,11 @@ const Login = () => {
             required
           />
 
-          <button className="btn">Sign In</button>
+          <Button className="btn">Sign In</Button>
         </form>
-        <button className="btn" onClick={handleGoogleSignIn}>
+        <Button className="btn" onClick={handleGoogleSignIn}>
           Sign In With Google
-        </button>
+        </Button>
       </div>
     </div>
   );

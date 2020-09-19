@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openCart, addToCart } from '../../redux/cart/cartSlice';
+import Button from '../forms/Button';
 
 const AddToCart = ({ product }) => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const AddToCart = ({ product }) => {
   return (
     <>
       {isProductInCart === undefined ? (
-        <button
+        <Button
           className="buy-button"
           onClick={() => {
             dispatch(addToCart(product));
@@ -19,11 +20,11 @@ const AddToCart = ({ product }) => {
           }}
         >
           Add To Cart
-        </button>
+        </Button>
       ) : (
-        <button className="buy in-cart" onClick={() => dispatch(openCart())}>
+        <Button className="buy in-cart" onClick={() => dispatch(openCart())}>
           In Cart
-        </button>
+        </Button>
       )}
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '../../components/forms/Button';
 import Completed from '../../components/PaymentCompleted';
 import './index.scss';
 
@@ -312,7 +313,7 @@ const Payment = () => {
               placeholder="Phone number for order/shipping updates and exclusive offers"
               required
             />
-            <button className="btn">Complete Payment</button>
+            <Button className="btn">Complete Payment</Button>
           </form>
         </div>
       )}
