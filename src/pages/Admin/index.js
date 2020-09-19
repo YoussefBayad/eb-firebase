@@ -67,10 +67,6 @@ const Admin = (props) => {
 
   return (
     <div className="admin">
-      <div className="call-to-actions">
-        <Button onClick={() => toggleModal()}>Add new product</Button>
-      </div>
-
       <Modal {...configModal}>
         <div className="addNewProductForm">
           <form onSubmit={handleSubmit}>
@@ -192,11 +188,14 @@ const Admin = (props) => {
 
       <div className="manageProducts">
         <h1>Manage Products</h1>
+        <div className="call-to-actions">
+          <Button onClick={() => toggleModal()}>Add new product</Button>
+        </div>
         <div className="admin-products">
           {products.map((product) => {
             const { name, price, documentID, photoURL } = product;
             return (
-              <div key={documentID}>
+              <div className="admin-product" key={documentID}>
                 <img
                   className="thumb"
                   src={

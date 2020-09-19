@@ -3,20 +3,29 @@ import React from 'react';
 import './styles.scss';
 
 const Modal = ({ showModal, toggleModal, children }) => {
-  if (!showModal) return null;
-
   return (
     <AnimatePresence>
-      <motion.div className="modalOverlay" onClick={() => toggleModal()} />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="modal"
-      >
-        {children}
-      </motion.div>
+      {showModal && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="modalOverlay"
+            onClick={() => toggleModal()}
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="modal"
+          >
+            {children}
+          </motion.div>
+        </>
+      )}
     </AnimatePresence>
   );
 };

@@ -3,26 +3,44 @@
 
   .call-to-actions {
     display: inline-block;
-    width: 100%;
-    padding: 0;
-    margin: 0 auto;
+    width: 50%;
+    margin: 6rem auto;
+    & button {
+      background: #3f4c96;
+      &:hover {
+        color: white;
+        background: darken(#3f4c96, 10%);
+      }
+    }
   }
 }
 
 .manageProducts {
+  text-align: center;
   h1 {
-    margin-top: 1.5rem;
+    margin: 1.5rem;
+    font-size: 3rem;
   }
 
-  .admin.products {
-    div {
-      &:nth-child(even) {
-        background-color: #d3d3d3;
+  .admin-products {
+    margin-top: 2rem;
+    .admin-product {
+      margin-bottom: 3rem;
+      & h2:last-of-type {
+        margin-top: 1rem;
       }
-
       .thumb {
-        width: 15rem;
-        margin: 0 auto;
+        width: 10rem;
+        margin: 1rem auto;
+      }
+      & button {
+        margin-top: 1.5rem;
+        width: 20rem;
+        background-color: #9b3f3f;
+        &:hover {
+          color: white;
+          background: darken(#9b3f3f, 10%);
+        }
       }
     }
   }
