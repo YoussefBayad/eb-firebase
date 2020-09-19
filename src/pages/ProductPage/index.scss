@@ -42,9 +42,8 @@
   &-container {
     @extend .container;
   }
-
   .product-icon {
-    width: 50%;
+    width: 100%;
     margin: auto;
     margin-bottom: 3rem;
     display: flex;
@@ -58,6 +57,11 @@
 
 @media screen and (max-width: 800px) {
   .product-img {
-    width: 50rem !important;
+    width: 40rem !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .product-img {
+    width: 30rem !important;
   }
 }

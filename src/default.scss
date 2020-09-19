@@ -43,11 +43,11 @@ ul {
   @include transition;
   height: 100%;
   width: 100%;
-  z-index: 1;
+
   cursor: pointer;
-  background-color: rgb(252, 252, 252);
+  background-color: rgb(15, 15, 15);
   opacity: 0.7;
-  z-index: 2;
+  z-index: 3;
 }
 
 // hover

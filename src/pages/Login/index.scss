@@ -17,14 +17,14 @@
     font-size: 4rem;
   }
   button {
-    width: 70%;
     font-size: 1.5rem;
     line-height: 1.6;
-    margin: 1rem;
+    margin: 1rem auto;
+    width: 100%;
   }
   input {
-    display: block;
-    width: 70%;
+    // display: block;
+    width: 100%;
     margin: 1rem auto;
   }
 }
@@ -34,10 +34,7 @@
     width: 90%;
   }
   h1 {
-    margin-bottom: 4rem !important;
+    margin-bottom: 4rem;
     font-size: 3rem !important;
-  }
-  button {
-    width: 90% !important;
   }
 }

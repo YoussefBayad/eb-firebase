@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { openCart } from '../../redux/cart/cartSlice';
 import CartHeader from '../CartHeader';
 import CartMain from '../CartMain';
@@ -24,24 +24,33 @@ const Cart = () => {
   useEffect(() => {
     // localStorage.setItem('cart', JSON.stringify(cart));
   }, []);
-  const cartVariants = {
-    open: { x: 0, transition: { duration: 0.6 } },
-    closed: { x: 500 },
-  };
+
   return (
-    <>
-      {isCartOpen && <div className="overlay"></div>}
-      <motion.div
-        animate={isCartOpen ? 'open' : 'closed'}
-        variants={cartVariants}
-        ref={ref}
-        className="cart"
-      >
-        <CartHeader openCart={openCart} />
-        <CartMain products={products} />
-        <CartFooter products={products} openCart={openCart} />
-      </motion.div>
-    </>
+    <AnimatePresence>
+      {isCartOpen && (
+        <>
+          <motion.div
+            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            exit={{ opacity: 0 }}
+            className="overlay"
+          />
+          <motion.div
+            initial={{ opacity: 0, x: 1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 1, x: 1000 }}
+            transition={{ duration: 0.5 }}
+            ref={ref}
+            className="cart"
+          >
+            <CartHeader openCart={openCart} />
+            <CartMain products={products} />
+            <CartFooter products={products} openCart={openCart} />
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 
