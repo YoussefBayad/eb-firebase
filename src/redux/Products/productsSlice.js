@@ -79,6 +79,28 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const addProduct = createAsyncThunk(
+  'products/addProduct',
+  async (product) => {
+    try {
+      await firestore.collection('products').add(product);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct',
+  async (documentID) => {
+    try {
+      await firestore.collection('products').doc(documentID).delete();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -113,6 +135,40 @@ const productsSlice = createSlice({
       if (state.status === 'loading') {
         state.status = 'failed';
         state.error = 'Failed Reload';
+      }
+    },
+    [addProduct.pending]: (state, action) => {
+      state.status = 'loading';
+      state.error = null;
+    },
+    [addProduct.fulfilled]: (state, action) => {
+      if (state.status === 'loading') {
+        state.status = 'succeeded';
+        console.log(action.payload);
+      }
+    },
+    [addProduct.rejected]: (state, action) => {
+      console.log(action);
+      if (state.status === 'loading') {
+        state.status = 'failed';
+        state.error = 'failed to add product try again';
+      }
+    },
+    [deleteProduct.pending]: (state, action) => {
+      state.status = 'loading';
+      state.error = null;
+    },
+    [deleteProduct.fulfilled]: (state, action) => {
+      if (state.status === 'loading') {
+        state.status = 'succeeded';
+        console.log(action.payload);
+      }
+    },
+    [deleteProduct.rejected]: (state, action) => {
+      console.log(action);
+      if (state.status === 'loading') {
+        state.status = 'failed';
+        state.error = 'failed to delete product try again';
       }
     },
   },

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { firestore, timestamp } from '../../Firebase/utils';
+import { timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
 import Button from '../../components/forms/Button';
-import './index.scss';
 import AdminProducts from '../../components/AdminProducts';
 import Spinner from '../../components/Spinner';
 import useFirestoreListener from '../../hooks/useFirestoreListener';
+import { addProduct, deleteProduct } from '../../redux/Products/productsSlice';
+import './index.scss';
 
 const Admin = (props) => {
   const { data: products, status } = useSelector((state) => state.products);
@@ -46,33 +47,33 @@ const Admin = (props) => {
 
   const onAddProduct = (e) => {
     e.preventDefault();
-    dispatch({ type: 'products/fetchProducts/pending' });
-    firestore.collection('products').add({
-      category,
-      photoURL,
-      name,
-      price,
-      count: 0,
-      wireless,
-      wirelessCharging,
-      waterProof,
-      fullControl,
-      eitherBudSolo,
-      tile,
-      totalCharge,
-      createdAt: timestamp(),
-      deleteAble: true,
-    });
+    dispatch(
+      addProduct({
+        category,
+        photoURL,
+        name,
+        price,
+        count: 0,
+        wireless,
+        wirelessCharging,
+        waterProof,
+        fullControl,
+        eitherBudSolo,
+        tile,
+        totalCharge,
+        createdAt: timestamp(),
+        deleteAble: true,
+      })
+    );
     resetForm();
   };
 
   const onDeleteProduct = ({ documentID, deleteAble }) => {
-    if (deleteAble !== undefined && deleteAble === true) {
-      dispatch({ type: 'products/fetchProducts/pending' });
-      firestore.collection('products').doc(documentID).delete();
+    if (deleteAble === true) {
+      dispatch(deleteProduct(documentID));
       setError(null);
     } else {
-      setError('You can delete only the products you add');
+      setError('You can delete only the products you added');
     }
   };
   useFirestoreListener(status);
@@ -212,3 +213,16 @@ const Admin = (props) => {
 };
 
 export default Admin;
+
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
+
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  return {
+    value,
+    onChange: handleChange,
+  };
+}
