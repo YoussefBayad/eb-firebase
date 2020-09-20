@@ -9,6 +9,7 @@
   .user-profile {
     width: 100%;
     padding: 1rem;
+
     .user-img {
       & img {
         height: 9rem;
@@ -36,6 +37,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         cursor: pointer;
         @include transition;
         @extend .hover;
@@ -47,6 +49,11 @@
       a {
         font-size: 2rem;
         color: black;
+      }
+
+      li > h2 {
+        font-weight: normal;
+        @extend .hover;
       }
     }
   }

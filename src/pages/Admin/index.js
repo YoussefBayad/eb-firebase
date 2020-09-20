@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import fetchProducts from './fetch';
-// import {
-//   handleAddProduct,
-//   handleDeleteProduct,
-// } from '../../redux/Products/products.helpers';
-import { timestamp } from '../../Firebase/utils';
+import { firestore, timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
 import FormInput from '../../components/forms/FormInput';
 import FormSelect from '../../components/forms/FormSelect';
 import Button from '../../components/forms/Button';
 import './index.scss';
+import AdminProducts from '../../components/AdminProducts';
+import Spinner from '../../components/Spinner';
 
 const Admin = (props) => {
-  const products = useSelector((state) => state.products.data);
+  const { data: products, status } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState('headphones');
@@ -45,31 +42,54 @@ const Admin = (props) => {
     setPrice(0);
   };
 
-  const handleSubmit = (e) => {
+  const onAddProduct = (e) => {
     e.preventDefault();
-    // handleAddProduct({
-    //   category,
-    //   photoURL,
-    //   name,
-    //   price,
-    //   count: 0,
-    //   wireless,
-    //   wirelessCharging,
-    //   waterProof,
-    //   fullControl,
-    //   eitherBudSolo,
-    //   tile,
-    //   totalCharge,
-    //   createdAt: timestamp(),
-    // });
+    dispatch({ type: 'products/fetchProducts/pending' });
+    firestore.collection('products').add({
+      category,
+      photoURL,
+      name,
+      price,
+      count: 0,
+      wireless,
+      wirelessCharging,
+      waterProof,
+      fullControl,
+      eitherBudSolo,
+      tile,
+      totalCharge,
+      createdAt: timestamp(),
+    });
     resetForm();
   };
 
+  const onDeleteProduct = (documentID) => {
+    dispatch({ type: 'products/fetchProducts/pending' });
+    firestore.collection('products').doc(documentID).delete();
+  };
+  useEffect(() => {
+    if (status === 'idle') return;
+    else {
+      firestore
+        .collection('products')
+        .orderBy('createdAt', 'desc')
+        .onSnapshot((snapshot) => {
+          let products = [];
+          snapshot.docs.map((snap) =>
+            products.push({ ...snap.data(), documentID: snap.id })
+          );
+          dispatch({
+            type: 'products/fetchProducts/fulfilled',
+            payload: products,
+          });
+        });
+    }
+  }, [status, dispatch]);
   return (
     <div className="admin">
       <Modal {...configModal}>
         <div className="addNewProductForm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={onAddProduct}>
             <h2>Add new product</h2>
 
             <FormSelect
@@ -191,28 +211,9 @@ const Admin = (props) => {
         <div className="call-to-actions">
           <Button onClick={() => toggleModal()}>Add new product</Button>
         </div>
-        <div className="admin-products">
-          {products.map((product) => {
-            const { name, price, documentID, photoURL } = product;
-            return (
-              <div className="admin-product" key={documentID}>
-                <img
-                  className="thumb"
-                  src={
-                    product.photoURL
-                      ? product.photoURL
-                      : `/img/${product.name.replace(/\s/g, '')}.webp`
-                  }
-                  alt={name}
-                />
 
-                <h2>{name}</h2>
-                <h2>${price}</h2>
-                <Button>Delete</Button>
-              </div>
-            );
-          })}
-        </div>
+        <Spinner status={status} style={{ margin: '5rem auto ' }} />
+        <AdminProducts products={products} onDeleteProduct={onDeleteProduct} />
       </div>
     </div>
   );

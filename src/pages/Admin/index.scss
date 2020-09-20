@@ -4,7 +4,8 @@
   .call-to-actions {
     display: inline-block;
     width: 50%;
-    margin: 6rem auto;
+    margin: 7rem auto;
+    margin-top: 3rem;
     & button {
       background: #3f4c96;
       &:hover {
@@ -24,8 +25,16 @@
 
   .admin-products {
     margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
     .admin-product {
       margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
       & h2:last-of-type {
         margin-top: 1rem;
       }
@@ -34,7 +43,7 @@
         margin: 1rem auto;
       }
       & button {
-        margin-top: 1.5rem;
+        margin-top: 3rem;
         width: 20rem;
         background-color: #9b3f3f;
         &:hover {

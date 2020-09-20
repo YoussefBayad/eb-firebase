@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import { AnimatePresence, motion } from 'framer-motion';

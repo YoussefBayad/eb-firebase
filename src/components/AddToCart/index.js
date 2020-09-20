@@ -8,7 +8,6 @@ const AddToCart = ({ product }) => {
   const isProductInCart = useSelector((state) =>
     state.cart.data.find((item) => item.documentID === product.documentID)
   );
-  console.log(isProductInCart);
   return (
     <>
       {isProductInCart === undefined ? (

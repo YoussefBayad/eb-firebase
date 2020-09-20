@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Product from '../Product';
-import spinner from '../../assets/icon/spinner.gif';
+import Spinner from '../Spinner';
 
 import './index.scss';
 
@@ -12,9 +12,8 @@ const Products = ({ data: products, status }) => {
         products.map((product) => (
           <Product product={product} key={product.documentID} />
         ))}
-      {status === 'loading' && (
-        <img src={spinner} alt="Loading ..." style={{ margin: '20rem auto' }} />
-      )}
+      <Spinner status={status} style={{ margin: '20rem auto' }} />
+
       {status === 'failed' && <h1>Failed Reload </h1>}
     </div>
   );
