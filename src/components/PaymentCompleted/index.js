@@ -10,7 +10,7 @@ const Completed = ({ name }) => {
       <h1>Thank you {name}.</h1>
       <h2>Your order was completed successfully.</h2>
       <img src={checked} alt="checked" />
-      <Link to="/shop" className="checkout-btn go-back-btn">
+      <Link to="/shop" className="btn go-back-btn">
         Go Back To Shop <img src={chevronRight} alt=">" />
       </Link>
     </div>

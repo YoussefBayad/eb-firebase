@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AnimatePresence, motion } from 'framer-motion';
-import { openCart } from '../../redux/cart/cartSlice';
+import { setLocalStorageItems, openCart } from '../../redux/cart/cartSlice';
 import CartHeader from '../CartHeader';
 import CartMain from '../CartMain';
 import CartFooter from '../CartFooter';
 import useOutsideClickRef from '@rooks/use-outside-click-ref';
 import './index.scss';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -18,12 +18,7 @@ const Cart = () => {
       dispatch(openCart());
     }
   };
-
   const [ref] = useOutsideClickRef(handleOutsideClick);
-
-  useEffect(() => {
-    // localStorage.setItem('cart', JSON.stringify(cart));
-  }, []);
 
   return (
     <AnimatePresence>

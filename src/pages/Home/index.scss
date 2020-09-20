@@ -48,7 +48,6 @@
   margin: auto;
   & h1 {
     font-size: 3rem;
-    width: 12ch;
   }
 
   .flex {
@@ -92,6 +91,7 @@
       background-color: black;
       opacity: 0.5;
     }
+
     &:hover {
       transform: scale(1.02);
       box-shadow: 1px 0px 5px 1px black;
@@ -99,13 +99,13 @@
 
     .text {
       z-index: 1;
-      h1 {
+      & h1 {
         font-size: 3rem;
         font-weight: bolder;
         margin-bottom: 3.5rem;
       }
     }
-    button {
+    & button {
       box-shadow: 2px 2px 10px 1px black;
       font-size: 1.7rem;
       padding: 1.4rem;
@@ -120,6 +120,11 @@
   .showcase {
     padding: 3rem;
   }
+  .cards {
+    & h1 {
+      font-size: 2rem;
+    }
+  }
 }
 
 @media screen and (max-width: 1100px) {
@@ -132,12 +137,6 @@
     .text {
       max-width: 40rem;
       min-width: 30rem;
-    }
-  }
-  .cards {
-    & h1 {
-      font-size: 2rem;
-      width: 8ch;
     }
   }
 }

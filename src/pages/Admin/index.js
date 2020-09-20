@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { firestore, timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
@@ -8,6 +8,7 @@ import Button from '../../components/forms/Button';
 import './index.scss';
 import AdminProducts from '../../components/AdminProducts';
 import Spinner from '../../components/Spinner';
+import useFirestoreListener from '../../hooks/useFirestoreListener';
 
 const Admin = (props) => {
   const { data: products, status } = useSelector((state) => state.products);
@@ -26,6 +27,7 @@ const Admin = (props) => {
   const [eitherBudSolo, setEitherBudSolo] = useState(false);
   const [tile, setTile] = useState(false);
   const [totalCharge, setTotalCharge] = useState(1);
+  const [error, setError] = useState(null);
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -59,32 +61,21 @@ const Admin = (props) => {
       tile,
       totalCharge,
       createdAt: timestamp(),
+      deleteAble: true,
     });
     resetForm();
   };
 
-  const onDeleteProduct = (documentID) => {
-    dispatch({ type: 'products/fetchProducts/pending' });
-    firestore.collection('products').doc(documentID).delete();
-  };
-  useEffect(() => {
-    if (status === 'idle') return;
-    else {
-      firestore
-        .collection('products')
-        .orderBy('createdAt', 'desc')
-        .onSnapshot((snapshot) => {
-          let products = [];
-          snapshot.docs.map((snap) =>
-            products.push({ ...snap.data(), documentID: snap.id })
-          );
-          dispatch({
-            type: 'products/fetchProducts/fulfilled',
-            payload: products,
-          });
-        });
+  const onDeleteProduct = ({ documentID, deleteAble }) => {
+    if (deleteAble !== undefined && deleteAble === true) {
+      dispatch({ type: 'products/fetchProducts/pending' });
+      firestore.collection('products').doc(documentID).delete();
+      setError(null);
+    } else {
+      setError('You can delete only the products you add');
     }
-  }, [status, dispatch]);
+  };
+  useFirestoreListener(status);
   return (
     <div className="admin">
       <Modal {...configModal}>
@@ -211,6 +202,7 @@ const Admin = (props) => {
         <div className="call-to-actions">
           <Button onClick={() => toggleModal()}>Add new product</Button>
         </div>
+        {error && <h2 className="error">{error}</h2>}
 
         <Spinner status={status} style={{ margin: '5rem auto ' }} />
         <AdminProducts products={products} onDeleteProduct={onDeleteProduct} />

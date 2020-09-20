@@ -22,7 +22,10 @@ const HomePage = () => {
         </a>
       </div>
       <div className="cards">
-        <h1>NEW RELEASES</h1>
+        <div className="new-releases">
+          {' '}
+          <h1>NEW RELEASES</h1>{' '}
+        </div>
         <div className="flex" id="flex">
           <Link to="/shop/earbuds">
             <div className="earbuds-card card">

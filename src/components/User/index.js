@@ -49,7 +49,7 @@ const User = () => {
           <motion.div
             initial={{ y: -200 }}
             animate={{ y: 0 }}
-            exit={{ y: 1000 }}
+            exit={{ y: 500 }}
             transition={{ duration: 0.4 }}
             ref={ref}
             className="log"

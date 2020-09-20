@@ -9,11 +9,16 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setLocalStorageItems(state, action) {
+      console.log(action.payload);
+      state.data = action.payload;
+    },
     openCart(state) {
       state.isCartOpen = !state.isCartOpen;
     },
     addToCart(state, action) {
-      state.data.push(action.payload);
+      const product = { ...action.payload, count: 1 };
+      state.data.push(product);
     },
     removeFromCart(state, action) {
       state.data = state.data.filter(
@@ -45,5 +50,6 @@ export const {
   increment,
   decrement,
   removeFromCart,
+  setLocalStorageItems,
 } = cartSlice.actions;
 export default cartSlice.reducer;

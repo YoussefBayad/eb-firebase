@@ -1,12 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-//redux
-import { useDispatch } from 'react-redux';
-import { authChange } from './redux/User/userSlice.js';
-
-// auth
-import { auth, handleUserProfile } from './Firebase/utils.js';
 
 // layout
 import AdminLayout from './layouts/AdminLayout';
@@ -26,6 +19,7 @@ import Wired from './pages/Earbuds/Wired';
 import Headphones from './pages/Headphones';
 import Battery from './pages/Battery';
 import ProductPage from './pages/ProductPage';
+import NoMatch from './pages/404/NoMatch.js';
 
 // HOC
 import WithAdminAuth from './hoc/withAdminAuth.js';
@@ -33,30 +27,10 @@ import WithAuth from './hoc/withAuth';
 
 // style
 import './default.scss';
+import useAuthListener from './hooks/useAuthListener';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch(
-            authChange({
-              id: snapshot.id,
-              ...snapshot.data(),
-            })
-          );
-        });
-      } else {
-        dispatch(authChange(null));
-      }
-    });
-
-    return () => {
-      authListener();
-    };
-  }, [dispatch]);
+  useAuthListener();
   return (
     <Switch>
       <Route

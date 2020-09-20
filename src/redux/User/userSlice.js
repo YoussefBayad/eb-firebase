@@ -1,32 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { handleUserProfile } from '../../Firebase/utils';
 
-const initialState = null;
+const initialState = {
+  displayName: 'youssef',
+  userRoles: ['user', 'admin'],
+  photoURL: '/img/headphones-home-page.webp',
+};
 
 //  {
 //   displayName: 'youssef bayad',
 //   userRoles: ['user', 'admin'],
 //   photoURL: '/img/earbuds-home-page.webp',
 // };
-
-// export const fetchUser = createAsyncThunk(
-//   'users/fetchUsers',
-//   async (userAuth,dispatch) => {
-//     if (userAuth) {
-//       const userRef = await handleUserProfile(userAuth);
-//       userRef.onSnapshot((snapshot) => {
-//         dispatch(
-//           authChange({
-//             id: snapshot.id,
-//             ...snapshot.data(),
-//           })
-//         );
-//       });
-//     } else {
-//       dispatch(authChange(null));
-//     }
-//   }
-// );
 
 const userSlice = createSlice({
   name: 'user',

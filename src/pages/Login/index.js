@@ -45,6 +45,7 @@ const Login = () => {
           onClick={() =>
             auth.signInWithEmailAndPassword('Admin@eb.com', 'qQ123456')
           }
+          className="btn btn-login-as-admin"
         >
           Login as Admin
         </Button>
