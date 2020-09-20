@@ -41,6 +41,13 @@ const Login = () => {
     <div className="login">
       <div className="sign-in">
         <h1>SIGN iN</h1>
+        <Button
+          onClick={() =>
+            auth.signInWithEmailAndPassword('Admin@eb.com', 'qQ123456')
+          }
+        >
+          Login as Admin
+        </Button>
         <form onSubmit={handleSubmit}>
           {error && <h3 className="error">{error}</h3>}
           <input

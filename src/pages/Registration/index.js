@@ -37,6 +37,7 @@ const Registration = () => {
     e.preventDefault();
     // password check
     if (password !== confirmPassword) {
+      if (errors.includes("Passwords don't match")) return;
       setErrors([...errors, "Passwords don't match"]);
       return;
     } else {
@@ -62,7 +63,7 @@ const Registration = () => {
     <div className="contact-information">
       <h1>Register</h1>
       {errors.length > 0 && (
-        <ul>
+        <ul className="error">
           {errors.map((err, index) => {
             return <li key={index}>{err}</li>;
           })}
