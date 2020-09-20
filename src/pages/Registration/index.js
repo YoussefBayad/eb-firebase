@@ -15,6 +15,7 @@ const Registration = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Registration = () => {
       reset();
       history.push('/');
     }
-  }, [currentUser]);
+  }, [currentUser, history]);
 
   const reset = () => {
     setDisplayName('');
@@ -32,16 +33,29 @@ const Registration = () => {
     setErrors([]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // password check
+    if (password !== confirmPassword) {
+      setErrors([...errors, "Passwords don't match"]);
+      return;
+    } else {
+      setErrors([]);
+    }
 
-    dispatch();
-    // signUpUserStart({
-    //   displayName,
-    //   email,
-    //   password,
-    //   confirmPassword,
-    // })
+    try {
+      // register
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await handleUserProfile(user, { displayName, photoURL });
+
+      // reset input field
+      reset();
+    } catch (err) {
+      setErrors([...errors, err.message]);
+    }
   };
 
   return (
@@ -87,6 +101,13 @@ const Registration = () => {
           value={confirmPassword}
           name="confirmPassword"
           onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <input
+          type="url"
+          value={photoURL}
+          placeholder="Photo url"
+          onChange={(e) => setPhotoURL(e.target.value)}
           required
         />
         <Button className="btn">Register</Button>

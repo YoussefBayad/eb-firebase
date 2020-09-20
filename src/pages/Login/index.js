@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { auth, signInWithGoogle } from '../../Firebase/utils';
 import Button from '../../components/forms/Button';
 
 //style
@@ -19,7 +20,7 @@ const Login = () => {
       resetForm();
       history.push('/');
     }
-  }, [currentUser]);
+  }, [currentUser, history]);
 
   const resetForm = () => {
     setEmail('');
@@ -29,11 +30,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(emailSignInStart({ email, password }));
-  };
-
-  const handleGoogleSignIn = () => {
-    // dispatch(googleSignInStart());
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -63,7 +64,7 @@ const Login = () => {
 
           <Button className="btn">Sign In</Button>
         </form>
-        <Button className="btn" onClick={handleGoogleSignIn}>
+        <Button className="btn" onClick={signInWithGoogle}>
           Sign In With Google
         </Button>
       </div>

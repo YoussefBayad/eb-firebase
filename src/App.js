@@ -37,21 +37,25 @@ import './default.scss';
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    // const authListener = auth.onAuthStateChanged(async (userAuth) => {
-    //   if (userAuth) {
-    //     const userRef = await handleUserProfile(userAuth);
-    //     userRef.onSnapshot((snapshot) => {
-    //       dispatch(
-    //         authChange({
-    //           id: snapshot.id,
-    //           ...snapshot.data(),
-    //         })
-    //       );
-    //     });
-    //   } else {
-    //     dispatch(authChange(null));
-    //   }
-    // });
+    const authListener = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await handleUserProfile(userAuth);
+        userRef.onSnapshot((snapshot) => {
+          dispatch(
+            authChange({
+              id: snapshot.id,
+              ...snapshot.data(),
+            })
+          );
+        });
+      } else {
+        dispatch(authChange(null));
+      }
+    });
+
+    return () => {
+      authListener();
+    };
   }, [dispatch]);
   return (
     <Switch>
