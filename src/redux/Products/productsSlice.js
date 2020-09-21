@@ -77,10 +77,11 @@ const productsSlice = createSlice({
         state.status = 'failed';
         state.error = 'Failed Reload';
       }
-      console.log('fulfilled ');
 
-      state.data = action.payload;
-      state.status = 'succeeded';
+      if (state.status === 'loading') {
+        state.data = action.payload;
+        state.status = 'succeeded';
+      }
     },
     [fetchProducts.rejected]: (state, action) => {
       console.log(action);
@@ -90,8 +91,8 @@ const productsSlice = createSlice({
       }
     },
     [addProduct.pending]: (state, action) => {
-      console.log(action);
       state.status = 'loading';
+      console.log('add product pending');
       // state.error = null;
     },
     [addProduct.fulfilled]: (state, action) => {
@@ -99,30 +100,31 @@ const productsSlice = createSlice({
       //   state.status = 'succeeded';
       // console.log(action.payload);
     },
-  },
-  [addProduct.rejected]: (state, action) => {
-    // console.log(action);
-    // if (state.status === 'loading') {
-    //   state.status = 'failed';
-    //   state.error = 'failed to add product try again';
-    // }
-  },
-  [deleteProduct.pending]: (state, action) => {
-    state.status = 'loading';
-    // state.error = null;
-  },
-  [deleteProduct.fulfilled]: (state, action) => {
-    // if (state.status === 'loading') {
-    //   state.status = 'succeeded';
-    // }
-    console.log(action.payload);
-  },
-  [deleteProduct.rejected]: (state, action) => {
-    // console.log(action);
-    // if (state.status === 'loading') {
-    //   state.status = 'failed';
-    //   state.error = 'failed to delete product try again';
-    // }
+
+    [addProduct.rejected]: (state, action) => {
+      // console.log(action);
+      // if (state.status === 'loading') {
+      //   state.status = 'failed';
+      //   state.error = 'failed to add product try again';
+      // }
+    },
+    [deleteProduct.pending]: (state, action) => {
+      state.status = 'loading';
+      console.log('delete product pending');
+    },
+    [deleteProduct.fulfilled]: (state, action) => {
+      // if (state.status === 'loading') {
+      //   state.status = 'succeeded';
+      // }
+      console.log(action.payload);
+    },
+    [deleteProduct.rejected]: (state, action) => {
+      // console.log(action);
+      // if (state.status === 'loading') {
+      //   state.status = 'failed';
+      //   state.error = 'failed to delete product try again';
+      // }
+    },
   },
 });
 

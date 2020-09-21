@@ -40,20 +40,14 @@ const Footer = () => {
       <div className="social-media">
         <h2>FOLLOW US</h2>
         <div className="social-media-icons">
-          <a href="https://twitter.com/bayad_jo" target="_blank">
+          <a href="https://twitter.com/bayad_jo">
             <img src={twitter} alt="my twitter account" />
           </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=100030355061041"
-            target="_blank"
-          >
+          <a href="https://www.facebook.com/profile.php?id=100030355061041">
             <img src={facebook} alt="my facebook account" />
           </a>
 
-          <a
-            href="https://www.linkedin.com/in/youssef-bayad-5584171b4/"
-            target="_blank"
-          >
+          <a href="https://www.linkedin.com/in/youssef-bayad-5584171b4/">
             <img src={linkedin} alt="my linkedin account" />
           </a>
         </div>

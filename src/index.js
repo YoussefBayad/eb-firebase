@@ -8,12 +8,8 @@ import store from './redux/createStore';
 import App from './App';
 import { fetchProducts } from './redux/Products/productsSlice';
 
-const {
-  products: { status },
-} = store.getState();
-if (status === 'loading') {
-  store.dispatch(fetchProducts());
-}
+store.dispatch(fetchProducts());
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
