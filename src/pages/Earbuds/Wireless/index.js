@@ -6,14 +6,15 @@ import Products from '../../../components/Products';
 import { useSelector } from 'react-redux';
 
 const Wireless = () => {
-  const products = useSelector((state) => state.products.data);
+  const { data, status } = useSelector((state) => state.products);
 
   return (
     <div className="shop">
       <h1>Wireless Earbuds</h1>
       <Links filter="Earbuds" />
       <Products
-        products={products.filter(
+        status={status}
+        data={data.filter(
           (product) =>
             product.category === 'Earbuds' && product.wireless === 'true'
         )}

@@ -7,7 +7,6 @@ const useFirestoreListener = (status) => {
   useEffect(() => {
     if (status === 'idle') return;
     else {
-      console.log('inside firestore listener');
       firestore
         .collection('products')
         .orderBy('createdAt', 'desc')

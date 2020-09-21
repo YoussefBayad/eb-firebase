@@ -7,14 +7,15 @@ import Products from '../../components/Products';
 import { useSelector } from 'react-redux';
 
 const Battery = () => {
-  const products = useSelector((state) => state.products.data);
+  const { data, status } = useSelector((state) => state.products);
 
   return (
     <div className="shop">
       <h1>Batteries</h1>
       <Links filter="Battery" />
       <Products
-        products={products.filter((product) => product.category === 'Battery')}
+        data={data.filter((product) => product.category === 'Battery')}
+        status={status}
       />
     </div>
   );

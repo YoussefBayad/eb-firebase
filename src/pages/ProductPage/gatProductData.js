@@ -1,9 +1,9 @@
 export default function getProductData(products, cart, id) {
   let product;
-  product = cart.find((product) => product.documentID === Number(id));
+  product = cart.find((product) => product.documentID === id);
   if (product === undefined) {
-    product = products.find((product) => product.documentID === Number(id));
+    product = products.find((product) => product.documentID === id);
   }
-
+  console.log(product);
   return product;
 }
