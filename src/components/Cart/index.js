@@ -20,6 +20,16 @@ const Cart = () => {
   };
   const [ref] = useOutsideClickRef(handleOutsideClick);
 
+  useEffect(() => {
+    const data = localStorage.getItem('cart');
+    if (data) {
+      dispatch(setLocalStorageItems(JSON.parse(data)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(products));
+  });
   return (
     <AnimatePresence>
       {isCartOpen && (

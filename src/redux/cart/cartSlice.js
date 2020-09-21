@@ -10,7 +10,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setLocalStorageItems(state, action) {
-      console.log(action.payload);
+      console.log('get localStorage', action.payload);
       state.data = action.payload;
     },
     openCart(state) {
