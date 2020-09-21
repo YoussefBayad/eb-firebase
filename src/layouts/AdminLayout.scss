@@ -1,4 +1,4 @@
-.controlPanel {
+.control-panel {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -15,5 +15,19 @@
     padding: 5rem 0;
     flex: 2;
     margin-left: 3rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .control-panel {
+    .sidebar {
+      min-width: 100vw;
+      margin-bottom: 3rem;
+
+      .user-img {
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 }

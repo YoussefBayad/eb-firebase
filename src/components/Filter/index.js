@@ -5,7 +5,7 @@ import FilterResults from '../FilterResults/index.js';
 import search from '../../assets/icon/search.svg';
 import './index.scss';
 
-const Filter = () => {
+const Filter = ({ ...props }) => {
   const products = useSelector((state) => state.products.data);
   const [searchResults, setSearchResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(true);
@@ -30,7 +30,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="filter">
+    <div className="filter" {...props}>
       <div className="filter-flex">
         <FilterInput
           handleChange={handleChange}

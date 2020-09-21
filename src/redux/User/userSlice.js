@@ -1,19 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { handleUserProfile } from '../../Firebase/utils';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = null;
-
-// {
-//   displayName: 'youssef',
-//   userRoles: ['user', 'admin'],
-//   photoURL: '/img/headphones-home-page.webp',
-// };
-
-//  {
-//   displayName: 'youssef bayad',
-//   userRoles: ['user', 'admin'],
-//   photoURL: '/img/earbuds-home-page.webp',
-// };
+const initialState = {
+  displayName: 'youssef',
+  userRoles: ['user', 'admin'],
+  photoURL: '/img/headphones-home-page.webp',
+};
 
 const userSlice = createSlice({
   name: 'user',

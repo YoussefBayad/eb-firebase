@@ -12,6 +12,7 @@ import { addProduct, deleteProduct } from '../../redux/Products/productsSlice';
 import './index.scss';
 import useFormInput from '../../hooks/useFormInput';
 import { firestore } from '../../Firebase/utils';
+import AdminFilter from '../../components/AdminFilter';
 
 const Admin = (props) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Admin = (props) => {
   const [tile, setTile] = useState(false);
   const [totalCharge, setTotalCharge] = useState(1);
   const [error, setError] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -212,7 +214,15 @@ const Admin = (props) => {
         {error && <h2 className="error">{error}</h2>}
 
         <Spinner status={status} style={{ margin: '5rem auto ' }} />
-        <AdminProducts products={products} onDeleteProduct={onDeleteProduct} />
+        <AdminFilter
+          initialState={products}
+          products={filteredProducts}
+          setProducts={setFilteredProducts}
+        />
+        <AdminProducts
+          products={filteredProducts}
+          onDeleteProduct={onDeleteProduct}
+        />
       </div>
     </div>
   );

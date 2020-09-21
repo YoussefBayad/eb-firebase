@@ -33,8 +33,6 @@ const VerticalNav = ({ children }) => {
             <h2>Logout</h2>
           </li>
         </ul>
-
-        {/* <Filter /> */}
       </div>
     </div>
   );

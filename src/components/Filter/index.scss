@@ -26,7 +26,8 @@
   top: 5.5rem;
   height: 50vh;
   width: 22.4rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   margin-left: 0.5rem;
   background-color: white;
   border: 2px solid black;

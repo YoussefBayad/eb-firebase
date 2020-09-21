@@ -6,7 +6,7 @@ const AdminLayout = ({ children }) => {
   return (
     <div className="adminLayout">
       <AdminToolBar />
-      <div className="controlPanel">
+      <div className="control-panel">
         <div className="sidebar">
           <VerticalNav />
         </div>
