@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
@@ -10,17 +10,21 @@ import Spinner from '../../components/Spinner';
 import useFirestoreListener from '../../hooks/useFirestoreListener';
 import { addProduct, deleteProduct } from '../../redux/Products/productsSlice';
 import './index.scss';
+import useFormInput from '../../hooks/useFormInput';
+import { firestore } from '../../Firebase/utils';
 
 const Admin = (props) => {
-  const { data: products, status } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
+  const { data: products, status } = useSelector((state) => state.products);
+  // const category = useFormInput()
   const [category, setCategory] = useState('headphones');
+
+  const [showModal, setShowModal] = useState(false);
   const [photoURL, setPhotoURL] = useState(
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/220px-React-icon.svg.png'
+    'https://images-na.ssl-images-amazon.com/images/I/41GFa7W547L._AC_SY400_.jpg'
   );
-  const [name, setName] = useState('React');
-  const [price, setPrice] = useState(0);
+  const [name, setName] = useState('Wireless Earpods:  Mini Bluetooth Earbds');
+  const [price, setPrice] = useState(82);
   const [wireless, setWireless] = useState(false);
   const [wirelessCharging, setWirelessCharging] = useState(false);
   const [waterProof, setWaterProof] = useState(false);
@@ -74,9 +78,29 @@ const Admin = (props) => {
       setError(null);
     } else {
       setError('You can delete only the products you added');
+      setTimeout(() => setError(null), 2000);
     }
   };
-  useFirestoreListener(status);
+
+  useEffect(() => {
+    if (status === 'idle') return;
+    else {
+      firestore
+        .collection('products')
+        .orderBy('createdAt', 'desc')
+        .onSnapshot((snapshot) => {
+          console.log('insade snap', snapshot);
+          let products = [];
+          snapshot.docs.map((snap) =>
+            products.push({ ...snap.data(), documentID: snap.id })
+          );
+          dispatch({
+            type: 'products/fetchProducts/fulfilled',
+            payload: products,
+          });
+        });
+    }
+  }, [status, dispatch]);
   return (
     <div className="admin">
       <Modal {...configModal}>
@@ -213,16 +237,3 @@ const Admin = (props) => {
 };
 
 export default Admin;
-
-function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
-
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
-  return {
-    value,
-    onChange: handleChange,
-  };
-}

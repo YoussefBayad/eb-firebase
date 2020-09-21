@@ -2,64 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { firestore } from '../../Firebase/utils';
 
 const initialState = {
-  data: [
-    {
-      photoURL: null,
-      name: 'Uproar Wireless Headphone',
-      price: 49.99,
-      category: 'Headphone',
-      wireless: 'true',
-      wirelessCharging: 'false',
-      totalCharge: '24',
-      waterProof: 'false',
-      fullControl: 'true',
-      eitherBudSolo: 'false',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Wild Indy™ Evo True Wireless Earbuds with Print',
-      price: 89.99,
-      category: 'Earbuds',
-      wireless: 'true',
-      wirelessCharging: 'true',
-      totalCharge: '30',
-      waterProof: 'true',
-      fullControl: 'true',
-      eitherBudSolo: 'false',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Venue Noise Canceling Wireless Headphone',
-      price: 119.99,
-      category: 'Headphone',
-      wireless: 'true',
-      wirelessCharging: 'false',
-      totalCharge: '30',
-      waterProof: 'false',
-      fullControl: 'true',
-      eitherBudSolo: 'false',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Vert Clip-Anywhere Wireless Earbuds',
-      price: 69.99,
-      category: 'Earbuds',
-      wireless: 'true',
-      wirelessCharging: 'true',
-      totalCharge: '30',
-      waterProof: 'false',
-      fullControl: 'true',
-      eitherBudSolo: 'true',
-      tile: 'true',
-      count: 0,
-    },
-  ],
+  data: [],
   status: 'succeeded',
   error: null,
 };
@@ -79,14 +22,19 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+// if it didn't work use try and catch in admin page just like dan did
+//first cancel firestore listener cause might the cause you can go direct and remove product rom th ui since it get removed /////from the store or maybe the function gonna return to yuo to product deleted and do the same
+//lite on add delete spinner and error  in admin relay on  a local state a instead of the global one
+
 export const addProduct = createAsyncThunk(
   'products/addProduct',
   async (product) => {
     try {
-      await firestore.collection('products').add(product);
+      var response = await firestore.collection('products').add(product);
     } catch (err) {
       console.log(err);
     }
+    return response;
   }
 );
 
@@ -94,10 +42,14 @@ export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
   async (documentID) => {
     try {
-      await firestore.collection('products').doc(documentID).delete();
+      var response = await firestore
+        .collection('products')
+        .doc(documentID)
+        .delete();
     } catch (err) {
       console.log(err);
     }
+    return response;
   }
 );
 
@@ -125,10 +77,10 @@ const productsSlice = createSlice({
         state.status = 'failed';
         state.error = 'Failed Reload';
       }
-      if (state.status === 'loading') {
-        state.data = action.payload;
-        state.status = 'succeeded';
-      }
+      console.log('fulfilled ');
+
+      state.data = action.payload;
+      state.status = 'succeeded';
     },
     [fetchProducts.rejected]: (state, action) => {
       console.log(action);
@@ -138,39 +90,39 @@ const productsSlice = createSlice({
       }
     },
     [addProduct.pending]: (state, action) => {
+      console.log(action);
       state.status = 'loading';
-      state.error = null;
+      // state.error = null;
     },
     [addProduct.fulfilled]: (state, action) => {
-      if (state.status === 'loading') {
-        state.status = 'succeeded';
-        console.log(action.payload);
-      }
+      // if (state.status === 'loading') {
+      //   state.status = 'succeeded';
+      // console.log(action.payload);
     },
-    [addProduct.rejected]: (state, action) => {
-      console.log(action);
-      if (state.status === 'loading') {
-        state.status = 'failed';
-        state.error = 'failed to add product try again';
-      }
-    },
-    [deleteProduct.pending]: (state, action) => {
-      state.status = 'loading';
-      state.error = null;
-    },
-    [deleteProduct.fulfilled]: (state, action) => {
-      if (state.status === 'loading') {
-        state.status = 'succeeded';
-        console.log(action.payload);
-      }
-    },
-    [deleteProduct.rejected]: (state, action) => {
-      console.log(action);
-      if (state.status === 'loading') {
-        state.status = 'failed';
-        state.error = 'failed to delete product try again';
-      }
-    },
+  },
+  [addProduct.rejected]: (state, action) => {
+    // console.log(action);
+    // if (state.status === 'loading') {
+    //   state.status = 'failed';
+    //   state.error = 'failed to add product try again';
+    // }
+  },
+  [deleteProduct.pending]: (state, action) => {
+    state.status = 'loading';
+    // state.error = null;
+  },
+  [deleteProduct.fulfilled]: (state, action) => {
+    // if (state.status === 'loading') {
+    //   state.status = 'succeeded';
+    // }
+    console.log(action.payload);
+  },
+  [deleteProduct.rejected]: (state, action) => {
+    // console.log(action);
+    // if (state.status === 'loading') {
+    //   state.status = 'failed';
+    //   state.error = 'failed to delete product try again';
+    // }
   },
 });
 
