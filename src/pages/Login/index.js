@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { auth, signInWithGoogle } from '../../Firebase/utils';
 import Button from '../../components/forms/Button';
-
+import Spinner from '../../components/Spinner';
 //style
 import './index.scss';
 
@@ -11,6 +11,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
+
+  const [status, setStatus] = useState('idle');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -31,6 +33,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setStatus('loading');
       await auth.signInWithEmailAndPassword(email, password);
     } catch (err) {
       setError(err.message);
@@ -41,10 +44,13 @@ const Login = () => {
     <div className="login">
       <div className="sign-in">
         <h1>SIGN iN</h1>
+        <Spinner status={status} />
         <Button
-          onClick={() =>
-            auth.signInWithEmailAndPassword('Admin@eb.com', 'qQ123456')
-          }
+          onClick={() => {
+            setStatus('loading');
+
+            auth.signInWithEmailAndPassword('Admin@eb.com', 'qQ123456');
+          }}
           className="btn btn-login-as-admin"
         >
           Login as Admin
@@ -72,7 +78,13 @@ const Login = () => {
 
           <Button className="btn">Sign In</Button>
         </form>
-        <Button className="btn" onClick={signInWithGoogle}>
+        <Button
+          className="btn"
+          onClick={() => {
+            setStatus('loading');
+            signInWithGoogle();
+          }}
+        >
           Sign In With Google
         </Button>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/forms/Button/index.js';
+import Spinner from '../../components/Spinner/index.js';
 import { auth, handleUserProfile } from '../../Firebase/utils.js';
 
 // style
@@ -11,11 +12,15 @@ const Registration = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [photoURL, setPhotoURL] = useState('');
+
+  const [status, setStatus] = useState('idle');
+  const [displayName, setDisplayName] = useState('user');
+  const [email, setEmail] = useState('user@email.com');
+  const [password, setPassword] = useState('qQ123456');
+  const [confirmPassword, setConfirmPassword] = useState('qQ123456');
+  const [photoURL, setPhotoURL] = useState(
+    'https://miro.medium.com/max/3150/1*xxVEfOOAmIKHWOUloRKLhw.jpeg'
+  );
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -30,6 +35,7 @@ const Registration = () => {
     setEmail('');
     setPassword('');
     setConfirmPassword('');
+    setPhotoURL('');
     setErrors([]);
   };
 
@@ -46,13 +52,14 @@ const Registration = () => {
 
     try {
       // register
+      setStatus('loading');
+
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
         password
       );
       await handleUserProfile(user, { displayName, photoURL });
 
-      // reset input field
       reset();
     } catch (err) {
       setErrors([...errors, err.message]);
@@ -62,6 +69,8 @@ const Registration = () => {
   return (
     <div className="contact-information">
       <h1>Register</h1>
+      <Spinner status={status} />
+
       {errors.length > 0 && (
         <ul className="error">
           {errors.map((err, index) => {

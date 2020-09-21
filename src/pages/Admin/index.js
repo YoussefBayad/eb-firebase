@@ -82,25 +82,7 @@ const Admin = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (status === 'idle') return;
-    else {
-      firestore
-        .collection('products')
-        .orderBy('createdAt', 'desc')
-        .onSnapshot((snapshot) => {
-          console.log('insade snap', snapshot);
-          let products = [];
-          snapshot.docs.map((snap) =>
-            products.push({ ...snap.data(), documentID: snap.id })
-          );
-          dispatch({
-            type: 'products/fetchProducts/fulfilled',
-            payload: products,
-          });
-        });
-    }
-  }, [status, dispatch]);
+  useFirestoreListener(status);
   return (
     <div className="admin">
       <Modal {...configModal}>

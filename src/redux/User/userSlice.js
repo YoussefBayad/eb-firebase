@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { handleUserProfile } from '../../Firebase/utils';
 
-const initialState = {
-  displayName: 'youssef',
-  userRoles: ['user', 'admin'],
-  photoURL: '/img/headphones-home-page.webp',
-};
+const initialState = null;
+
+// {
+//   displayName: 'youssef',
+//   userRoles: ['user', 'admin'],
+//   photoURL: '/img/headphones-home-page.webp',
+// };
 
 //  {
 //   displayName: 'youssef bayad',
