@@ -30,7 +30,7 @@ const HomePage = () => {
           <Link to="/shop/earbuds">
             <div className="earbuds-card card">
               <div className="text">
-                <h1>Earbusds</h1>
+                <h1>Earbuds</h1>
                 <button className="buy-button" to="/shop/earbuds">
                   View All
                 </button>

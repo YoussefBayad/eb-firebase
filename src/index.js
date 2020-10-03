@@ -8,7 +8,7 @@ import store from './redux/createStore';
 import App from './App';
 import { fetchProducts } from './redux/Products/productsSlice';
 
-// store.dispatch(fetchProducts());
+store.dispatch(fetchProducts());
 
 ReactDOM.render(
   <React.StrictMode>

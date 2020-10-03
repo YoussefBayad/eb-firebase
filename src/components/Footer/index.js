@@ -20,21 +20,21 @@ const Footer = () => {
       </div>
       <div className="footer-links">
         <div>
-          <button href="#">Help Center</button>
-          <button href="#">Contact Us</button>
-          <button href="#">Account</button>
-          <button href="#">Product Help</button>
+          <a href="#">Help Center</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Account</a>
+          <a href="#">Product Help</a>
         </div>
         <div>
-          <button href="#">Compare</button>
-          <button href="#">Bulk Orders</button>
-          <button href="#">Protect Our Winters</button>
-          <button href="#">Product Help</button>
+          <a href="#">Compare</a>
+          <a href="#">Bulk Orders</a>
+          <a href="#">Protect Our Winters</a>
+          <a href="#">Product Help</a>
         </div>
         <div>
-          <button href="#">Athletes</button>
-          <button href="#">Warranty</button>
-          <button href="#">Careers</button>
+          <a href="#">Athletes</a>
+          <a href="#">Warranty</a>
+          <a href="#">Careers</a>
         </div>
       </div>
       <div className="social-media">

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  displayName: 'youssef',
-  userRoles: ['user', 'admin'],
-  photoURL: '/img/headphones-home-page.webp',
-};
+const initialState = null;
+//  {
+//   displayName: 'youssef',
+//   userRoles: ['user', 'admin'],
+//   photoURL: '/img/headphones-home-page.webp',
+// };
 
 const userSlice = createSlice({
   name: 'user',
