@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../Firebase/utils';
 import Button from '../forms/Button';
+import deleteIcon from '../../assets/icon/delete.svg';
 
 const ResponsiveNav = ({ open, setOpen }) => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -29,9 +30,13 @@ const ResponsiveNav = ({ open, setOpen }) => {
             ref={ref}
             className="responsive-nav"
           >
-            <h1 className="close-nav" onClick={() => setOpen(false)}>
-              X
-            </h1>
+            <img
+              src={deleteIcon}
+              alt="close cart"
+              className="close-nav"
+              onClick={() => setOpen(false)}
+            />
+
             <Link to="/" onClick={() => setOpen(false)}>
               Home
             </Link>

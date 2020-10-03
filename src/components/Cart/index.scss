@@ -24,17 +24,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem;
+    padding: 2rem;
     border-bottom: 2px lightgrey solid;
 
     .close-cart {
-      color: $accent;
-      font-size: 3rem;
-
+      height: 3rem;
+      width: 3rem;
+      align-self: flex-start;
       cursor: pointer;
       @include transition;
       &:hover {
-        color: grey;
+        transform: scale(0.9);
       }
     }
   }

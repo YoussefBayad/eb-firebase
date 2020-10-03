@@ -98,12 +98,13 @@ nav {
 
     & .close-nav {
       width: 5rem;
-      color: lightcoral;
       position: absolute;
       top: 1rem;
       right: 3rem;
       cursor: pointer;
-      font-size: 4rem !important;
+      &:hover {
+        transform: scale(0.9);
+      }
     }
   }
   .cart-icon,
