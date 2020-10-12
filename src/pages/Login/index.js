@@ -1,40 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {Formik, Form,Field,ErrorMessage} from 'formik';
+import  * as Yup from 'yup';
 import { auth, signInWithGoogle } from '../../Firebase/utils';
 import Button from '../../components/forms/Button';
 import Spinner from '../../components/Spinner';
+import ErrorText from './../../components/ErrorMessage';
 //style
 import './index.scss';
 
+// formik setup
+
+const initialValues = {
+  email:'',
+  password:''
+}
+
+const validationSchema = Yup.object( {
+  email:Yup.string().email("Invalid Email").required('This field is required'),
+  password:Yup.string().required('This field is required')
+})
+
 const Login = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
 
   const [status, setStatus] = useState('idle');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (currentUser) {
-      resetForm();
       history.push('/');
     }
   }, [currentUser, history]);
 
-  const resetForm = () => {
-    setEmail('');
-    setPassword('');
-    setError(null);
-  };
+  
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (values) => {
+    console.log(values)
     try {
       setStatus('loading');
-      await auth.signInWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(values.email, values.password);
     } catch (err) {
       setError(err.message);
     }
@@ -44,7 +51,7 @@ const Login = () => {
     <div className="login">
       <div className="sign-in">
         <h1>SIGN iN</h1>
-        <Spinner status={status} />
+        {!error && <Spinner status={status} />}
         <Button
           onClick={() => {
             setStatus('loading');
@@ -55,29 +62,32 @@ const Login = () => {
         >
           Login as Admin
         </Button>
-        <form onSubmit={handleSubmit}>
-          {error && <h3 className="error">{error}</h3>}
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            name="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            validateOnChange={false}
+            
+            onSubmit={onSubmit}
+            >
+          <Form>
+            {error && <ErrorText>{error}</ErrorText>}
+            <Field
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+            />
+            <ErrorMessage component={ErrorText} name='email' />
+            <Field
+              type="password"
+              placeholder="Password"
+              name="password"
+            />
+            <ErrorMessage component={ErrorText} name='password'/>
 
-          <Button className="btn">Sign In</Button>
-        </form>
+            <Button type='submit' className="btn">Sign In</Button>
+        </Form>
+      </Formik>
+        
         <Button
           className="btn"
           onClick={() => {

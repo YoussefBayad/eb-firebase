@@ -15,7 +15,7 @@ const FilterResults = ({
 
   return (
     <AnimatePresence>
-      {searchResults.length > 0 && showSearchResults && (
+      {showSearchResults && (
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
@@ -47,6 +47,11 @@ const FilterResults = ({
               </div>
             </Link>
           ))}
+          {searchResults.length === 0 && (
+            <h1 style={{ marginTop: '3rem' }}>
+              No item found search for another product
+            </h1>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
