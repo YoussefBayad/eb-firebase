@@ -1,41 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {Formik, Form , Field,ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import ErrorText from '../../components/ErrorMessage'
 import { timestamp } from '../../Firebase/utils';
 import Modal from '../../components/Modal';
-import FormInput from '../../components/forms/FormInput';
-import FormSelect from '../../components/forms/FormSelect';
 import Button from '../../components/forms/Button';
 import AdminProducts from '../../components/AdminProducts';
 import Spinner from '../../components/Spinner';
 import useFirestoreListener from '../../hooks/useFirestoreListener';
 import { addProduct, deleteProduct } from '../../redux/Products/productsSlice';
 import './index.scss';
-import useFormInput from '../../hooks/useFormInput';
-import { firestore } from '../../Firebase/utils';
 import AdminFilter from '../../components/AdminFilter';
 
 const Admin = (props) => {
   const dispatch = useDispatch();
   const { data: products, status } = useSelector((state) => state.products);
-  // const category = useFormInput()
-  const [category, setCategory] = useState('headphones');
-
+  
   const [showModal, setShowModal] = useState(false);
-  const [photoURL, setPhotoURL] = useState(
-    'https://images-na.ssl-images-amazon.com/images/I/41GFa7W547L._AC_SY400_.jpg'
-  );
-  const [name, setName] = useState('Wireless Earpods:  Mini Bluetooth Earbds');
-  const [price, setPrice] = useState(82);
-  const [wireless, setWireless] = useState(false);
-  const [wirelessCharging, setWirelessCharging] = useState(false);
-  const [waterProof, setWaterProof] = useState(false);
-  const [fullControl, setFullControl] = useState(false);
-  const [eitherBudSolo, setEitherBudSolo] = useState(false);
-  const [tile, setTile] = useState(false);
-  const [totalCharge, setTotalCharge] = useState(1);
   const [error, setError] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState(products);
-
   const toggleModal = () => setShowModal(!showModal);
 
   const configModal = {
@@ -43,16 +27,30 @@ const Admin = (props) => {
     toggleModal,
   };
 
-  const resetForm = () => {
-    setShowModal(false);
-    setCategory('headphones');
-    setName('');
-    setPhotoURL(null);
-    setPrice(0);
-  };
+  const initialValues = {
+    category:'headphones',
+    photoURL:    'https://images-na.ssl-images-amazon.com/images/I/41GFa7W547L._AC_SY400_.jpg',
+    name: 'Wireless Earpods:  Mini Bluetooth Earpods' ,
+    price:82,
+    wireless:true,
+    wirelessCharging:true,
+    waterProof:false,
+    fullControl:true,
+    eitherBudSolo:true,
+    tile:true,
+    totalCharge:6,
+  }
+ 
+const validationSchema = Yup.object({
+  name:Yup.string().required('This field is required'),
+  price:Yup.number().min(0).max(500).required('This field is required'),
+  totalCharge:Yup.number().min(1).max(48).required('This field is required'),
+  photoURL:Yup.string().url().required('This field is required')
+})
+ 
 
-  const onAddProduct = (e) => {
-    e.preventDefault();
+  const onSubmit = (values) => {
+    const {category, photoURL, price,name,wireless,wirelessCharging,waterProof,fullControl,eitherBudSolo,tile,totalCharge} = values
     dispatch(
       addProduct({
         category,
@@ -71,7 +69,7 @@ const Admin = (props) => {
         deleteAble: true,
       })
     );
-    resetForm();
+  setShowModal(false)
   };
 
   const onDeleteProduct = ({ documentID, deleteAble }) => {
@@ -89,120 +87,119 @@ const Admin = (props) => {
     <div className="admin">
       <Modal {...configModal}>
         <div className="addNewProductForm">
-          <form onSubmit={onAddProduct}>
+          <Formik 
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}
+                >
+                  {formik=>(
+          <Form>
             <h2>Add new product</h2>
-
-            <FormSelect
-              label="Category"
-              options={[
-                {
-                  value: 'headphones',
-                  name: 'Headphones',
-                },
-                {
-                  value: 'earbuds',
-                  name: 'Earbuds',
-                },
-                {
-                  value: 'Battery',
-                  name: 'Battery',
-                },
-              ]}
-              handleChange={(e) => setCategory(e.target.value)}
-            />
-
-            <FormInput
-              label="Name"
+            <div>
+            <label htmlFor="category"  >Category</label>
+            <Field 
+            as='select'
+            name='category'
+            id='category'
+              
+            >
+              <option value="headphones">Headphones</option>
+              <option value="earbuds">Earbuds</option>
+              <option value="battery">Battery</option>
+            </Field>
+            </div>
+            <div>
+            <label htmlFor='name' >Name</label>
+            <Field
               type="text"
-              value={name}
-              handleChange={(e) => setName(e.target.value)}
-              required
+              id='name'
+              name='name'
             />
-
-            <FormInput
-              label="Main image URL"
+            <ErrorMessage name='name' component={ErrorText}/>
+            </div>
+            <div>
+            <label htmlFor='photoURL'>Photo URL</label>
+            <Field
               type="url"
-              value={photoURL}
-              handleChange={(e) => setPhotoURL(e.target.value)}
-              required
+              name='photoURL'
+              id='photoURL'
+              
             />
-
-            <FormInput
-              label="Price"
+            <ErrorMessage  name='photoURL' component={ErrorText}/>
+            </div>
+            <div>
+            <label htmlFor='price' >Price</label>
+            <Field
               type="number"
-              min="0.00"
-              max="10000.00"
-              step="0.01"
-              value={price}
-              handleChange={(e) => setPrice(e.target.value)}
-              required
+              name='price'
+              id='price' 
             />
-
-            <FormInput
-              label="Total Charge"
+            <ErrorMessage name='price' component={ErrorText}/>
+            </div>
+            <div>
+            <label htmlFor='totalCharge'>Total Charge</label>
+            <Field
               type="number"
-              min="1"
-              max="100"
-              value={totalCharge}
-              handleChange={(e) => {
-                setTotalCharge(e.target.value);
-              }}
+              name='totalCharge'
+              id='totalCharge'
             />
-            <FormInput
-              label="Wireless"
+            <ErrorMessage name='totalCharge' component={ErrorText}/>
+            </div>
+            <label className='checkbox-label' htmlFor='wireless'>Wireless</label>
+            <Field
               type="checkbox"
-              value={wireless}
-              handleChange={(e) => {
-                setWireless(e.target.checked);
-              }}
+              name='wireless'
+              id="wireless"
             />
-            {category !== 'battery' && (
+            {formik.values.category !== 'battery' && (
               <>
-                <FormInput
-                  label="Water Prof"
-                  type="checkbox"
-                  value={waterProof}
-                  handleChange={(e) => {
-                    setWaterProof(e.target.checked);
-                  }}
+                <label className='checkbox-label' htmlFor='waterProof'>Water Prof</label>
+
+                <Field
+                type="checkbox"
+                name='waterProof'
+                id="waterProof"
+                  
                 />
-                <FormInput
-                  label="Tile"
-                  type="checkbox"
-                  value={tile}
-                  handleChange={(e) => {
-                    setTile(e.target.checked);
-                  }}
+                <ErrorMessage name='waterProof' component={ErrorText}/>
+                <label className='checkbox-label' htmlFor='tile'>Tile</label>
+                <Field
+                   type="checkbox"
+                   name='tile'
+                   id="tile"
+                  
                 />
-                <FormInput
-                  label="full Control"
+                <ErrorMessage name='tile' component={ErrorText}/>
+                <label className='checkbox-label' htmlFor='fullControl'>fullControl</label>
+                <Field
                   type="checkbox"
-                  value={fullControl}
-                  handleChange={(e) => {
-                    setFullControl(e.target.checked);
-                  }}
+                  name='fullControl'
+                  id="fullControl"
+                 
                 />
-                <FormInput
-                  label="either BudSolo"
+                <ErrorMessage name='fullControl' component={ErrorText}/>
+                <label className='checkbox-label' htmlFor='eitherBudSolo'>Either BudSolo</label>
+                <Field
                   type="checkbox"
-                  value={eitherBudSolo}
-                  handleChange={(e) => {
-                    setEitherBudSolo(e.target.checked);
-                  }}
+                  name='eitherBudSolo'
+                  id="eitherBudSolo"
+                  
                 />
-                <FormInput
-                  label="Wireless Charging"
+
+                <label className='checkbox-label' htmlFor='wirelessCharging'>Wireless Charging</label>
+                <Field
+                  
                   type="checkbox"
-                  value={wirelessCharging}
-                  handleChange={(e) => {
-                    setWirelessCharging(e.target.checked);
-                  }}
+                  name='wirelessCharging'
+                  id='wirelessCharging'
                 />
               </>
             )}
 
             <Button type="submit">Add product</Button>
-          </form>
+          </Form>
+          )}
+          </Formik>
         </div>
       </Modal>
 
