@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {Formik, Form,Field,ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import ErrorText from '../../components/ErrorMessage';
 import Button from '../../components/forms/Button/index.js';
 import Spinner from '../../components/Spinner/index.js';
 import { auth, handleUserProfile } from '../../Firebase/utils.js';
@@ -8,120 +11,104 @@ import { auth, handleUserProfile } from '../../Firebase/utils.js';
 // style
 import './index.scss';
 
+
+
+
 const Registration = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
 
   const [status, setStatus] = useState('idle');
-  const [displayName, setDisplayName] = useState('user');
-  const [email, setEmail] = useState('user@email.com');
-  const [password, setPassword] = useState('qQ123456');
-  const [confirmPassword, setConfirmPassword] = useState('qQ123456');
-  const [photoURL, setPhotoURL] = useState(
-    'https://miro.medium.com/max/3150/1*xxVEfOOAmIKHWOUloRKLhw.jpeg'
-  );
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (currentUser) {
-      reset();
       history.push('/');
     }
   }, [currentUser, history]);
 
-  const reset = () => {
-    setDisplayName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setPhotoURL('');
-    setErrors([]);
-  };
+// formik setup
+const initialValues ={
+  displayName:'user',
+  email:'user@example.com',
+  password:'qQ123456',
+  confirmPassword:'qQ123456',
+  photoURL:'https://miro.medium.com/max/3150/1*xxVEfOOAmIKHWOUloRKLhw.jpeg'
+}
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // password check
-    if (password !== confirmPassword) {
-      if (errors.includes("Passwords don't match")) return;
-      setErrors([...errors, "Passwords don't match"]);
-      return;
-    } else {
-      setErrors([]);
-    }
+const validationSchema = Yup.object({
+  displayName: Yup.string().required("This field is required"),
+  email: Yup.string().email('invalid email').required('This field is required'),
+  password: Yup.string().required('This field is required'),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'),''], 'Password must match').required('This field is required'),
+  photoURL: Yup.string().url('invalid URL').required('This field is required')
+})
 
+  const onSubmit = async (values,onSubmitProps) => {
+    console.log(onSubmitProps)
     try {
       // register
       setStatus('loading');
-
       const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
+        values.email,
+        values.password
       );
+      const {displayName,photoURL} = values
       await handleUserProfile(user, { displayName, photoURL });
-
-      reset();
+      onSubmitProps.resetForm()
     } catch (err) {
-      setErrors([...errors, err.message]);
+      setError(err.message);
     }
   };
 
   return (
     <div className="contact-information">
       <h1>Register</h1>
-      <Spinner status={status} />
+      
+      {!error && <Spinner status={status} />}
+      
 
-      {errors.length > 0 && (
-        <ul className="error">
-          {errors.map((err, index) => {
-            return <li key={index}>{err}</li>;
-          })}
-        </ul>
-      )}
-      <form onSubmit={handleSubmit}>
-        <input
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+        validateOnChange={false}
+      >
+      <Form >
+      {error && <ErrorText>{error}</ErrorText>}
+        <Field
           type="name"
           placeholder="Enter your name"
-          value={displayName}
           name="displayName"
-          onChange={(e) => setDisplayName(e.target.value)}
-          required
         />
-        <input
+        <ErrorMessage name='displayName' component={ErrorText}/>
+        <Field
           type="email"
           placeholder="Enter your email"
-          value={email}
           name="email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
         />
-        <input
+        <ErrorMessage name='email' component={ErrorText}/>
+        <Field
           type="password"
           placeholder="Password"
-          value={password}
           name="password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-          onChange={(e) => setPassword(e.target.value)}
-          required
         />
-        <input
+        <ErrorMessage name='password' component={ErrorText}/>
+        <Field
           type="password"
           placeholder="Confirm password"
-          value={confirmPassword}
           name="confirmPassword"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
         />
-        <input
+        <ErrorMessage name='confirmPassword' component={ErrorText}/>
+        <Field
           type="url"
-          value={photoURL}
-          placeholder="Photo url"
-          onChange={(e) => setPhotoURL(e.target.value)}
-          required
+          placeholder="Photo URL"
+          name='photoURL'
         />
-        <Button className="btn">Register</Button>
-      </form>
+        <ErrorMessage name='photoURL' component={ErrorText}/>
+        <Button type='submit' className="btn">Register</Button>
+      </Form>
+      </Formik>
     </div>
   );
 };

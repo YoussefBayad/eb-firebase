@@ -8,13 +8,13 @@ import './index.scss';
 const Filter = ({ ...props }) => {
   const products = useSelector((state) => state.products.data);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearchResults, setShowSearchResults] = useState(true);
+  const [showSearchResults, setShowSearchResults] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
 
   const handleChange = (e) => {
     setShowSearchResults(true);
     if (e.target.value.trim() === '') {
-      setSearchResults([]);
+      setSearchResults(products);
     } else {
       const results = products.filter((product) =>
         product.name

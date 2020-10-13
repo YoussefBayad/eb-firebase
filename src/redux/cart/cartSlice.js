@@ -34,12 +34,18 @@ const cartSlice = createSlice({
       const clickedProduct = state.data.find(
         (product) => product.documentID === action.payload
       );
-      // preventing count from negative value
+      // preventing count from negative values
       if (clickedProduct.count === 1) return;
       else {
         clickedProduct.count--;
       }
     },
+    paymentCompleted(state, action) {
+      state.data = []
+      localStorage.setItem('cart',[])
+
+
+    }
   },
 });
 
@@ -50,5 +56,6 @@ export const {
   decrement,
   removeFromCart,
   setLocalStorageItems,
+  paymentCompleted
 } = cartSlice.actions;
 export default cartSlice.reducer;

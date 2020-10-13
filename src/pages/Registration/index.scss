@@ -8,4 +8,8 @@
 
 .contact-information {
   margin: 10rem 0;
+
+  & h1 {
+    font-size: 3rem;
+  }
 }

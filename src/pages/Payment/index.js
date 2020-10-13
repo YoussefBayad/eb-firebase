@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {Formik, Form,Field ,ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import ErrorText from '../../components/ErrorMessage'
+import {paymentCompleted} from '../../redux/cart/cartSlice'
 import Button from '../../components/forms/Button';
 import Completed from '../../components/PaymentCompleted';
 import './index.scss';
@@ -9,15 +13,34 @@ const Payment = () => {
   // state
 
   const [completed, setCompleted] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState('')
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const initialValues = {
+    name:'',
+    cardNumber:'',
+    date: '' ,
+    address: '',
+    password:'',
+    city:'',
+    postalCode:'', 
+    country: '',
+    phone: '',
+  }
+  const validationSchema= Yup.object({
+    name: Yup.string().required('This field is required'),
+    cardNumber:Yup.number().required('This field is required'),
+    date: Yup.string(),
+    address: Yup.string().required('This field is required'),
+    password:Yup.string().required('This field is required'),
+    city: Yup.string().required('This field is required'),
+    postalCode: Yup.number().required('This field is required'),
+    country: Yup.string().required('This field is required'),
+    phone: Yup.number().required('This field is required')
+  })
+  const onSubmit = (values) => {
     setCompleted(true);
-    dispatch({ type: 'payment-completed' });
-  };
-  const handleChange = (e) => {
-    setName(e.target.value);
+    setName(values.name);
+    dispatch(paymentCompleted());
   };
 
   return (
@@ -28,26 +51,44 @@ const Payment = () => {
       ) : (
         <div className="contact-information">
           <h1>Checkout</h1>
-          <form onSubmit={handleSubmit}>
-            <input
+          <Formik 
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+            >
+          <Form >
+            <Field
               type="text"
               placeholder="Name on Card"
-              value={name}
-              onChange={handleChange}
-              required
+              name="name"
+              
             />
-            <input type="number" placeholder="Card Number" required />
+            <ErrorMessage  name="name" component={ErrorText}/>
+            <Field type="number" name='cardNumber' placeholder="Card Number"  />
+            <ErrorMessage  name="cardNumber" component={ErrorText}/>
+
             <div>
-              <input type="date" placeholder="MM/YY" required />
-              <input type="password" placeholder="Security Code" required />
+              <Field  type="date" name="date" placeholder="MM/YY"  />
+              <ErrorMessage  name="date" component={ErrorText}/>
+
+              <Field type="password" name='password' placeholder="Security Code"  />
+              <ErrorMessage  name="password" component={ErrorText}/>
+
             </div>
-            <input type="text" placeholder="Address" required />
+            <Field type='address' name='address' placeholder="Address"  />
+            <ErrorMessage  name="address" component={ErrorText}/>
+
             <div>
-              <input type="text" placeholder="Postal code" required />
-              <input type="text" placeholder="City" required />
+              <Field name='postalCode' type="text" placeholder="Postal code"  />
+              <ErrorMessage  name="postalCode" component={ErrorText}/>
+
+              <Field name='city' type="text" placeholder="City"  />
+              <ErrorMessage  name="city" component={ErrorText}/>
+
             </div>
 
-            <select id="country" name="country" required>
+            <Field as='select' id="country" name="country" >
+
               <option value="">Country...</option>
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
@@ -307,14 +348,19 @@ const Payment = () => {
               <option value="Zaire">Zaire</option>
               <option value="Zambia">Zambia</option>
               <option value="Zimbabwe">Zimbabwe</option>
-            </select>
-            <input
+            </Field>
+            <ErrorMessage  name="country" component={ErrorText}/>
+
+            <Field name='phone'
               type="number"
               placeholder="Phone number for order/shipping updates and exclusive offers"
-              required
+              
             />
-            <Button className="btn">Complete Payment</Button>
-          </form>
+            <ErrorMessage  name="phone" component={ErrorText}/>
+
+            <Button type='submit'  className="btn">Complete Payment</Button>
+          </Form>
+          </Formik>
         </div>
       )}
     </div>

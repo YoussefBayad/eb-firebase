@@ -10,19 +10,9 @@ import ErrorText from './../../components/ErrorMessage';
 //style
 import './index.scss';
 
-// formik setup
-
-const initialValues = {
-  email:'',
-  password:''
-}
-
-const validationSchema = Yup.object( {
-  email:Yup.string().email("Invalid Email").required('This field is required'),
-  password:Yup.string().required('This field is required')
-})
 
 const Login = () => {
+  
   const history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -36,12 +26,24 @@ const Login = () => {
   }, [currentUser, history]);
 
   
+// formik setup
 
-  const onSubmit = async (values) => {
+const initialValues = {
+  email:'',
+  password:''
+}
+
+const validationSchema = Yup.object( {
+  email:Yup.string().email("Invalid Email").required('This field is required'),
+  password:Yup.string().required('This field is required')
+})
+  const onSubmit = async (values, onSubmitProps) => {
     console.log(values)
     try {
       setStatus('loading');
       await auth.signInWithEmailAndPassword(values.email, values.password);
+      onSubmitProps.resetForm()
+
     } catch (err) {
       setError(err.message);
     }
