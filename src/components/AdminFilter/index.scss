@@ -5,9 +5,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   .search-icon {
     width: 4rem;
     height: 4rem;
+  }
+  & input {
+    outline: none;
+    border: none;
+    background: lightgrey;
+    width: 80%;
+    font-size: 2rem;
   }
 }

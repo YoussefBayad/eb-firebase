@@ -92,6 +92,11 @@ nav {
       font-size: 2rem !important;
       font-weight: bold;
     }
+
+    & a {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid black;
+    }
     &:hover > * {
       @extend .hover;
     }

@@ -2,80 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { firestore } from '../../Firebase/utils';
 
 const initialState = {
-  data: [
-    {
-      photoURL: null,
-      name: ' Strong Push™ Ultra True Wireless Earbuds with Print  ',
-      price: 129.99,
-      category: 'Earbuds',
-      wireless: 'true',
-      wirelessCharging: 'true',
-      totalCharge: '24',
-      waterProof: 'true',
-      fullControl: 'true',
-      eitherBudSolo: 'true',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Fuelbase™ Max Wireless Charging Pad',
-      price: 59.99,
-      category: 'Battery',
-      wireless: '',
-    },
-    {
-      photoURL: null,
-      name: 'Fuelbase™ Wireless Charging Pad ',
-      price: 39.99,
-      category: 'Battery',
-      wireless: '',
-      count: 0,
-    },
-
-    {
-      photoURL: null,
-      name: 'Hesh 2 Over-Ear Wireless Headphone ',
-      price: 99,
-      category: 'Headphone',
-      wireless: 'true',
-      wirelessCharging: 'false',
-      totalCharge: '30',
-      waterProof: 'true',
-      fullControl: 'true',
-      eitherBudSolo: 'true',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Hesh 3 Wireless Over-Ear Headphone  ',
-      price: 69.99,
-      category: 'Headphone',
-      wireless: 'true',
-      wirelessCharging: 'false',
-      totalCharge: '30',
-      waterProof: 'true',
-      fullControl: 'true',
-      eitherBudSolo: 'true',
-      tile: 'true',
-      count: 0,
-    },
-    {
-      photoURL: null,
-      name: 'Cassette Wireless On-Ear Headphones  ',
-      price: 39.99,
-      category: 'Headphone',
-      wireless: 'true',
-      wirelessCharging: 'false',
-      totalCharge: '30',
-      waterProof: 'true',
-      fullControl: 'true',
-      eitherBudSolo: 'true',
-      tile: 'true',
-      count: 0,
-    },
-  ],
+ data: [],
 
   status: 'succeeded',
   error: null,
@@ -144,12 +71,12 @@ const productsSlice = createSlice({
 
       if (state.status === 'loading') {
         state.data = action.payload;
+        console.log("done",action.payload)
         state.status = 'succeeded';
       }
     },
     [fetchProducts.rejected]: (state, action) => {
-      console.log(action);
-      if (state.status === 'loading') {
+      if (state.status === 'loading' ) {
         state.status = 'failed';
         state.error = 'Failed Reload';
       }

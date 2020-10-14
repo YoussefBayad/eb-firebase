@@ -11,7 +11,6 @@ import Spinner from '../../components/Spinner';
 import useFirestoreListener from '../../hooks/useFirestoreListener';
 import { addProduct, deleteProduct } from '../../redux/Products/productsSlice';
 import './index.scss';
-import AdminFilter from '../../components/AdminFilter';
 
 const Admin = (props) => {
   const dispatch = useDispatch();
@@ -19,9 +18,9 @@ const Admin = (props) => {
   
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+ 
   const toggleModal = () => setShowModal(!showModal);
-
+  
   const configModal = {
     showModal,
     toggleModal,
@@ -50,7 +49,9 @@ const validationSchema = Yup.object({
  
 
   const onSubmit = (values) => {
-    const {category, photoURL, price,name,wireless,wirelessCharging,waterProof,fullControl,eitherBudSolo,tile,totalCharge} = values
+    const {category, photoURL, price,name,wireless,wirelessCharging,waterProof,fullControl,eitherBudSolo,tile,totalCharge} = values;
+    console.log("add product")
+
     dispatch(
       addProduct({
         category,
@@ -211,13 +212,9 @@ const validationSchema = Yup.object({
         {error && <h2 className="error">{error}</h2>}
 
         <Spinner status={status} style={{ margin: '5rem auto ' }} />
-        <AdminFilter
-          initialState={products}
-          products={filteredProducts}
-          setProducts={setFilteredProducts}
-        />
+        
         <AdminProducts
-          products={filteredProducts}
+          products={products}
           onDeleteProduct={onDeleteProduct}
         />
       </div>

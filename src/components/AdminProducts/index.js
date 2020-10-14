@@ -1,9 +1,19 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
+import AdminFilter from '../AdminFilter';
 import Button from '../forms/Button';
 
 const AdminProducts = ({ products, onDeleteProduct }) => {
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
   return (
+    <>
+    <AdminFilter
+          initialState={products}
+          products={filteredProducts}
+          setProducts={setFilteredProducts}
+    />
+    
     <motion.div
       initial={{ y: 1000, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -11,7 +21,7 @@ const AdminProducts = ({ products, onDeleteProduct }) => {
       className="admin-products"
     >
       <AnimatePresence>
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           const { name, price, documentID, photoURL } = product;
           return (
             <motion.div
@@ -38,6 +48,7 @@ const AdminProducts = ({ products, onDeleteProduct }) => {
         })}
       </AnimatePresence>
     </motion.div>
+    </>
   );
 };
 

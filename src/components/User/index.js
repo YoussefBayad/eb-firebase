@@ -47,9 +47,9 @@ const User = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ y: -200 }}
-            animate={{ y: 0 }}
-            exit={{ y: 500 }}
+            initial={{ y: -50, scale:0.5 }}
+            animate={{ y: 0 , scale:1 }}
+            exit={{ y: 20, scale:0.5  }}
             transition={{ duration: 0.4 }}
             ref={ref}
             className="log"

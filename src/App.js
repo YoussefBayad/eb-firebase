@@ -30,7 +30,7 @@ import './default.scss';
 import useAuthListener from './hooks/useAuthListener';
 
 const App = () => {
-  // useAuthListener();
+  useAuthListener();
 
   return (
     <Switch>

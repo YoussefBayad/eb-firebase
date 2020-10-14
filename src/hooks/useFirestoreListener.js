@@ -15,6 +15,7 @@ const useFirestoreListener = (status) => {
           snapshot.docs.map((snap) =>
             products.push({ ...snap.data(), documentID: snap.id })
           );
+          console.log('hey', products)
           dispatch({
             type: 'products/fetchProducts/fulfilled',
             payload: products,
