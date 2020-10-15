@@ -1,10 +1,11 @@
+@import '../../default';
 .admin {
   padding: 0 10px;
 
   .call-to-actions {
     display: inline-block;
     width: 50%;
-    margin: 7rem auto;
+    margin: 5.5rem auto;
     margin-top: 3rem;
     & button {
       background: #3f4c96;
@@ -41,9 +42,23 @@
       .error {
         color: #c93131;
       }
+      .image {
+        position: relative;
+      }
       .thumb {
         width: 10rem;
         margin: 1rem auto;
+      }
+      .edit {
+        width: 2.5rem;
+        position: absolute;
+        top: 2rem;
+        right: -4.5rem;
+        @include transition;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
       & button {
         margin-top: 3rem;

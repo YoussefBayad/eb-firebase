@@ -53,20 +53,37 @@
 }
 
 @media screen and (max-width: 550px) {
+  .filter {
+    position: absolute;
+    top: 9rem;
+  }
+  .search-icon {
+    position: absolute;
+    top: -6.3rem;
+    right: 2rem;
+  }
   .filter-input {
-    width: 70vw;
-    top: 6.7rem;
-    left: 0rem;
+    width: 100vw;
+    top: -1rem;
+    left: 11.5%;
     margin: 0;
     padding: 2rem;
     font-size: 2rem;
     z-index: 2;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
   }
-
   .search-results {
     height: 50vh;
-    width: 50vw;
-    top: 13.5rem;
-    left: 11rem;
+    width: 65vw;
+    top: 5rem;
+    left: 28%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .filter-input {
+    left: 12%;
   }
 }

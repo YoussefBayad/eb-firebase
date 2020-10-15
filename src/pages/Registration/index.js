@@ -45,7 +45,6 @@ const validationSchema = Yup.object({
 })
 
   const onSubmit = async (values,onSubmitProps) => {
-    console.log(onSubmitProps)
     try {
       // register
       setStatus('loading');

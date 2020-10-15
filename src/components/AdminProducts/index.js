@@ -1,11 +1,12 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 import AdminFilter from '../AdminFilter';
+import CreatModal from '../CreateModel';
 import Button from '../forms/Button';
 
-const AdminProducts = ({ products, onDeleteProduct }) => {
+const AdminProducts = ({ products, onDeleteProduct,setError }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
-
+  
   return (
     <>
     <AdminFilter
@@ -15,9 +16,9 @@ const AdminProducts = ({ products, onDeleteProduct }) => {
     />
     
     <motion.div
-      initial={{ y: 1000, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7 }}
+      initial={{  opacity: 0 }}
+      animate={{  opacity: 1 }}
+      transition={{ duration: 0.4 }}
       className="admin-products"
     >
       <AnimatePresence>
@@ -27,11 +28,12 @@ const AdminProducts = ({ products, onDeleteProduct }) => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ y: 1000, opacity: 0 }}
-              transition={{ duration: 0.7 }}
+              exit={{ y: 10, opacity: 0 }}
+              transition={{ duration: 0.4 }}
               className="admin-product"
               key={documentID}
             >
+           <div className="image">
               <img
                 className="thumb"
                 src={
@@ -39,7 +41,9 @@ const AdminProducts = ({ products, onDeleteProduct }) => {
                 }
                 alt={name}
               />
+              <CreatModal  initialValues={product}  task={"Edit Product"} setError={setError} />
 
+              </div>
               <h2>{name}</h2>
               <h2>${price}</h2>
               <Button onClick={() => onDeleteProduct(product)}>Delete</Button>

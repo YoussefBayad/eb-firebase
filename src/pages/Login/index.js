@@ -38,7 +38,6 @@ const validationSchema = Yup.object( {
   password:Yup.string().required('This field is required')
 })
   const onSubmit = async (values, onSubmitProps) => {
-    console.log(values)
     try {
       setStatus('loading');
       await auth.signInWithEmailAndPassword(values.email, values.password);

@@ -4,6 +4,5 @@ export default function getProductData(products, cart, id) {
   if (product === undefined) {
     product = products.find((product) => product.documentID === id);
   }
-  console.log(product);
   return product;
 }

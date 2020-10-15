@@ -7,7 +7,56 @@ const initialState = {
   status: 'succeeded',
   error: null,
 };
+// [{
+//   "documentID":1,
+//  "photoURL": null,
+//  "name": " Strong Push™ Ultra True Wireless Earbuds with Print  ",
+//  "price": 129.99,
+//  "category": "Earbuds",
+//  "wireless": "true",
+//  "wirelessCharging": "true",
+//  "totalCharge": "24",
+//  "waterProof": "true",
+//  "fullControl": "true",
+//  "eitherBudSolo": "true",
+//  "tile": "true",
+//  "count": 0
+// },
+// {
+//  "documentID":2,
 
+//  "photoURL": null,
+//  "name": "Fuelbase™ Max Wireless Charging Pad",
+//  "price": 59.99,
+//  "category": "Battery",
+//  "wireless": ""
+// },
+// {
+//  "documentID":3,
+
+//  "photoURL": null,
+//  "name": "Fuelbase™ Wireless Charging Pad ",
+//  "price": 39.99,
+//  "category": "Battery",
+//  "wireless": "",
+//  "count": 0
+// },
+
+// {
+//  "documentID":5,
+//  "photoURL": null,
+//  "name": "Hesh 2 Over-Ear Wireless Headphone ",
+//  "price": 99,
+//  "category": "Headphone",
+//  "wireless": "true",
+//  "wirelessCharging": "false",
+//  "totalCharge": "30",
+//  "waterProof": "true",
+//  "fullControl": "true",
+//  "eitherBudSolo": "true",
+//  "tile": "true",
+//  "count": 0
+// },],
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
@@ -27,6 +76,18 @@ export const addProduct = createAsyncThunk(
   'products/addProduct',
   async (product) => {
     var response = await firestore.collection('products').add(product);
+
+    return response;
+  }
+);
+export const editProduct = createAsyncThunk(
+  'products/editProduct',
+  async (values) => {
+    console.log("edditing",values)
+    var response = await firestore
+      .collection('products')
+      .doc(values.documentID)
+      .set(values);
 
     return response;
   }
@@ -71,7 +132,6 @@ const productsSlice = createSlice({
 
       if (state.status === 'loading') {
         state.data = action.payload;
-        console.log("done",action.payload)
         state.status = 'succeeded';
       }
     },
@@ -83,17 +143,14 @@ const productsSlice = createSlice({
     },
     [addProduct.pending]: (state, action) => {
       state.status = 'loading';
-      console.log('add product pending');
       // state.error = null;
     },
     [addProduct.fulfilled]: (state, action) => {
       // if (state.status === 'loading') {
       //   state.status = 'succeeded';
-      // console.log(action.payload);
     },
 
     [addProduct.rejected]: (state, action) => {
-      // console.log(action);
       // if (state.status === 'loading') {
       //   state.status = 'failed';
       //   state.error = 'failed to add product try again';
@@ -101,16 +158,27 @@ const productsSlice = createSlice({
     },
     [deleteProduct.pending]: (state, action) => {
       state.status = 'loading';
-      console.log('delete product pending');
     },
     [deleteProduct.fulfilled]: (state, action) => {
       // if (state.status === 'loading') {
       //   state.status = 'succeeded';
       // }
-      console.log(action.payload);
     },
     [deleteProduct.rejected]: (state, action) => {
-      // console.log(action);
+      // if (state.status === 'loading') {
+      //   state.status = 'failed';
+      //   state.error = 'failed to delete product try again';
+      // }
+    },
+    [editProduct.pending]: (state, action) => {
+      // state.status = 'loading';
+    },
+    [editProduct.fulfilled]: (state, action) => {
+      // if (state.status === 'loading') {
+      //   state.status = 'succeeded';
+      // }
+    },
+    [editProduct.rejected]: (state, action) => {
       // if (state.status === 'loading') {
       //   state.status = 'failed';
       //   state.error = 'failed to delete product try again';
