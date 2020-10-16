@@ -87,7 +87,7 @@ export const editProduct = createAsyncThunk(
     var response = await firestore
       .collection('products')
       .doc(values.documentID)
-      .set(values);
+      .update(values);
 
     return response;
   }
@@ -171,7 +171,7 @@ const productsSlice = createSlice({
       // }
     },
     [editProduct.pending]: (state, action) => {
-      // state.status = 'loading';
+      state.status = 'loading';
     },
     [editProduct.fulfilled]: (state, action) => {
       // if (state.status === 'loading') {

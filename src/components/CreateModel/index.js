@@ -3,18 +3,15 @@ import Modal from '../Modal';
 import {useDispatch} from 'react-redux';
 import edit from './../../assets/icon/edit.svg';
 import {editProduct} from '../../redux/Products/productsSlice'
-
+import {timestamp} from '../../Firebase/utils'
 
 const CreatModal = ({initialValues,task,setError}) => {
     const [showModal, setShowModal] = useState(false);
     const toggleModal = () => setShowModal(!showModal);
     const dispatch = useDispatch()
-
     const onSubmit = (values) => {
-        console.log('values',values)
-        console.log('id',values.documentID)
-      dispatch(editProduct(values))
-      
+      dispatch(editProduct({...values,createdAt:timestamp()}))
+      toggleModal()
      }
     const onclick = (deleteAble ) => {
         if (deleteAble === true) {
