@@ -17,14 +17,13 @@ const HomePage = () => {
             Shop Now
           </Link>
         </div>
-        <a href="#flex">
-          <img src={downArrow} alt="scroll down" className="scroll-down" />
+        <a href="#flex" className="scroll-down">
+          <img src={downArrow} alt="scroll down"  />
         </a>
       </div>
       <div className="cards">
         <div className="new-releases">
-          {' '}
-          <h1>NEW RELEASES</h1>{' '}
+          <h1>NEW RELEASES</h1>
         </div>
         <div className="flex" id="flex">
           <Link to="/shop/earbuds">

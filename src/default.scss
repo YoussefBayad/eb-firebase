@@ -141,16 +141,19 @@ select {
 .scroll-down {
   position: absolute;
   bottom: -2.5rem;
+  box-shadow: none !important;
   left: 47%;
-  width: 5rem;
-  background-color: white;
-  box-shadow: 2px 2px 5px 0px black;
-  cursor: pointer;
+  & img {
+    width: 5rem;
+    background-color: white;
+    box-shadow: 2px 2px 5px 0px black;
+    cursor: pointer;
 
-  border-radius: 50%;
-  @include transition;
-  &:hover {
-    transform: translateY(50%);
-    box-shadow: none;
+    border-radius: 50%;
+    @include transition;
+    &:hover {
+      transform: translateY(50%);
+      box-shadow: none;
+    }
   }
 }
