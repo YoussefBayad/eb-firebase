@@ -29,7 +29,6 @@ const Footer = () => {
           <a href="#">Compare</a>
           <a href="#">Bulk Orders</a>
           <a href="#">Protect Our Winters</a>
-          <a href="#">Product Help</a>
         </div>
         <div>
           <a href="#">Athletes</a>
