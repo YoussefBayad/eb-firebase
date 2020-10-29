@@ -7,6 +7,7 @@ import './index.scss';
 const Product = ({ product }) => {
   return (
     <motion.div
+    layout
       initial={{ scale: 0, y: 400 }}
       animate={{ scale: 1, y: 0 }}
       transition={{ duration: 1 }}

@@ -26,6 +26,7 @@ const AdminProducts = ({ products, onDeleteProduct,setError }) => {
           const { name, price, documentID, photoURL } = product;
           return (
             <motion.div
+            layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ y: 10, opacity: 0 }}
@@ -34,8 +35,12 @@ const AdminProducts = ({ products, onDeleteProduct,setError }) => {
               key={documentID}
             >
            <div className="image">
-              <img
+              <motion.img
                 className="thumb"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+
                 src={
                   photoURL ? photoURL : `/img/${name.replace(/\s/g, '')}.webp`
                 }
