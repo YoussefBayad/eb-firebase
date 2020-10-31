@@ -65,14 +65,18 @@ const App = () => {
         )}
       />
 
-      <MainLayout>
-        <Route exact path="/shop" render={() => <Shop />} />
+        <Route exact path="/shop" render={() => 
+        <MainLayout>
+        <Shop />
+        </MainLayout>} />
         <Route
           exact
           path="/login"
           render={() => (
             <WithAuth>
+              <MainLayout>
               <Login />
+              </MainLayout>
             </WithAuth>
           )}
         />
@@ -81,17 +85,51 @@ const App = () => {
           path="/registration"
           render={() => (
             <WithAuth>
+              <MainLayout>
               <Registration />
+              </MainLayout>
             </WithAuth>
           )}
         />
-        <Route exact path="/shop/headphones" component={Headphones} />
-        <Route exact path="/shop/earbuds" component={Earbuds} />
-        <Route exact path="/shop/earbuds/wireless" component={Wireless} />
-        <Route exact path="/shop/earbuds/wired" component={Wired} />
-        <Route exact path="/shop/batteries" component={Battery} />
-        <Route exact path="/payment" component={Payment} />
-      </MainLayout>
+        <Route exact path="/shop/headphones" render={() => (
+            <MainLayout>
+              <Headphones />
+            </MainLayout>
+          )} />
+        <Route exact path="/shop/earbuds" render={() => (
+            <MainLayout>
+              <Earbuds />
+            </MainLayout>
+          )}/>
+        <Route exact path="/shop/earbuds/wireless" 
+        render={() => (
+            <MainLayout>
+              <Wireless />
+            </MainLayout>
+          )}/>
+        <Route exact path="/shop/earbuds/wired" 
+        render={() => (
+          <MainLayout>
+            <Wired />
+          </MainLayout>
+        )}/>
+        <Route exact path="/shop/batteries" 
+        render={() => (
+          <MainLayout>
+            <Battery />
+          </MainLayout>
+        )} />
+        <Route exact path="/payment" render={() => (
+            <MainLayout>
+              <Payment />
+            </MainLayout>
+          )} />
+        <Route  path="*" render={() => (
+            <MainLayout>
+              <NoMatch />
+            </MainLayout>
+          )} />
+      
     </Switch>
   );
 };

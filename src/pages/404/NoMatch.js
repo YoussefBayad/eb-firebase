@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import chevronRight from '../../assets/icon/chevron-right.svg';
+import travoltaCrunched from '../../assets/gif/travolta-crunched.gif';
 
 import './index.scss';
 
 const NoMatch = () => {
   return (
     <div className="no-match">
-      <h1>404</h1>
-      <h2>This page is not available</h2>
-      <Link to="/shop" className="checkout-btn go-back-btn">
-        Go Back To Shop <img src={chevronRight} alt=">" />
+      
+      <h1>Looks like you got lost.</h1>
+      
+      <img className="gif" src={travoltaCrunched} alt="travolta lost gif" />
+      <Link to="/shop" className="primary-btn">
+        Go Back To Shop <img src={chevronRight} alt="go back" />
       </Link>
     </div>
   );
