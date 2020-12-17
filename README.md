@@ -1,4 +1,4 @@
-# Homie
+# EB
 
 Full-stack, Real time, e-commerce site using React, Firebase, Redux Toolkit,Sass, Formik, Framer Motion.
 
