@@ -36,7 +36,7 @@ const App = () => {
     <Switch>
       <Route
         exact
-        path="/"
+        path='/'
         render={() => (
           <HomeLayout>
             <HomePage />
@@ -46,7 +46,7 @@ const App = () => {
 
       <Route
         exact
-        path="/admin"
+        path='/admin'
         render={() => (
           <WithAdminAuth>
             <AdminLayout>
@@ -57,7 +57,7 @@ const App = () => {
       />
       <Route
         exact
-        path="/shop/product/:id"
+        path='/shop/product/:id'
         render={() => (
           <HomeLayout>
             <ProductPage />
@@ -65,71 +65,99 @@ const App = () => {
         )}
       />
 
-        <Route exact path="/shop" render={() => 
-        <MainLayout>
-        <Shop />
-        </MainLayout>} />
-        <Route
-          exact
-          path="/login"
-          render={() => (
-            <WithAuth>
-              <MainLayout>
-              <Login />
-              </MainLayout>
-            </WithAuth>
-          )}
-        />
-        <Route
-          exact
-          path="/registration"
-          render={() => (
-            <WithAuth>
-              <MainLayout>
-              <Registration />
-              </MainLayout>
-            </WithAuth>
-          )}
-        />
-        <Route exact path="/shop/headphones" render={() => (
-            <MainLayout>
-              <Headphones />
-            </MainLayout>
-          )} />
-        <Route exact path="/shop/earbuds" render={() => (
-            <MainLayout>
-              <Earbuds />
-            </MainLayout>
-          )}/>
-        <Route exact path="/shop/earbuds/wireless" 
+      <Route
+        exact
+        path='/shop'
         render={() => (
+          <MainLayout>
+            <Shop />
+          </MainLayout>
+        )}
+      />
+      <Route
+        exact
+        path='/login'
+        render={() => (
+          <WithAuth>
             <MainLayout>
-              <Wireless />
+              <Login />
             </MainLayout>
-          )}/>
-        <Route exact path="/shop/earbuds/wired" 
+          </WithAuth>
+        )}
+      />
+      <Route
+        exact
+        path='/registration'
+        render={() => (
+          <WithAuth>
+            <MainLayout>
+              <Registration />
+            </MainLayout>
+          </WithAuth>
+        )}
+      />
+      <Route
+        exact
+        path='/shop/headphones'
+        render={() => (
+          <MainLayout>
+            <Headphones />
+          </MainLayout>
+        )}
+      />
+      <Route
+        exact
+        path='/shop/earbuds'
+        render={() => (
+          <MainLayout>
+            <Earbuds />
+          </MainLayout>
+        )}
+      />
+      <Route
+        exact
+        path='/shop/earbuds/wireless'
+        render={() => (
+          <MainLayout>
+            <Wireless />
+          </MainLayout>
+        )}
+      />
+      <Route
+        exact
+        path='/shop/earbuds/wired'
         render={() => (
           <MainLayout>
             <Wired />
           </MainLayout>
-        )}/>
-        <Route exact path="/shop/batteries" 
+        )}
+      />
+      <Route
+        exact
+        path='/shop/batteries'
         render={() => (
           <MainLayout>
             <Battery />
           </MainLayout>
-        )} />
-        <Route exact path="/payment" render={() => (
-            <MainLayout>
-              <Payment />
-            </MainLayout>
-          )} />
-        <Route  path="*" render={() => (
-            <MainLayout>
-              <NoMatch />
-            </MainLayout>
-          )} />
-      
+        )}
+      />
+      <Route
+        exact
+        path='/payment'
+        render={() => (
+          <MainLayout>
+            <Payment />
+          </MainLayout>
+        )}
+      />
+      <Route
+        path='*'
+        render={() => (
+          <MainLayout>
+            <NoMatch />
+          </MainLayout>
+        )}
+      />
     </Switch>
   );
 };

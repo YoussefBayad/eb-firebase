@@ -11,6 +11,13 @@
     margin-bottom: 7rem;
   }
 }
+.payment-products,
+.products {
+  margin-top: 0rem;
+  display: grid;
+  grid-template-columns: repeat(auto, minmax(5rem, 0.3fr));
+  grid-gap: 2rem;
+}
 
 .contact-information {
   text-align: left;
